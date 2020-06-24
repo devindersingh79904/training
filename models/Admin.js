@@ -8,6 +8,7 @@ const AdminSchema = mongoose.Schema({
   email: {
     type: String,
     required: true,
+    unique: true,
   },
   password: {
     type: String,
@@ -16,6 +17,7 @@ const AdminSchema = mongoose.Schema({
   role: {
     type: String,
     required: true,
+    default: 'admin',
   },
 });
 
