@@ -1,0 +1,4 @@
+{
+  "mongoUri": "mongodb+srv://dsp123:dsp123@contactkeeper-nrcv9.mongodb.net/traning?retryWrites=true&w=majority",
+  "secret": "secret"
+}
