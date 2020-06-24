@@ -1,11 +1,16 @@
 const express = require('express');
-const auth = require('./routes/auth');
 const db = require('./config/Db');
+
+const adminAuth = require('./routes/adminAuth');
+const adminRegister = require('./routes/adminRegister');
+
 const app = express();
 
 db();
 app.use(express.json({ extened: false }));
-app.use('/api/auth', auth);
+
+app.use('/api/adminAuth', adminAuth);
+app.use('/api/adminRegister', adminRegister);
 
 app.get('/', (req, res) => {
   return res.json({
