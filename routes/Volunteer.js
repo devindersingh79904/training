@@ -44,12 +44,27 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.delete("/", (req, res) => {});
+router.delete("/:id", async (req, res) => {
+  const _id = req.params.id;
+  console.log("params : ", _id);
 
-router.patch("/", (req, res) => {});
+  try {
+    const vol = await Volunteer.findById(req.params.id);
+    if (!vol) {
+      return res.status(401).json("No volunteer found.");
+    }
+    await Volunteer.findByIdAndRemove(req.params.id);
+    res.json({ msg: "deleted Succussfuly" });
+  } catch (error) {
+    console.error(error.message);
+    res.status(501).json({ msg: "Server error . " });
+  }
+});
 
-router.patch("/", (req, res) => {});
+router.put("/dasign/:id", (req, res) => {});
 
-router.patch("/", (req, res) => {});
+router.put("/daccept/:id", (req, res) => {});
+
+router.put("/work/:id", (req, res) => {});
 
 module.exports = router;
