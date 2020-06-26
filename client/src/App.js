@@ -5,6 +5,7 @@ import Navbar from './component/layout/Navbar';
 import Home from './component/pages/Home';
 import About from './component/pages/About';
 import Register from './component/auth/Register';
+import Login from './component/auth/Login';
 import Alert from './component/layout/Alert';
 import { Provider } from 'react-redux';
 import store from './store';
@@ -22,6 +23,7 @@ function App() {
                 <Route exact path='/' component={Home} />
                 <Route exact path='/about' component={About} />
                 <Route exact path='/register' component={Register} />
+                <Route exact path='/login' component={Login} />
               </Switch>
             </div>
           </div>

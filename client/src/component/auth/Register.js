@@ -1,9 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { setAlert } from '../../actions/alertAction';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
 const Register = ({ setAlert }) => {
   //   setAlert('bhut ganda', 'danger');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    password2: '',
+    role: 'admin',
+  });
+
+  const { name, email, password, password2, role } = formData;
+
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (password !== password2) {
+      setAlert('password dont match', 'danger');
+    } else {
+      setFormData({
+        name: '',
+        email: '',
+        password: '',
+        password2: '',
+        role: 'admin',
+      });
+    }
+  };
   return (
     <div class='auth-form  ml-auto mr-auto no-float'>
       <div class='panel panel-default card-view mb-0 mt-5'>
@@ -12,7 +40,7 @@ const Register = ({ setAlert }) => {
             <div class='row'>
               <div class='col-sm-12 col-xs-12'>
                 <div class='form-wrap'>
-                  <form action='#'>
+                  <form onSubmit={(e) => onSubmit(e)}>
                     <div class='form-group'>
                       <label
                         class='control-label mb-10'
@@ -27,6 +55,9 @@ const Register = ({ setAlert }) => {
                           required=''
                           id='exampleInputuname_2'
                           placeholder='Username'
+                          name='name'
+                          value={name}
+                          onChange={(e) => onChange(e)}
                         />
                         <div class='input-group-addon'>
                           <i class='icon-user'></i>
@@ -47,6 +78,9 @@ const Register = ({ setAlert }) => {
                           required=''
                           id='exampleInputEmail_2'
                           placeholder='Enter email'
+                          name='email'
+                          value={email}
+                          onChange={(e) => onChange(e)}
                         />
                         <div class='input-group-addon'>
                           <i class='icon-envelope-open'></i>
@@ -67,6 +101,9 @@ const Register = ({ setAlert }) => {
                           required=''
                           id='exampleInputpwd_2'
                           placeholder='Enter pwd'
+                          name='password'
+                          value={password}
+                          onChange={(e) => onChange(e)}
                         />
                         <div class='input-group-addon'>
                           <i class='icon-lock'></i>
@@ -87,23 +124,13 @@ const Register = ({ setAlert }) => {
                           required=''
                           id='exampleInputpwd_3'
                           placeholder='Enter pwd'
+                          name='password2'
+                          value={password2}
+                          onChange={(e) => onChange(e)}
                         />
                         <div class='input-group-addon'>
                           <i class='icon-lock'></i>
                         </div>
-                      </div>
-                    </div>
-
-                    <div class='form-group'>
-                      <div class='checkbox checkbox-success'>
-                        <input id='checkbox_2' required='' type='checkbox' />
-                        <label for='checkbox_2'>
-                          {' '}
-                          I agree to all{' '}
-                          <a class='txt-danger capitalize-font' href='#'>
-                            terms
-                          </a>
-                        </label>
                       </div>
                     </div>
                     <div class='form-group'>
