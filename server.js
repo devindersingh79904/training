@@ -4,6 +4,7 @@ const db = require("./config/Db");
 const adminAuth = require("./routes/adminAuth");
 const adminRegister = require("./routes/adminRegister");
 const Volunteer = require("./routes/Volunteer");
+const Drive = require("./routes/Drive");
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(express.json({ extened: false }));
 app.use("/api/adminAuth", adminAuth);
 app.use("/api/adminRegister", adminRegister);
 app.use("/api/Volunteer", Volunteer);
+app.use("/api/Drive", Drive);
 
 app.get("/", (req, res) => {
   return res.json({
