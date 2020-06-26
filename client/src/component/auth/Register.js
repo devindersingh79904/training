@@ -32,6 +32,7 @@ const Register = ({ setAlert }) => {
       });
     }
   };
+
   return (
     <div class='auth-form  ml-auto mr-auto no-float'>
       <div class='panel panel-default card-view mb-0 mt-5'>
