@@ -41,6 +41,7 @@ export default (state = initialstate, action) => {
         ...state,
         loading: true,
       };
+    default:
       return state;
   }
 };
