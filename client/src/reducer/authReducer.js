@@ -16,16 +16,14 @@ const initialstate = {
   user: null,
 };
 export default (state = initialstate, action) => {
-  switch (action) {
-    default:
-
+  switch (action.type) {
     case REGISTER_SUCCESS:
-      // localStorage.setItem('token', action.payload.token);
+      localStorage.setItem('token', action.payload.token);
       return {
         ...state,
         loading: false,
         isAuthenticated: true,
-        // token: action.payload.token,
+        token: action.payload.token,
       };
 
     case REGISTER_FAIL:

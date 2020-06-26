@@ -9,7 +9,7 @@ import {
   AUTH_ERROR,
 } from './types';
 
-export const register = ({ name, email, passowrd, role }) => async (
+export const registerUser = ({ name, email, passowrd, role }) => async (
   dispatch
 ) => {
   const config = {
@@ -20,6 +20,15 @@ export const register = ({ name, email, passowrd, role }) => async (
 
   const body = JSON.stringify({ name, email, passowrd, role });
 
+  console.log(body);
   try {
-  } catch (err) {}
+    const res = await axios.post(
+      'http://localhost:5000/api/adminRegister',
+      body,
+      config
+    );
+    console.log(res);
+  } catch (err) {
+    console.log(err.message);
+  }
 };
