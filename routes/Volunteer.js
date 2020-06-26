@@ -1,9 +1,9 @@
 const express = require("express");
 const Volunteer = require("../models/Volunteer");
-const config = require("config");
 const router = express.Router();
+const auth = require("../middleware/auth");
 
-router.get("/", async (req, res) => {
+router.get("/", auth, async (req, res) => {
   try {
     result = await Volunteer.find();
     return res.json(result);
@@ -12,7 +12,11 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", auth, async (req, res) => {
+  if (req.user.role != "Sadmin") {
+    return res.status(401).json({ msg: "You are not Authorized user" });
+  }
+
   const { rollno, name, clas, batch, email, phnno } = req.body;
 
   try {
@@ -43,7 +47,10 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", auth, async (req, res) => {
+  if (req.user.role != "Sadmin") {
+    return res.status(401).json({ msg: "You are not Authorized user" });
+  }
   const _id = req.params.id;
   console.log("params : ", _id);
 
@@ -60,7 +67,10 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-router.put("/dasign/:id", async (req, res) => {
+router.put("/dasign/:id", auth, async (req, res) => {
+  if (req.user.role != "Sadmin") {
+    return res.status(401).json({ msg: "You are not Authorized user" });
+  }
   try {
     var volunteer = await Volunteer.findById(req.params.id);
     if (!volunteer) {
@@ -80,7 +90,10 @@ router.put("/dasign/:id", async (req, res) => {
   }
 });
 
-router.put("/daccept/:id", async (req, res) => {
+router.put("/daccept/:id", auth, async (req, res) => {
+  if (req.user.role != "Sadmin") {
+    return res.status(401).json({ msg: "You are not Authorized user" });
+  }
   try {
     var volunteer = await Volunteer.findById(req.params.id);
     if (!volunteer) {
@@ -99,7 +112,10 @@ router.put("/daccept/:id", async (req, res) => {
   }
 });
 
-router.put("/work/:id", async (req, res) => {
+router.put("/work/:id", auth, async (req, res) => {
+  if (req.user.role != "Sadmin") {
+    return res.status(401).json({ msg: "You are not Authorized user" });
+  }
   try {
     var volunteer = await Volunteer.findById(req.params.id);
     if (!volunteer) {

@@ -2,8 +2,9 @@ const express = require("express");
 const Drive = require("../models/Drive");
 const config = require("config");
 const router = express.Router();
+const auth = require("../middleware/auth");
 
-router.get("/", async (req, res) => {
+router.get("/", auth, async (req, res) => {
   try {
     result = await Drive.find();
     return res.json(result);
@@ -13,6 +14,9 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
+  if (req.user.role != "Sadmin") {
+    return res.status(401).json({ msg: "You are not Authorized user" });
+  }
   const { name, email, date, type, description } = req.body;
 
   try {
@@ -40,8 +44,12 @@ router.post("/", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  const _id = req.params.id;
-  console.log("params : ", _id);
+  if (req.user.role != "Sadmin") {
+    return res.status(401).json({ msg: "You are not Authorized user" });
+  }
+
+  // const _id = req.params.id;
+  // console.log("params : ", _id);
 
   try {
     var comp = await Drive.findById(req.params.id);
