@@ -1,18 +1,33 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Navbar from './component/layout/Navbar';
 import Home from './component/pages/Home';
+import About from './component/pages/About';
+import Register from './component/auth/Register';
+import Alert from './component/layout/Alert';
+import { Provider } from 'react-redux';
+import store from './store';
 
 function App() {
   return (
-    <div className='App'>
-      <Navbar />
-      <div class='page-wrapper'>
-        <div class='container-fluid'>
-          <Home />
+    <Provider store={store}>
+      <Router>
+        <div className='App'>
+          <Navbar />
+          <div className='page-wrapper'>
+            <div className='container-fluid'>
+              <Alert />
+              <Switch>
+                <Route exact path='/' component={Home} />
+                <Route exact path='/about' component={About} />
+                <Route exact path='/register' component={Register} />
+              </Switch>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </Router>
+    </Provider>
   );
 }
 
