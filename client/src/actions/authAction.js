@@ -9,6 +9,7 @@ import {
   LOGIN_FAIL,
   USER_LOADED,
   AUTH_ERROR,
+  LOGOUT,
 } from './types';
 
 export const setLoading = () => (dispatch) => {
@@ -17,6 +18,11 @@ export const setLoading = () => (dispatch) => {
   });
 };
 
+export const logout = () => (dispatch) => {
+  dispatch({
+    type: LOGOUT,
+  });
+};
 export const loadUser = () => async (dispatch) => {
   console.log('i am going to load user ');
   console.log(localStorage.token);
