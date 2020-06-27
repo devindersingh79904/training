@@ -16,6 +16,7 @@ const initialstate = {
   error: null,
   user: null,
 };
+
 export default (state = initialstate, action) => {
   switch (action.type) {
     case USER_LOADED:
