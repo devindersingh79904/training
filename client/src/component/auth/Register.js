@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { setAlert } from '../../actions/alertAction';
-import { registerUser } from '../../actions/authAction';
+import { registerUser, setLoading } from '../../actions/authAction';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-const Register = ({ setAlert, registerUser }) => {
-  //   setAlert('bhut ganda', 'danger');
+const Register = ({ setAlert, registerUser, setLoading }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -31,6 +30,7 @@ const Register = ({ setAlert, registerUser }) => {
         role,
       };
       console.log('i am going to call');
+      setLoading();
       registerUser(user);
       setFormData({
         name: '',
@@ -43,25 +43,25 @@ const Register = ({ setAlert, registerUser }) => {
   };
 
   return (
-    <div class='auth-form  ml-auto mr-auto no-float'>
-      <div class='panel panel-default card-view mb-0 mt-5'>
-        <div class='panel-wrapper collapse in'>
-          <div class='panel-body'>
-            <div class='row'>
-              <div class='col-sm-12 col-xs-12'>
-                <div class='form-wrap'>
+    <div className='auth-form  ml-auto mr-auto no-float'>
+      <div className='panel panel-default card-view mb-0 mt-5'>
+        <div className='panel-wrapper collapse in'>
+          <div className='panel-body'>
+            <div className='row'>
+              <div className='col-sm-12 col-xs-12'>
+                <div className='form-wrap'>
                   <form onSubmit={(e) => onSubmit(e)}>
-                    <div class='form-group'>
+                    <div className='form-group'>
                       <label
-                        class='control-label mb-10'
-                        for='exampleInputuname_2'
+                        className='control-label mb-10'
+                        htmlFor='exampleInputuname_2'
                       >
                         Name
                       </label>
-                      <div class='input-group'>
+                      <div className='input-group'>
                         <input
                           type='text'
-                          class='form-control'
+                          className='form-control'
                           required=''
                           id='exampleInputuname_2'
                           placeholder='Username'
@@ -69,22 +69,22 @@ const Register = ({ setAlert, registerUser }) => {
                           value={name}
                           onChange={(e) => onChange(e)}
                         />
-                        <div class='input-group-addon'>
-                          <i class='icon-user'></i>
+                        <div className='input-group-addon'>
+                          <i className='icon-user'></i>
                         </div>
                       </div>
                     </div>
-                    <div class='form-group'>
+                    <div className='form-group'>
                       <label
-                        class='control-label mb-10'
-                        for='exampleInputEmail_2'
+                        className='control-label mb-10'
+                        htmlFor='exampleInputEmail_2'
                       >
                         Email address
                       </label>
-                      <div class='input-group'>
+                      <div className='input-group'>
                         <input
                           type='email'
-                          class='form-control'
+                          className='form-control'
                           required=''
                           id='exampleInputEmail_2'
                           placeholder='Enter email'
@@ -92,22 +92,22 @@ const Register = ({ setAlert, registerUser }) => {
                           value={email}
                           onChange={(e) => onChange(e)}
                         />
-                        <div class='input-group-addon'>
-                          <i class='icon-envelope-open'></i>
+                        <div className='input-group-addon'>
+                          <i className='icon-envelope-open'></i>
                         </div>
                       </div>
                     </div>
-                    <div class='form-group'>
+                    <div className='form-group'>
                       <label
-                        class='control-label mb-10'
-                        for='exampleInputpwd_2'
+                        className='control-label mb-10'
+                        htmlFor='exampleInputpwd_2'
                       >
                         Password
                       </label>
-                      <div class='input-group'>
+                      <div className='input-group'>
                         <input
                           type='password'
-                          class='form-control'
+                          className='form-control'
                           required=''
                           id='exampleInputpwd_2'
                           placeholder='Enter pwd'
@@ -115,22 +115,22 @@ const Register = ({ setAlert, registerUser }) => {
                           value={password}
                           onChange={(e) => onChange(e)}
                         />
-                        <div class='input-group-addon'>
-                          <i class='icon-lock'></i>
+                        <div className='input-group-addon'>
+                          <i className='icon-lock'></i>
                         </div>
                       </div>
                     </div>
-                    <div class='form-group'>
+                    <div className='form-group'>
                       <label
-                        class='control-label mb-10'
-                        for='exampleInputpwd_3'
+                        className='control-label mb-10'
+                        htmlFor='exampleInputpwd_3'
                       >
                         Confirm Password
                       </label>
-                      <div class='input-group'>
+                      <div className='input-group'>
                         <input
                           type='password'
-                          class='form-control'
+                          className='form-control'
                           required=''
                           id='exampleInputpwd_3'
                           placeholder='Enter pwd'
@@ -138,21 +138,27 @@ const Register = ({ setAlert, registerUser }) => {
                           value={password2}
                           onChange={(e) => onChange(e)}
                         />
-                        <div class='input-group-addon'>
-                          <i class='icon-lock'></i>
+                        <div className='input-group-addon'>
+                          <i className='icon-lock'></i>
                         </div>
                       </div>
                     </div>
-                    <div class='form-group'>
-                      <button type='submit' class='btn btn-success btn-block'>
+                    <div className='form-group'>
+                      <button
+                        type='submit'
+                        className='btn btn-success btn-block'
+                      >
                         sign up
                       </button>
                     </div>
-                    <div class='form-group mb-0'>
-                      <span class='inline-block pr-5'>
+                    <div className='form-group mb-0'>
+                      <span className='inline-block pr-5'>
                         Already have an account?
                       </span>
-                      <a class='inline-block txt-danger' href='login-page.html'>
+                      <a
+                        className='inline-block txt-danger'
+                        href='login-page.html'
+                      >
                         Sign In
                       </a>
                     </div>
@@ -171,4 +177,4 @@ Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
   registerUser: PropTypes.func.isRequired,
 };
-export default connect(null, { setAlert, registerUser })(Register);
+export default connect(null, { setAlert, registerUser, setLoading })(Register);
