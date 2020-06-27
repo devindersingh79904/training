@@ -9,7 +9,7 @@ import {
   AUTH_ERROR,
 } from './types';
 
-export const registerUser = ({ name, email, password, role }) => async (
+export const registerUser = ({ name, email, passowrd, role }) => async (
   dispatch
 ) => {
   const config = {
@@ -18,7 +18,7 @@ export const registerUser = ({ name, email, password, role }) => async (
     },
   };
 
-  const body = JSON.stringify({ name, email, password, role });
+  const body = JSON.stringify({ name, email, passowrd, role });
 
   console.log(body);
   try {
