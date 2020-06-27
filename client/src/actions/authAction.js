@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { setAlert } from './alertAction';
+import setAuthToken from '../utils/setAuthToken';
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
@@ -16,7 +17,27 @@ export const setLoading = () => (dispatch) => {
   });
 };
 
-export const loadUser = () => async (dispatch) => {};
+export const loadUser = () => async (dispatch) => {
+  console.log('i am going to load user ');
+  console.log(localStorage.token);
+  if (localStorage.getItem('token')) {
+    setAuthToken(localStorage.token);
+  }
+
+  try {
+    const res = await axios.get('http://localhost:5000/api/adminAuth');
+
+    console.log(res.data);
+    dispatch({
+      type: USER_LOADED,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: AUTH_ERROR,
+    });
+  }
+};
 
 export const registerUser = (body) => async (dispatch) => {
   const config = {
@@ -43,6 +64,7 @@ export const registerUser = (body) => async (dispatch) => {
       type: REGISTER_SUCCESS,
       payload: res.data,
     });
+    dispatch(loadUser());
   } catch (err) {
     // console.log(err.response.data.msg);
     // console.log(res);
