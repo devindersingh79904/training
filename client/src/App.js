@@ -14,7 +14,7 @@ import PrivateRoute from './component/routing/PrivateRoute';
 import { loadUser, setLoading } from './actions/authAction';
 import AddAttendence from './component/layout/AddAttendence';
 import AddVolunteer from './component/layout/AddVolunteer';
-import AddDrive from './component/layout/AddDrive';
+import AddDrive from './component/drive/AddDrive';
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
