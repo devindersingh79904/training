@@ -28,11 +28,6 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
               </Link>
             </li>
             <li>
-              <Link to='/about' className='connection-item'>
-                <span className='block'>About</span>
-              </Link>
-            </li>
-            <li>
               <Link to='/login' className='connection-item'>
                 <i className='pe-7s-unlock txt-success'></i>
                 <span className='block'>Login</span>
