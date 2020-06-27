@@ -24,8 +24,6 @@ export const logout = () => (dispatch) => {
   });
 };
 export const loadUser = () => async (dispatch) => {
-  console.log('i am going to load user ');
-  console.log(localStorage.token);
   if (localStorage.getItem('token')) {
     setAuthToken(localStorage.token);
   }
@@ -33,7 +31,7 @@ export const loadUser = () => async (dispatch) => {
   try {
     const res = await axios.get('http://localhost:5000/api/adminAuth');
 
-    console.log(res.data);
+    // console.log(res.data);
     dispatch({
       type: USER_LOADED,
       payload: res.data,

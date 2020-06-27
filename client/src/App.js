@@ -10,13 +10,14 @@ import Alert from './component/layout/Alert';
 import { Provider } from 'react-redux';
 import store from './store';
 import setAuthToken from './utils/setAuthToken';
-import { loadUser } from './actions/authAction';
+import PrivateRoute from './component/routing/PrivateRoute';
+import { loadUser, setLoading } from './actions/authAction';
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
 function App() {
   useEffect(() => {
-    console.log(' iam ');
+    store.dispatch(setLoading());
     store.dispatch(loadUser());
   }, []);
   return (
@@ -27,9 +28,10 @@ function App() {
           <div className='page-wrapper'>
             <div className='container-fluid'>
               <Alert />
+              {/* <Spinner /> */}
               <Switch>
                 <Route exact path='/' component={Home} />
-                <Route exact path='/about' component={About} />
+                <PrivateRoute exact path='/about' component={About} />
                 <Route exact path='/register' component={Register} />
                 <Route exact path='/login' component={Login} />
               </Switch>

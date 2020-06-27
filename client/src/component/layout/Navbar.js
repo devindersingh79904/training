@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/authAction';
 import PropTypes from 'prop-types';
@@ -60,15 +60,20 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
           </a>
         </li>
         <li>
+          <Link to='/about' className='connection-item'>
+            <span className='block'>About</span>
+          </Link>
+        </li>
+        <li>
           <a href='#'>
             <i className='fa fa-fw fa-gear'></i> Settings
           </a>
         </li>
         <li className='divider'></li>
         <li>
-          <a href='#' onClick={(e) => onClick(e)}>
+          <Link to='/' onClick={(e) => onClick(e)}>
             <i className='fa fa-fw fa-power-off'></i> Log Out
-          </a>
+          </Link>
         </li>
       </ul>
     </li>
