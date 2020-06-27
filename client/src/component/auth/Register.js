@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { setAlert } from '../../actions/alertAction';
-import { Link, Redirect } from 'react-router-dom';
-import { registerUser, setLoading } from '../../actions/authAction';
+import { registerUser } from '../../actions/authAction';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-const Register = ({ setAlert, registerUser, setLoading, isAuthenticated }) => {
+const Register = ({ setAlert, registerUser }) => {
+  //   setAlert('bhut ganda', 'danger');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -16,9 +16,6 @@ const Register = ({ setAlert, registerUser, setLoading, isAuthenticated }) => {
 
   const { name, email, password, password2, role } = formData;
 
-  if (isAuthenticated) {
-    return <Redirect to='/' />;
-  }
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -34,7 +31,6 @@ const Register = ({ setAlert, registerUser, setLoading, isAuthenticated }) => {
         role,
       };
       console.log('i am going to call');
-      setLoading();
       registerUser(user);
       setFormData({
         name: '',
@@ -47,25 +43,25 @@ const Register = ({ setAlert, registerUser, setLoading, isAuthenticated }) => {
   };
 
   return (
-    <div className='auth-form  ml-auto mr-auto no-float'>
-      <div className='panel panel-default card-view mb-0 mt-5'>
-        <div className='panel-wrapper collapse in'>
-          <div className='panel-body'>
-            <div className='row'>
-              <div className='col-sm-12 col-xs-12'>
-                <div className='form-wrap'>
+    <div class='auth-form  ml-auto mr-auto no-float'>
+      <div class='panel panel-default card-view mb-0 mt-5'>
+        <div class='panel-wrapper collapse in'>
+          <div class='panel-body'>
+            <div class='row'>
+              <div class='col-sm-12 col-xs-12'>
+                <div class='form-wrap'>
                   <form onSubmit={(e) => onSubmit(e)}>
-                    <div className='form-group'>
+                    <div class='form-group'>
                       <label
-                        className='control-label mb-10'
-                        htmlFor='exampleInputuname_2'
+                        class='control-label mb-10'
+                        for='exampleInputuname_2'
                       >
                         Name
                       </label>
-                      <div className='input-group'>
+                      <div class='input-group'>
                         <input
                           type='text'
-                          className='form-control'
+                          class='form-control'
                           required=''
                           id='exampleInputuname_2'
                           placeholder='Username'
@@ -73,22 +69,22 @@ const Register = ({ setAlert, registerUser, setLoading, isAuthenticated }) => {
                           value={name}
                           onChange={(e) => onChange(e)}
                         />
-                        <div className='input-group-addon'>
-                          <i className='icon-user'></i>
+                        <div class='input-group-addon'>
+                          <i class='icon-user'></i>
                         </div>
                       </div>
                     </div>
-                    <div className='form-group'>
+                    <div class='form-group'>
                       <label
-                        className='control-label mb-10'
-                        htmlFor='exampleInputEmail_2'
+                        class='control-label mb-10'
+                        for='exampleInputEmail_2'
                       >
                         Email address
                       </label>
-                      <div className='input-group'>
+                      <div class='input-group'>
                         <input
                           type='email'
-                          className='form-control'
+                          class='form-control'
                           required=''
                           id='exampleInputEmail_2'
                           placeholder='Enter email'
@@ -96,22 +92,22 @@ const Register = ({ setAlert, registerUser, setLoading, isAuthenticated }) => {
                           value={email}
                           onChange={(e) => onChange(e)}
                         />
-                        <div className='input-group-addon'>
-                          <i className='icon-envelope-open'></i>
+                        <div class='input-group-addon'>
+                          <i class='icon-envelope-open'></i>
                         </div>
                       </div>
                     </div>
-                    <div className='form-group'>
+                    <div class='form-group'>
                       <label
-                        className='control-label mb-10'
-                        htmlFor='exampleInputpwd_2'
+                        class='control-label mb-10'
+                        for='exampleInputpwd_2'
                       >
                         Password
                       </label>
-                      <div className='input-group'>
+                      <div class='input-group'>
                         <input
                           type='password'
-                          className='form-control'
+                          class='form-control'
                           required=''
                           id='exampleInputpwd_2'
                           placeholder='Enter pwd'
@@ -119,22 +115,22 @@ const Register = ({ setAlert, registerUser, setLoading, isAuthenticated }) => {
                           value={password}
                           onChange={(e) => onChange(e)}
                         />
-                        <div className='input-group-addon'>
-                          <i className='icon-lock'></i>
+                        <div class='input-group-addon'>
+                          <i class='icon-lock'></i>
                         </div>
                       </div>
                     </div>
-                    <div className='form-group'>
+                    <div class='form-group'>
                       <label
-                        className='control-label mb-10'
-                        htmlFor='exampleInputpwd_3'
+                        class='control-label mb-10'
+                        for='exampleInputpwd_3'
                       >
                         Confirm Password
                       </label>
-                      <div className='input-group'>
+                      <div class='input-group'>
                         <input
                           type='password'
-                          className='form-control'
+                          class='form-control'
                           required=''
                           id='exampleInputpwd_3'
                           placeholder='Enter pwd'
@@ -142,24 +138,23 @@ const Register = ({ setAlert, registerUser, setLoading, isAuthenticated }) => {
                           value={password2}
                           onChange={(e) => onChange(e)}
                         />
-                        <div className='input-group-addon'>
-                          <i className='icon-lock'></i>
+                        <div class='input-group-addon'>
+                          <i class='icon-lock'></i>
                         </div>
                       </div>
                     </div>
-                    <div className='form-group'>
-                      <button
-                        type='submit'
-                        className='btn btn-success btn-block'
-                      >
+                    <div class='form-group'>
+                      <button type='submit' class='btn btn-success btn-block'>
                         sign up
                       </button>
                     </div>
-                    <div className='form-group mb-0'>
-                      <span className='inline-block pr-5'>
+                    <div class='form-group mb-0'>
+                      <span class='inline-block pr-5'>
                         Already have an account?
                       </span>
-                      <Link to='/login'>Sign In</Link>
+                      <a class='inline-block txt-danger' href='login-page.html'>
+                        Sign In
+                      </a>
                     </div>
                   </form>
                 </div>
@@ -175,13 +170,5 @@ const Register = ({ setAlert, registerUser, setLoading, isAuthenticated }) => {
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
   registerUser: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool.isRequired,
 };
-
-const mapStateToProps = (state) => ({
-  isAuthenticated: state.authReducer.isAuthenticated,
-});
-
-export default connect(mapStateToProps, { setAlert, registerUser, setLoading })(
-  Register
-);
+export default connect(null, { setAlert, registerUser })(Register);
