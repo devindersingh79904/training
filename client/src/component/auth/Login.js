@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alertAction';
 import { loginUser, setLoading } from '../../actions/authAction';
 import PropTypes from 'prop-types';
 
-const Login = ({ setAlert, setLoading, loginUser }) => {
+const Login = ({ setAlert, setLoading, loginUser, isAuthenticated }) => {
   // setAlert('login Page open', 'danger');
 
   const [formData, setFormData] = useState({
@@ -14,6 +15,10 @@ const Login = ({ setAlert, setLoading, loginUser }) => {
 
   const { email, password } = formData;
 
+  // console.log(user);
+  if (isAuthenticated) {
+    return <Redirect to='/' />;
+  }
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -104,12 +109,7 @@ const Login = ({ setAlert, setLoading, loginUser }) => {
                       <span class='inline-block pr-5'>
                         Don't have an account?
                       </span>
-                      <a
-                        class='inline-block txt-danger'
-                        href='signup-page.html'
-                      >
-                        Sign Up
-                      </a>
+                      <Link to='/login'>Sign UP</Link>
                     </div>
                   </form>
                 </div>
@@ -126,6 +126,13 @@ Login.propTypes = {
   setAlert: PropTypes.func.isRequired,
   setLoading: PropTypes.func.isRequired,
   loginUser: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
-export default connect(null, { setAlert, loginUser, setLoading })(Login);
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.authReducer.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { setAlert, loginUser, setLoading })(
+  Login
+);

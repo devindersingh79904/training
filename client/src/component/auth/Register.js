@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { setAlert } from '../../actions/alertAction';
+import { Link, Redirect } from 'react-router-dom';
 import { registerUser, setLoading } from '../../actions/authAction';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-const Register = ({ setAlert, registerUser, setLoading }) => {
+const Register = ({ setAlert, registerUser, setLoading, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,6 +16,9 @@ const Register = ({ setAlert, registerUser, setLoading }) => {
 
   const { name, email, password, password2, role } = formData;
 
+  if (isAuthenticated) {
+    return <Redirect to='/' />;
+  }
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -155,12 +159,7 @@ const Register = ({ setAlert, registerUser, setLoading }) => {
                       <span className='inline-block pr-5'>
                         Already have an account?
                       </span>
-                      <a
-                        className='inline-block txt-danger'
-                        href='login-page.html'
-                      >
-                        Sign In
-                      </a>
+                      <Link to='/login'>Sign In</Link>
                     </div>
                   </form>
                 </div>
@@ -176,5 +175,13 @@ const Register = ({ setAlert, registerUser, setLoading }) => {
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
   registerUser: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
-export default connect(null, { setAlert, registerUser, setLoading })(Register);
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.authReducer.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { setAlert, registerUser, setLoading })(
+  Register
+);
