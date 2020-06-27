@@ -23,7 +23,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
           <ul className='app-icon-wrap'>
             <li>
               <Link to='/register' className='connection-item'>
-                <i className='pe-7s-umbrella txt-info'></i>
+                <i className='pe-7s-users txt-info'></i>
                 <span className='block'>Register</span>
               </Link>
             </li>
@@ -34,7 +34,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
             </li>
             <li>
               <Link to='/login' className='connection-item'>
-                <i className='pe-7s-mail-open-file txt-success'></i>
+                <i className='pe-7s-unlock txt-success'></i>
                 <span className='block'>Login</span>
               </Link>
             </li>

@@ -12,6 +12,9 @@ import store from './store';
 import setAuthToken from './utils/setAuthToken';
 import PrivateRoute from './component/routing/PrivateRoute';
 import { loadUser, setLoading } from './actions/authAction';
+import AddAttendence from './component/layout/AddAttendence';
+import AddVolunteer from './component/layout/AddVolunteer';
+import AddDrive from './component/layout/AddDrive';
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
@@ -23,7 +26,7 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <div className='App'>
+        <div className='wrapper'>
           <Navbar />
           <div className='page-wrapper'>
             <div className='container-fluid'>
@@ -34,6 +37,9 @@ function App() {
                 <PrivateRoute exact path='/about' component={About} />
                 <Route exact path='/register' component={Register} />
                 <Route exact path='/login' component={Login} />
+                <Route exact path='/add-volunteer' component={AddVolunteer} />
+                <Route exact path='/add-drive' component={AddDrive} />
+                <Route exact path='/add-attendence' component={AddAttendence} />
               </Switch>
             </div>
           </div>
