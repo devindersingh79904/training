@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alertAction';
+import { loginUser, setLoading } from '../../actions/authAction';
 import PropTypes from 'prop-types';
 
-const Login = ({ setAlert }) => {
+const Login = ({ setAlert, setLoading, loginUser }) => {
   // setAlert('login Page open', 'danger');
 
   const [formData, setFormData] = useState({
@@ -18,6 +19,8 @@ const Login = ({ setAlert }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    setLoading();
+    loginUser({ email, password });
     setFormData({
       email: '',
       password: '',
@@ -31,7 +34,7 @@ const Login = ({ setAlert }) => {
             <div class='row'>
               <div class='col-sm-12 col-xs-12'>
                 <div class='form-wrap'>
-                  <form action='#'>
+                  <form onSubmit={(e) => onSubmit(e)}>
                     <div class='form-group'>
                       <label
                         class='control-label mb-10'
@@ -121,6 +124,8 @@ const Login = ({ setAlert }) => {
 
 Login.propTypes = {
   setAlert: PropTypes.func.isRequired,
+  setLoading: PropTypes.func.isRequired,
+  loginUser: PropTypes.func.isRequired,
 };
 
-export default connect(null, { setAlert })(Login);
+export default connect(null, { setAlert, loginUser, setLoading })(Login);

@@ -41,7 +41,7 @@ export const loadUser = () => async (dispatch) => {
 
 export const registerUser = (body) => async (dispatch) => {
   const config = {
-    header: {
+    headers: {
       'Content-Type': 'application/json',
     },
   };
@@ -76,6 +76,33 @@ export const registerUser = (body) => async (dispatch) => {
 
     dispatch({
       type: REGISTER_FAIL,
+    });
+  }
+};
+
+export const loginUser = (body) => async (dispatch) => {
+  console.log(body);
+  const config = {
+    header: {
+      'Content-Type': 'application/json',
+    },
+  };
+  var res;
+  try {
+    res = await axios.post('http://localhost:5000/api/adminAuth', body, config);
+    console.log(res.data);
+    dispatch({
+      type: LOGIN_SUCCESS,
+      payload: res.data,
+    });
+    dispatch(loadUser());
+  } catch (err) {
+    var errors = err.response.data;
+    // console.log(errors);
+    dispatch(setAlert(errors.msg, 'danger'));
+
+    dispatch({
+      type: LOGIN_FAIL,
     });
   }
 };
