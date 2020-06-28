@@ -1,19 +1,20 @@
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
-import { addDrive } from '../../actions/driveAction';
+import { addVolunteer } from '../../actions/volunteerAction';
 import { setAlert } from '../../actions/alertAction';
 import PropTypes from 'prop-types';
 
-const AddDrive = ({ setAlert, addDrive }) => {
+const AddVolunteer = ({ setAlert, addVolunteer }) => {
   const [formData, setFormData] = useState({
+    rollno: 0,
     name: '',
+    clas: '',
+    batch: '',
+    phnno: 0,
     email: '',
-    type: '',
-    description: '',
-    date: '',
   });
 
-  const { name, email, type, description, date } = formData;
+  const { rollno, name, clas, batch, phnno, email } = formData;
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,38 +22,45 @@ const AddDrive = ({ setAlert, addDrive }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (name === '') {
+    if (rollno === 0) {
+      setAlert('rollno cannot be empty', 'danger');
+    } else if (name === '') {
       setAlert('name cannot be empty', 'danger');
+    } else if (clas === '') {
+      setAlert('Class cannot be empty', 'danger');
+    } else if (batch === '') {
+      setAlert('batch cannot be empty', 'danger');
     } else if (email === '') {
       setAlert('email cannot be empty', 'danger');
-    } else if (type === '') {
-      setAlert('type cannot be empty', 'danger');
-    } else if (description === '') {
-      setAlert('description cannot be empty', 'danger');
+    } else if (phnno === 0) {
+      setAlert('phnno cannot be empty', 'danger');
     } else {
       var data = {
+        rollno,
         name,
+        clas,
+        batch,
         email,
-        type,
-        description,
-        date,
+        phnno,
       };
-      console.log(date);
-      addDrive(data);
+      //   console.log(date);
+      addVolunteer(data);
       setFormData({
+        rollno: 0,
         name: '',
+        clas: '',
+        batch: '',
+        phnno: 0,
         email: '',
-        type: '',
-        description: '',
-        date: new Date(),
       });
     }
   };
+
   return (
     <Fragment>
       <div class='row heading-bg bg-blue'>
         <div class='col-lg-3 col-md-4 col-sm-4 col-xs-12'>
-          <h5 class='txt-light'>Add Drive Form</h5>
+          <h5 class='txt-light'>Add Volunteer Form</h5>
         </div>
 
         <div class='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
@@ -66,7 +74,7 @@ const AddDrive = ({ setAlert, addDrive }) => {
               </a>
             </li>
             <li class='active'>
-              <span>Drive</span>
+              <span>Volunteer</span>
             </li>
           </ol>
         </div>
@@ -77,7 +85,7 @@ const AddDrive = ({ setAlert, addDrive }) => {
           <div class='panel panel-default card-view'>
             <div class='panel-heading'>
               <div class='pull-left'>
-                <h6 class='panel-title txt-dark'>Add Drive Form</h6>
+                <h6 class='panel-title txt-dark'>Add Volunteer Form</h6>
               </div>
               <div class='clearfix'></div>
             </div>
@@ -87,12 +95,25 @@ const AddDrive = ({ setAlert, addDrive }) => {
                   <form onSubmit={(e) => onSubmit(e)}>
                     <div class='form-group'>
                       <label class='control-label mb-10 text-left'>
-                        Company Name
+                        Roll Number
+                      </label>
+                      <input
+                        type='number'
+                        class='form-control rounded-input'
+                        placeholder='Roll Number'
+                        name='rollno'
+                        value={rollno}
+                        onChange={(e) => onChange(e)}
+                      />
+                    </div>
+                    <div class='form-group'>
+                      <label class='control-label mb-10 text-left'>
+                        Full Name
                       </label>
                       <input
                         type='text'
                         class='form-control rounded-input'
-                        placeholder='Company Name'
+                        placeholder='Full name'
                         name='name'
                         value={name}
                         onChange={(e) => onChange(e)}
@@ -113,47 +134,44 @@ const AddDrive = ({ setAlert, addDrive }) => {
                       />
                     </div>
                     <div class='form-group'>
-                      <label
-                        class='control-label mb-10 text-left'
-                        for='drive-type'
-                      >
-                        Drive Type
+                      <label class='control-label mb-10 text-left' for='class'>
+                        Class
                       </label>
                       <input
                         type='text'
-                        id='drive-type'
+                        id='class'
                         class='form-control rounded-input'
-                        placeholder='Drive type'
-                        name='type'
-                        value={type}
+                        placeholder='Class'
+                        name='clas'
+                        value={clas}
                         onChange={(e) => onChange(e)}
                       />
                     </div>
                     <div class='form-group'>
-                      <label
-                        class='control-label mb-10 text-left'
-                        for='description'
-                      >
-                        Description
+                      <label class='control-label mb-10 text-left' for='batch'>
+                        Batch
                       </label>
-                      <textarea
-                        id='description'
-                        name='description'
-                        className='form-control rounded-input'
-                        name='description'
-                        value={description}
+                      <input
+                        type='text'
+                        id='batch'
+                        class='form-control rounded-input'
+                        placeholder='Batch'
+                        name='batch'
+                        value={batch}
                         onChange={(e) => onChange(e)}
-                      ></textarea>
+                      />
                     </div>
                     <div class='form-group'>
-                      <label class='control-label mb-10 text-left'>Date</label>
+                      <label class='control-label mb-10 text-left'>
+                        Phone Number
+                      </label>
                       <input
                         type='text'
                         placeholder=''
-                        data-mask='99-99-9999'
+                        // data-mask='99999-99999'
                         class='form-control rounded-input'
-                        name='date'
-                        value={date}
+                        name='phnno'
+                        value={phnno}
                         onChange={(e) => onChange(e)}
                       />
                     </div>
@@ -172,8 +190,8 @@ const AddDrive = ({ setAlert, addDrive }) => {
   );
 };
 
-AddDrive.propTypes = {
-  addDrive: PropTypes.func.isRequired,
+AddVolunteer.propTypes = {
+  addVolunteer: PropTypes.func.isRequired,
   setAlert: PropTypes.func.isRequired,
 };
 
@@ -181,4 +199,4 @@ AddDrive.propTypes = {
 //     addDrive: state.authReducer.isAuthenticated,
 // });
 
-export default connect(null, { addDrive, setAlert })(AddDrive);
+export default connect(null, { addVolunteer, setAlert })(AddVolunteer);
