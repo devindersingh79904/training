@@ -1,18 +1,17 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import { getVolunteers } from '../../actions/volunteerAction';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import Ddd from './ddd';
-const AddAttendence = ({ volunteers, getVolunteers }) => {
-  useEffect(() => {
-    console.log('i am getting all volunteers');
-    getVolunteers();
-  }, []);
+import React, { Fragment, useEffect } from 'react';
+
+const ddd = (props) => {
+  //   useEffect(() => {
+  //     const script = document.createElement('script');
+  //     script.src = '/static/libs/your_script.js';
+  //     script.async = true;
+  //     script.onload = () => this.scriptLoaded();
+
+  //     document.body.appendChild(script);
+  //   }, []);
+  console.log(props);
 
   return (
-    // <Fragment>
-    //   {volunteers.length > 0 && <Ddd volunteers={volunteers} />}
-    // </Fragment>
     <Fragment>
       <div className='row'>
         <div className='col-sm-12'>
@@ -59,43 +58,6 @@ const AddAttendence = ({ volunteers, getVolunteers }) => {
                       </tr>
                     </thead>
                     <tbody>
-                      {volunteers.map((vol) => {
-                        console.log(vol);
-
-                        return (
-                          <tr key={vol._id}>
-                            {/* <td style={{ display: 'table-cell' }}>
-                              {vol[0].rollno}
-                            </td>
-                            <td style={{ display: 'table-cell' }}>
-                              {vol[0].name}
-                            </td>
-                            <td style={{ display: 'table-cell' }}>
-                              {vol[0].clas}
-                            </td>
-                            <td style={{ display: 'table-cell' }}>
-                              {vol[0].batch}
-                            </td>
-                            <td style={{ display: 'table-cell' }}>
-                              {vol[0].rollno}
-                            </td>
-                            <td style={{ display: 'table-cell' }}>
-                              {vol[0].rollno}
-                            </td>
-                            <td style={{ display: 'table-cell' }}>
-                              {vol[0].rollno}
-                            </td> */}
-
-                            <td>{vol.rollno}</td>
-                            <td>{vol.name}</td>
-                            <td>{vol.clas}</td>
-                            <td>{vol.batch}</td>
-                            <td>{vol.dutiesAssigned}</td>
-                            <td>{vol.dutiesAccepted}</td>
-                            <td>{vol.workDone}</td>
-                          </tr>
-                        );
-                      })}
                       <tr>
                         <td>1001</td>
                         <td>Sarvpreet singh</td>
@@ -113,31 +75,6 @@ const AddAttendence = ({ volunteers, getVolunteers }) => {
                         <td>1</td>
                         <td>1</td>
                         <td>1</td>
-                        <td
-                          class='footable-editing'
-                          style={{ display: 'none' }}
-                        >
-                          <div class='btn-group btn-group-xs' role='group'>
-                            <button
-                              type='button'
-                              class='btn btn-default footable-edit'
-                            >
-                              <span
-                                class='fooicon fooicon-pencil'
-                                aria-hidden='true'
-                              ></span>
-                            </button>{' '}
-                            <button
-                              type='button'
-                              class='btn btn-default footable-delete'
-                            >
-                              <span
-                                class='fooicon fooicon-trash'
-                                aria-hidden='true'
-                              ></span>
-                            </button>
-                          </div>
-                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -344,13 +281,4 @@ const AddAttendence = ({ volunteers, getVolunteers }) => {
   );
 };
 
-AddAttendence.propTypes = {
-  getVolunteers: PropTypes.func.isRequired,
-  volunteers: PropTypes.array.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  volunteers: state.volunteerReducer.volunteers,
-});
-
-export default connect(mapStateToProps, { getVolunteers })(AddAttendence);
+export default ddd;
