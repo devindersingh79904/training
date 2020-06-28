@@ -17,6 +17,8 @@ import { getVolunteers } from './actions/volunteerAction';
 import AddAttendence from './component/volunteer/AddAttendence';
 import AddVolunteer from './component/volunteer/AddVolunteer';
 import AddDrive from './component/drive/AddDrive';
+import ViewVolunteers from './component/volunteer/ViewVolunteers';
+import ViewDrives from './component/drive/ViewDrives';
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
@@ -42,6 +44,8 @@ function App() {
                 <Route exact path='/add-volunteer' component={AddVolunteer} />
                 <Route exact path='/add-drive' component={AddDrive} />
                 <Route exact path='/add-attendence' component={AddAttendence} />
+                <Route exact path='/view-volunteers' component={ViewVolunteers} />
+                <Route exact path='/view-drives' component={ViewDrives} />
               </Switch>
             </div>
           </div>

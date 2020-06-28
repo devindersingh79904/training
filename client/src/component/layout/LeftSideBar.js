@@ -56,12 +56,12 @@ const LeftSideBar = () => {
           </a>
           <ul id='dashboard_dr_1' className='collapse collapse-level-1'>
             <li>
-              <a href='index.html'>
+              <a href='./view-volunteers'>
                 <span className='icon-pencil mr-10'></span>View / Edit Volunteer
               </a>
             </li>
             <li>
-              <a href='index2.html'>
+              <a href='./view-drives'>
                 <span className='icon-pencil mr-10'></span>View / Edit Drive
               </a>
             </li>
