@@ -2,7 +2,25 @@ import axios from 'axios';
 import { setAlert } from './alertAction';
 import { GET_VOLUNTEERS, ADD_VOLUNTEER, VOLUNTEERS_ERROR } from './types';
 
-export const getVolunteers = () => (dispatch) => {};
+export const getVolunteers = () => async (dispatch) => {
+  // if (localStorage.getItem('token')) {
+  //   setAuthToken(localStorage.token);
+  // }
+
+  try {
+    const res = await axios.get('http://localhost:5000/api/Volunteer');
+
+    // console.log(res.data);
+    dispatch({
+      type: GET_VOLUNTEERS,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: VOLUNTEERS_ERROR,
+    });
+  }
+};
 
 export const addVolunteer = (body) => async (dispatch) => {
   const config = {

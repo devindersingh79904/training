@@ -2,7 +2,25 @@ import axios from 'axios';
 import { setAlert } from './alertAction';
 import { GET_DRIVES, ADD_DRIVE, DRIVE_ERROR } from './types';
 
-export const getDrives = () => (dispatch) => {};
+export const getDrives = () => async (dispatch) => {
+  // if (localStorage.getItem('token')) {
+  //   setAuthToken(localStorage.token);
+  // }
+
+  try {
+    const res = await axios.get('http://localhost:5000/api/Drive');
+
+    // console.log(res.data);
+    dispatch({
+      type: GET_DRIVES,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: DRIVE_ERROR,
+    });
+  }
+};
 
 export const addDrive = (body) => async (dispatch) => {
   const config = {

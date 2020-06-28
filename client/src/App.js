@@ -12,6 +12,8 @@ import store from './store';
 import setAuthToken from './utils/setAuthToken';
 import PrivateRoute from './component/routing/PrivateRoute';
 import { loadUser, setLoading } from './actions/authAction';
+import { getDrives } from './actions/driveAction';
+import { getVolunteers } from './actions/volunteerAction';
 import AddAttendence from './component/volunteer/AddAttendence';
 import AddVolunteer from './component/volunteer/AddVolunteer';
 import AddDrive from './component/drive/AddDrive';
@@ -22,6 +24,7 @@ function App() {
   useEffect(() => {
     store.dispatch(setLoading());
     store.dispatch(loadUser());
+    store.dispatch(getDrives());
   }, []);
   return (
     <Provider store={store}>
