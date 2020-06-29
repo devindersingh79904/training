@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const DriveSchema = mongoose.Schema({
   name: {
@@ -21,4 +21,4 @@ const DriveSchema = mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('drive', DriveSchema);
+module.exports = mongoose.model("drive", DriveSchema);

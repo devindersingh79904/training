@@ -5,7 +5,7 @@ const adminAuth = require("./routes/adminAuth");
 const adminRegister = require("./routes/adminRegister");
 const Volunteer = require("./routes/Volunteer");
 const Drive = require("./routes/Drive");
-
+const company = require("./routes/company");
 const app = express();
 
 db();
@@ -13,6 +13,7 @@ app.use(express.json({ extened: false }));
 
 app.use("/api/adminAuth", adminAuth);
 app.use("/api/adminRegister", adminRegister);
+app.use("/api/company", company);
 app.use("/api/Volunteer", Volunteer);
 app.use("/api/Drive", Drive);
 
