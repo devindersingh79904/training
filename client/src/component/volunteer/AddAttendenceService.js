@@ -1,18 +1,18 @@
 import React, { Fragment, useEffect } from 'react';
-const EditVolunteers = () => {
+import PropTypes from 'prop-types';
+
+const AddAttendenceService = ({ volunteers }) => {
   useEffect(() => {
-    setTimeout(() => {
-      const script1 = document.createElement('script');
-      script1.async = true;
-      script1.src = 'dist/js/footable-data.js';
-      document.body.appendChild(script1);
-    }, 1000);
+    const script1 = document.createElement('script');
+    script1.async = true;
+    script1.src = 'dist/js/footable-data.js';
+    document.body.appendChild(script1);
   }, []);
   return (
     <Fragment>
       <div class='row heading-bg bg-green'>
         <div class='col-lg-3 col-md-4 col-sm-4 col-xs-12'>
-          <h5 class='txt-light'>Edit Volunteer</h5>
+          <h5 class='txt-light'>Add Volunteer Duty</h5>
         </div>
         <div class='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
           <ol class='breadcrumb'>
@@ -25,7 +25,7 @@ const EditVolunteers = () => {
               </a>
             </li>
             <li class='active'>
-              <span>Edit</span>
+              <span>Add Duty</span>
             </li>
           </ol>
         </div>
@@ -35,7 +35,7 @@ const EditVolunteers = () => {
           <div className='panel panel-default card-view'>
             <div className='panel-heading'>
               <div className='pull-left'>
-                <h6 className='panel-title txt-dark'>Edit Volunteer</h6>
+                <h6 className='panel-title txt-dark'>Attendece</h6>
               </div>
               <div className='clearfix'></div>
             </div>
@@ -51,44 +51,109 @@ const EditVolunteers = () => {
                   >
                     <thead>
                       <tr>
-                        <th data-name='rollNo' data-type='number'>
+                        <th
+                          data-name='rollNo'
+                          data-breakpoints='xs'
+                          data-type='number'
+                        >
                           rollNo
                         </th>
                         <th data-name='fullName'>Full Name</th>
-                        <th data-name='course' data-breakpoints='sm'>
-                          Course
-                        </th>
-                        <th data-name='batch' data-breakpoints='sm'>
+                        <th data-name='course'>Course</th>
+                        <th data-name='batch' data-breakpoints='xs'>
                           Batch
                         </th>
-                        <th data-name='email' data-breakpoints='sm'>
-                          Email
-                        </th>
-                        <th data-name='phnno' data-breakpoints='sm'>
-                          Phone Num
-                        </th>
-                        <th data-name='assigned' data-breakpoints='sm'>
+                        <th data-name='assigned' data-breakpoints='xs'>
                           Assigned
                         </th>
-                        <th data-name='accepted' data-breakpoints='sm'>
+                        <th data-name='accepted' data-breakpoints='xs'>
                           Accepted
                         </th>
-                        <th data-name='present' data-breakpoints='sm'>
+                        <th data-name='present' data-breakpoints='xs'>
                           Present
                         </th>
                       </tr>
                     </thead>
                     <tbody>
+                      {volunteers.map((vol) => {
+                        console.log(vol);
+
+                        return (
+                          <tr key={vol._id}>
+                            {/* <td style={{ display: 'table-cell' }}>
+                            {vol[0].rollno}
+                          </td>
+                          <td style={{ display: 'table-cell' }}>
+                            {vol[0].name}
+                          </td>
+                          <td style={{ display: 'table-cell' }}>
+                            {vol[0].clas}
+                          </td>
+                          <td style={{ display: 'table-cell' }}>
+                            {vol[0].batch}
+                          </td>
+                          <td style={{ display: 'table-cell' }}>
+                            {vol[0].rollno}
+                          </td>
+                          <td style={{ display: 'table-cell' }}>
+                            {vol[0].rollno}
+                          </td>
+                          <td style={{ display: 'table-cell' }}>
+                            {vol[0].rollno}
+                          </td> */}
+
+                            <td>{vol.rollno}</td>
+                            <td>{vol.name}</td>
+                            <td>{vol.clas}</td>
+                            <td>{vol.batch}</td>
+                            <td>{vol.dutiesAssigned}</td>
+                            <td>{vol.dutiesAccepted}</td>
+                            <td>{vol.workDone}</td>
+                          </tr>
+                        );
+                      })}
                       <tr>
                         <td>1001</td>
                         <td>Sarvpreet singh</td>
                         <td>MCA</td>
                         <td>Morning</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                      </tr>
+                      <tr>
+                        <td>1001</td>
+                        <td>naman singh</td>
                         <td>MCA</td>
                         <td>Morning</td>
                         <td>1</td>
                         <td>1</td>
                         <td>1</td>
+                        <td
+                          class='footable-editing'
+                          style={{ display: 'none' }}
+                        >
+                          <div class='btn-group btn-group-xs' role='group'>
+                            <button
+                              type='button'
+                              class='btn btn-default footable-edit'
+                            >
+                              <span
+                                class='fooicon fooicon-pencil'
+                                aria-hidden='true'
+                              ></span>
+                            </button>{' '}
+                            <button
+                              type='button'
+                              class='btn btn-default footable-delete'
+                            >
+                              <span
+                                class='fooicon fooicon-trash'
+                                aria-hidden='true'
+                              ></span>
+                            </button>
+                          </div>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -138,6 +203,7 @@ const EditVolunteers = () => {
                                 name='fullName'
                                 placeholder='Full Name'
                                 required
+                                readOnly
                               />
                             </div>
                           </div>
@@ -156,6 +222,7 @@ const EditVolunteers = () => {
                                 name='course'
                                 placeholder='Course'
                                 required
+                                readOnly
                               />
                             </div>
                           </div>
@@ -173,40 +240,7 @@ const EditVolunteers = () => {
                                 id='batch'
                                 name='batch'
                                 placeholder='Batch'
-                              />
-                            </div>
-                          </div>
-                          <div className='form-group'>
-                            <label
-                              for='phnno'
-                              className='col-sm-3 control-label'
-                            >
-                              Phone Number
-                            </label>
-                            <div className='col-sm-9'>
-                              <input
-                                type='text'
-                                className='form-control'
-                                id='phnno'
-                                name='phnno'
-                                placeholder='Phone Number'
-                              />
-                            </div>
-                          </div>
-                          <div className='form-group'>
-                            <label
-                              for='email'
-                              className='col-sm-3 control-label'
-                            >
-                              Email
-                            </label>
-                            <div className='col-sm-9'>
-                              <input
-                                type='text'
-                                className='form-control'
-                                id='email'
-                                name='email'
-                                placeholder='Email'
+                                readOnly
                               />
                             </div>
                           </div>
@@ -218,6 +252,12 @@ const EditVolunteers = () => {
                               Assigned
                             </label>
                             <div className='col-sm-9'>
+                              <button
+                                type='button'
+                                className='btnyo btn btn-danger btn-xs'
+                              >
+                                -
+                              </button>
                               <input
                                 type='text'
                                 className='text-center text-danger form-control-xs'
@@ -226,6 +266,12 @@ const EditVolunteers = () => {
                                 placeholder='Assigned'
                                 readOnly
                               />
+                              <button
+                                type='button'
+                                className='btnyo btn btn-success btn-xs'
+                              >
+                                +
+                              </button>
                             </div>
                           </div>
                           <div className='form-group text-center'>
@@ -236,6 +282,12 @@ const EditVolunteers = () => {
                               Accepted
                             </label>
                             <div className='col-sm-9'>
+                              <button
+                                type='button'
+                                className='btnyo btn btn-danger btn-xs'
+                              >
+                                -
+                              </button>
                               <input
                                 type='text'
                                 className='text-center text-danger form-control-xs'
@@ -244,6 +296,12 @@ const EditVolunteers = () => {
                                 placeholder='Accepted'
                                 readOnly
                               />
+                              <button
+                                type='button'
+                                className='btnyo btn btn-success btn-xs'
+                              >
+                                +
+                              </button>
                             </div>
                           </div>
                           <div className='form-group text-center'>
@@ -254,6 +312,12 @@ const EditVolunteers = () => {
                               Present
                             </label>
                             <div className='col-sm-9'>
+                              <button
+                                type='button'
+                                className='btnyo btn btn-danger btn-xs'
+                              >
+                                -
+                              </button>
                               <input
                                 type='text'
                                 className='text-center text-danger form-control-xs'
@@ -262,6 +326,12 @@ const EditVolunteers = () => {
                                 placeholder='Present'
                                 readOnly
                               />
+                              <button
+                                type='button'
+                                className='btnyo btn btn-success btn-xs'
+                              >
+                                +
+                              </button>
                             </div>
                           </div>
                         </div>
@@ -289,4 +359,9 @@ const EditVolunteers = () => {
     </Fragment>
   );
 };
-export default EditVolunteers;
+
+AddAttendenceService.propTypes = {
+  volunteers: PropTypes.array.isRequired,
+};
+
+export default AddAttendenceService;
