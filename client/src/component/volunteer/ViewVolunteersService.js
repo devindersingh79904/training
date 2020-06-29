@@ -106,7 +106,8 @@ const ViewVolunteersService = ({ volunteers }) => {
                           <th>Phone Number</th>
                           <th>Duty Assigned</th>
                           <th>Duty Accepted</th>
-                          <th>Work Done</th>
+                          <th>Workshop Assinged</th>
+                          <th>Workshop Done</th>
                         </tr>
                       </thead>
                       <tfoot>
@@ -119,7 +120,8 @@ const ViewVolunteersService = ({ volunteers }) => {
                           <th>Phone Number</th>
                           <th>Duty Assigned</th>
                           <th>Duty Accepted</th>
-                          <th>Work Done</th>
+                          <th>Workshop Assinged</th>
+                          <th>Workshop Done</th>
                         </tr>
                       </tfoot>
                       <tbody>
@@ -137,7 +139,8 @@ const ViewVolunteersService = ({ volunteers }) => {
                                 <td>{volunteer.phnno}</td>
                                 <td>{volunteer.dutiesAssigned}</td>
                                 <td>{volunteer.dutiesAccepted}</td>
-                                <td>{volunteer.workDone}</td>
+                                <td>{volunteer.workshopAssigned}</td>
+                                <td>{volunteer.workshopDone}</td>
                               </tr>
                             );
                           })}

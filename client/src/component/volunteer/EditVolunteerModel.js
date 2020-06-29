@@ -14,7 +14,8 @@ const EditVolunteerModel = ({ id, vol, updateVolunteer }) => {
     name: '',
     phnno: 0,
     rollno: 0,
-    workDone: 0,
+    workshopAssigned: 0,
+    workshopDone: 0,
     _id: '',
   });
   //   const { rollno, name, clas, batch, phnno, email } = formData;
@@ -43,7 +44,8 @@ const EditVolunteerModel = ({ id, vol, updateVolunteer }) => {
     clas,
     dutiesAccepted,
     dutiesAssigned,
-    workDone,
+    workshopAssigned,
+    workshopDone,
   } = formData;
 
   console.log(formData);
@@ -189,18 +191,34 @@ const EditVolunteerModel = ({ id, vol, updateVolunteer }) => {
               </div>
             </div>
             <div className='form-group text-center'>
-              <label for='present' className='col-sm-3 control-label'>
-                Present
+              <label for='accepted' className='col-sm-3 control-label'>
+                Workshop assinnged
               </label>
               <div className='col-sm-9'>
                 <input
                   type='text'
                   className='text-center text-danger form-control-xs'
-                  id='present'
-                  name='workDone'
-                  value={workDone}
+                  id='accepted'
+                  name='workshopAssigned'
+                  value={workshopAssigned}
                   onChange={(e) => onChange(e)}
-                  placeholder='Present'
+                  placeholder='Accepted'
+                />
+              </div>
+            </div>
+            <div className='form-group text-center'>
+              <label for='accepted' className='col-sm-3 control-label'>
+                Workshop done
+              </label>
+              <div className='col-sm-9'>
+                <input
+                  type='text'
+                  className='text-center text-danger form-control-xs'
+                  id='accepted'
+                  name='workshopDone'
+                  value={workshopDone}
+                  onChange={(e) => onChange(e)}
+                  placeholder='Accepted'
                 />
               </div>
             </div>

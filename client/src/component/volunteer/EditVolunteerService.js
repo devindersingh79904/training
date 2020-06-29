@@ -91,7 +91,10 @@ const EditVolunteerService = ({ volunteers, setCurrentVol }) => {
                           Accepted
                         </th>
                         <th data-name='present' data-breakpoints='sm'>
-                          Present
+                          WorkshopAssined
+                        </th>
+                        <th data-name='present' data-breakpoints='sm'>
+                          WorkshopDone
                         </th>
                       </tr>
                     </thead>
@@ -113,7 +116,8 @@ const EditVolunteerService = ({ volunteers, setCurrentVol }) => {
                               <td>{volunteer.phnno}</td>
                               <td>{volunteer.dutiesAssigned}</td>
                               <td>{volunteer.dutiesAccepted}</td>
-                              <td>{volunteer.workDone}</td>
+                              <td>{volunteer.workshopAssigned}</td>
+                              <td>{volunteer.workshopDone}</td>
                             </tr>
                           );
                         })}
