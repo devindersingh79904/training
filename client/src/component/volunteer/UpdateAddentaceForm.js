@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const UpdateAddentaceForm = ({ id }) => {
-  // console.log(id);
+  console.log(id);
   const onAssinedIncClick = (e) => {
     e.preventDefault();
 

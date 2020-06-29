@@ -50,6 +50,40 @@ export const IncAssined = (id) => async (dispatch) => {
     });
   }
 };
+
+export const updateVolunteer = (body) => async (dispatch) => {
+  console.log(
+    'address : ' + `http://localhost:5000/api/Volunteer/update/${body._id}`
+  );
+
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  try {
+    console.log(
+      'address : ' + `http://localhost:5000/api/Volunteer/update/${body._id}`
+    );
+    const res = await axios.put(
+      `http://localhost:5000/api/Volunteer/update/${body._id}`,
+      body,
+      config
+    );
+    console.log(res);
+    dispatch({
+      type: ADD_VOLUNTEER,
+      payload: res.data,
+    });
+  } catch (err) {
+    var errors = err.response.data;
+    dispatch(setAlert(errors.msg, 'danger'));
+    dispatch({
+      type: VOLUNTEERS_ERROR,
+    });
+  }
+};
+
 export const addVolunteer = (body) => async (dispatch) => {
   const config = {
     headers: {
