@@ -1,6 +1,14 @@
-import React, { Fragment} from 'react';
+import React, { Fragment,useEffect} from 'react';
 const EditVolunteers = () => {
- 
+  useEffect(() => {
+    setTimeout(() => {
+      const script1 = document.createElement('script');
+      script1.async = true;
+      script1.src =
+        'dist/js/footable-data.js';
+      document.body.appendChild(script1);
+    }, 100);
+  }, []);
   return (
     <Fragment>
 					<div class="row heading-bg bg-green">

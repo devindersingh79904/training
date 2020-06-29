@@ -1,7 +1,14 @@
-import React, { Fragment} from 'react';
+import React, { Fragment,useEffect} from 'react';
 const EditDrives = () => {
- 
-  return (
+  useEffect(() => {
+    setTimeout(() => {
+      const script1 = document.createElement('script');
+      script1.async = true;
+      script1.src =
+        'dist/js/edit-drive.js';
+      document.body.appendChild(script1);
+    }, 100);
+  }, []);  return (
     <Fragment>
 					<div class="row heading-bg bg-green">
 					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
