@@ -1,13 +1,25 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import UpdateAddentaceForm from './UpdateAddentaceForm';
 
-const AddAttendenceService = ({ volunteers }) => {
+const AddAttendenceService = ({ volunteers, setCurrentVol }) => {
+  const [volid, setVolid] = useState({
+    id: '',
+  });
   useEffect(() => {
     const script1 = document.createElement('script');
     script1.async = true;
     script1.src = 'dist/js/footable-data.js';
     document.body.appendChild(script1);
   }, []);
+
+  const { id } = volid;
+  const onClick = (e, vol) => {
+    console.log('i am onclick');
+    console.log(vol);
+    setVolid({ id: vol._id });
+    setCurrentVol(vol);
+  };
   return (
     <Fragment>
       <div class='row heading-bg bg-green'>
@@ -76,32 +88,8 @@ const AddAttendenceService = ({ volunteers }) => {
                     </thead>
                     <tbody>
                       {volunteers.map((vol) => {
-                        console.log(vol);
-
                         return (
-                          <tr key={vol._id}>
-                            {/* <td style={{ display: 'table-cell' }}>
-                            {vol[0].rollno}
-                          </td>
-                          <td style={{ display: 'table-cell' }}>
-                            {vol[0].name}
-                          </td>
-                          <td style={{ display: 'table-cell' }}>
-                            {vol[0].clas}
-                          </td>
-                          <td style={{ display: 'table-cell' }}>
-                            {vol[0].batch}
-                          </td>
-                          <td style={{ display: 'table-cell' }}>
-                            {vol[0].rollno}
-                          </td>
-                          <td style={{ display: 'table-cell' }}>
-                            {vol[0].rollno}
-                          </td>
-                          <td style={{ display: 'table-cell' }}>
-                            {vol[0].rollno}
-                          </td> */}
-
+                          <tr key={vol._id} onClick={(e) => onClick(e, vol)}>
                             <td>{vol.rollno}</td>
                             <td>{vol.name}</td>
                             <td>{vol.clas}</td>
@@ -112,15 +100,6 @@ const AddAttendenceService = ({ volunteers }) => {
                           </tr>
                         );
                       })}
-                      <tr>
-                        <td>1001</td>
-                        <td>Sarvpreet singh</td>
-                        <td>MCA</td>
-                        <td>Morning</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                      </tr>
                       <tr>
                         <td>1001</td>
                         <td>naman singh</td>
@@ -157,199 +136,7 @@ const AddAttendenceService = ({ volunteers }) => {
                       </tr>
                     </tbody>
                   </table>
-
-                  <div
-                    className='modal fade'
-                    id='editor-modal'
-                    tabindex='-1'
-                    role='dialog'
-                    aria-labelledby='editor-title'
-                  >
-                    <div className='modal-dialog' role='document'>
-                      <form
-                        className='modal-content form-horizontal'
-                        id='editor'
-                      >
-                        <div className='modal-header'>
-                          <button
-                            type='button'
-                            className='close'
-                            data-dismiss='modal'
-                            aria-label='Close'
-                          >
-                            <span aria-hidden='true'>×</span>
-                          </button>
-                          <h5 className='modal-title' id='editor-title'></h5>
-                        </div>
-                        <div className='modal-body'>
-                          <input
-                            type='number'
-                            id='rollNo'
-                            name='rollNo'
-                            className='hidden'
-                          />
-                          <div className='form-group required'>
-                            <label
-                              for='fullName'
-                              className='col-sm-3 control-label'
-                            >
-                              Full Name
-                            </label>
-                            <div className='col-sm-9'>
-                              <input
-                                type='text'
-                                className='form-control'
-                                id='fullName'
-                                name='fullName'
-                                placeholder='Full Name'
-                                required
-                                readOnly
-                              />
-                            </div>
-                          </div>
-                          <div className='form-group required'>
-                            <label
-                              for='course'
-                              className='col-sm-3 control-label'
-                            >
-                              Course
-                            </label>
-                            <div className='col-sm-9'>
-                              <input
-                                type='text'
-                                className='form-control'
-                                id='course'
-                                name='course'
-                                placeholder='Course'
-                                required
-                                readOnly
-                              />
-                            </div>
-                          </div>
-                          <div className='form-group'>
-                            <label
-                              for='batch'
-                              className='col-sm-3 control-label'
-                            >
-                              Batch
-                            </label>
-                            <div className='col-sm-9'>
-                              <input
-                                type='text'
-                                className='form-control'
-                                id='batch'
-                                name='batch'
-                                placeholder='Batch'
-                                readOnly
-                              />
-                            </div>
-                          </div>
-                          <div className='form-group text-center'>
-                            <label
-                              for='assigned'
-                              className='col-sm-3 control-label'
-                            >
-                              Assigned
-                            </label>
-                            <div className='col-sm-9'>
-                              <button
-                                type='button'
-                                className='btnyo btn btn-danger btn-xs'
-                              >
-                                -
-                              </button>
-                              <input
-                                type='text'
-                                className='text-center text-danger form-control-xs'
-                                id='assigned'
-                                name='assigned'
-                                placeholder='Assigned'
-                                readOnly
-                              />
-                              <button
-                                type='button'
-                                className='btnyo btn btn-success btn-xs'
-                              >
-                                +
-                              </button>
-                            </div>
-                          </div>
-                          <div className='form-group text-center'>
-                            <label
-                              for='accepted'
-                              className='col-sm-3 control-label'
-                            >
-                              Accepted
-                            </label>
-                            <div className='col-sm-9'>
-                              <button
-                                type='button'
-                                className='btnyo btn btn-danger btn-xs'
-                              >
-                                -
-                              </button>
-                              <input
-                                type='text'
-                                className='text-center text-danger form-control-xs'
-                                id='accepted'
-                                name='accepted'
-                                placeholder='Accepted'
-                                readOnly
-                              />
-                              <button
-                                type='button'
-                                className='btnyo btn btn-success btn-xs'
-                              >
-                                +
-                              </button>
-                            </div>
-                          </div>
-                          <div className='form-group text-center'>
-                            <label
-                              for='present'
-                              className='col-sm-3 control-label'
-                            >
-                              Present
-                            </label>
-                            <div className='col-sm-9'>
-                              <button
-                                type='button'
-                                className='btnyo btn btn-danger btn-xs'
-                              >
-                                -
-                              </button>
-                              <input
-                                type='text'
-                                className='text-center text-danger form-control-xs'
-                                id='present'
-                                name='present'
-                                placeholder='Present'
-                                readOnly
-                              />
-                              <button
-                                type='button'
-                                className='btnyo btn btn-success btn-xs'
-                              >
-                                +
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                        <div className='modal-footer'>
-                          <button type='submit' className='btn btn-primary'>
-                            Save changes
-                          </button>
-                          <button
-                            type='button'
-                            className='btn btn-default'
-                            data-dismiss='modal'
-                          >
-                            Cancel
-                          </button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
+                  <UpdateAddentaceForm id={id} />
                 </div>
               </div>
             </div>
@@ -362,6 +149,7 @@ const AddAttendenceService = ({ volunteers }) => {
 
 AddAttendenceService.propTypes = {
   volunteers: PropTypes.array.isRequired,
+  setCurrentVol: PropTypes.func.isRequired,
 };
 
 export default AddAttendenceService;

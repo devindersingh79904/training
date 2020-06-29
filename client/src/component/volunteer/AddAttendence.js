@@ -1,9 +1,9 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { getVolunteers } from '../../actions/volunteerAction';
+import { getVolunteers, setCurrentVol } from '../../actions/volunteerAction';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import AddAttendenceService from './AddAttendenceService';
-const AddAttendence = ({ volunteers, getVolunteers }) => {
+const AddAttendence = ({ volunteers, getVolunteers, setCurrentVol }) => {
   useEffect(() => {
     console.log('i am getting all volunteers');
     getVolunteers();
@@ -12,7 +12,10 @@ const AddAttendence = ({ volunteers, getVolunteers }) => {
   return (
     <Fragment>
       {volunteers !== null && volunteers.length > 0 && (
-        <AddAttendenceService volunteers={volunteers} />
+        <AddAttendenceService
+          volunteers={volunteers}
+          setCurrentVol={setCurrentVol}
+        />
       )}
     </Fragment>
   );
@@ -27,4 +30,6 @@ const mapStateToProps = (state) => ({
   volunteers: state.volunteerReducer.volunteers,
 });
 
-export default connect(mapStateToProps, { getVolunteers })(AddAttendence);
+export default connect(mapStateToProps, { getVolunteers, setCurrentVol })(
+  AddAttendence
+);
