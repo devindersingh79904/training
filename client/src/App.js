@@ -7,18 +7,18 @@ import About from './component/pages/About';
 import Register from './component/auth/Register';
 import Login from './component/auth/Login';
 import Alert from './component/layout/Alert';
-import { Provider } from 'react-redux';
+import { Provider, connect } from 'react-redux';
 import store from './store';
 import setAuthToken from './utils/setAuthToken';
 import PrivateRoute from './component/routing/PrivateRoute';
 import { loadUser, setLoading } from './actions/authAction';
-import { getDrives } from './actions/driveAction';
-import { getVolunteers } from './actions/volunteerAction';
 import AddAttendence from './component/volunteer/AddAttendence';
 import AddVolunteer from './component/volunteer/AddVolunteer';
 import AddDrive from './component/drive/AddDrive';
 import ViewVolunteers from './component/volunteer/ViewVolunteers';
 import ViewDrives from './component/drive/ViewDrives';
+import { getVolunteers } from './actions/volunteerAction';
+
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
@@ -26,7 +26,15 @@ function App() {
   useEffect(() => {
     store.dispatch(setLoading());
     store.dispatch(loadUser());
+    store.dispatch(getVolunteers());
+    // eslint-disable-next-line
   }, []);
+  var storeData;
+  store.subscribe(() => {
+    storeData = store.getState();
+  });
+
+  console.log(storeData);
   return (
     <Provider store={store}>
       <Router>
@@ -44,7 +52,24 @@ function App() {
                 <Route exact path='/add-volunteer' component={AddVolunteer} />
                 <Route exact path='/add-drive' component={AddDrive} />
                 <Route exact path='/add-attendence' component={AddAttendence} />
-                <Route exact path='/view-volunteers' component={ViewVolunteers} />
+                <Route
+                  exact
+                  path='/view-volunteers'
+                  component={() => (
+                    <ViewVolunteers title={`Props through component`} />
+                  )}
+                />
+                {/* <Route
+                  exact
+                  path='/view-volunteers'
+                  component={ViewVolunteers}
+                /> */}
+                {/* <Route
+                  path='/dashboard'
+                  render={(props) => (
+                    <ViewVolunteers {...props} isAuthed={true} />
+                  )}
+                /> */}
                 <Route exact path='/view-drives' component={ViewDrives} />
               </Switch>
             </div>

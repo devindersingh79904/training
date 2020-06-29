@@ -14,18 +14,26 @@ const AddAttendence = ({ volunteers, getVolunteers }) => {
     //   {volunteers.length > 0 && <Ddd volunteers={volunteers} />}
     // </Fragment>
     <Fragment>
-				<div class="row heading-bg bg-green">
-					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-					  <h5 class="txt-light">Add Volunteer Duty</h5>
-					</div>
-					<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-					  <ol class="breadcrumb">
-						<li><a href="index.html">Dashboard</a></li>
-						<li><a href="#"><span>Volunteer</span></a></li>
-						<li class="active"><span>Add Duty</span></li>
-					  </ol>
-					</div>
-				</div>
+      <div class='row heading-bg bg-green'>
+        <div class='col-lg-3 col-md-4 col-sm-4 col-xs-12'>
+          <h5 class='txt-light'>Add Volunteer Duty</h5>
+        </div>
+        <div class='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
+          <ol class='breadcrumb'>
+            <li>
+              <a href='index.html'>Dashboard</a>
+            </li>
+            <li>
+              <a href='#'>
+                <span>Volunteer</span>
+              </a>
+            </li>
+            <li class='active'>
+              <span>Add Duty</span>
+            </li>
+          </ol>
+        </div>
+      </div>
       <div className='row'>
         <div className='col-sm-12'>
           <div className='panel panel-default card-view'>
