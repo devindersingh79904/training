@@ -35,7 +35,8 @@ router.post('/', auth, async (req, res) => {
       phnno,
       dutiesAssigned: 0,
       dutiesAccepted: 0,
-      workDone: 0,
+      workshopAssigned: 0,
+      workshopDone: 0,
     });
 
     await newUser.save();
@@ -112,7 +113,7 @@ router.put('/daccept/:id', auth, async (req, res) => {
   }
 });
 
-router.put('/work/:id', auth, async (req, res) => {
+router.put('/workassigned/:id', auth, async (req, res) => {
   if (req.user.role != 'Sadmin') {
     return res.status(401).json({ msg: 'You are not Authorized user' });
   }
@@ -124,7 +125,7 @@ router.put('/work/:id', auth, async (req, res) => {
 
     volunteer = await Volunteer.findByIdAndUpdate(req.params.id, {
       $inc: {
-        workDone: 1,
+        workshopAssigned: 1,
       },
     });
     return res.json(volunteer);
@@ -134,6 +135,27 @@ router.put('/work/:id', auth, async (req, res) => {
   }
 });
 
+router.put('/workdone/:id', auth, async (req, res) => {
+  if (req.user.role != 'Sadmin') {
+    return res.status(401).json({ msg: 'You are not Authorized user' });
+  }
+  try {
+    var volunteer = await Volunteer.findById(req.params.id);
+    if (!volunteer) {
+      return res.json({ msg: 'volunteer not found.' });
+    }
+
+    volunteer = await Volunteer.findByIdAndUpdate(req.params.id, {
+      $inc: {
+        workshopAssigned: 1,
+      },
+    });
+    return res.json(volunteer);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ msg: 'Server error' });
+  }
+});
 router.put('/update/:id', auth, async (req, res) => {
   const r = req.body;
   console.log(r);

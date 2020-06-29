@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const VolunteerSchema = mongoose.Schema({
   rollno: {
@@ -34,15 +34,17 @@ const VolunteerSchema = mongoose.Schema({
 
   dutiesAccepted: {
     type: Number,
-
     defult: 0,
   },
 
-  workDone: {
+  workshopAssigned: {
     type: Number,
-
+    defult: 0,
+  },
+  workshopDone: {
+    type: Number,
     defult: 0,
   },
 });
 
-module.exports = mongoose.model("volunteers", VolunteerSchema);
+module.exports = mongoose.model('volunteers', VolunteerSchema);
