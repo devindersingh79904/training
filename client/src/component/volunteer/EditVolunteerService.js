@@ -78,23 +78,13 @@ const EditVolunteerService = ({ volunteers, setCurrentVol }) => {
                         <th data-name='batch' data-breakpoints='sm'>
                           Batch
                         </th>
-                        <th data-name='email' data-breakpoints='sm'>
-                          Email
-                        </th>
-                        <th data-name='phnno' data-breakpoints='sm'>
-                          Phone Num
-                        </th>
+
                         <th data-name='assigned' data-breakpoints='sm'>
                           Assigned
                         </th>
-                        <th data-name='accepted' data-breakpoints='sm'>
-                          Accepted
-                        </th>
+
                         <th data-name='present' data-breakpoints='sm'>
                           WorkshopAssined
-                        </th>
-                        <th data-name='present' data-breakpoints='sm'>
-                          WorkshopDone
                         </th>
                       </tr>
                     </thead>
@@ -112,12 +102,11 @@ const EditVolunteerService = ({ volunteers, setCurrentVol }) => {
                               <td>{volunteer.name}</td>
                               <td>{volunteer.clas}</td>
                               <td>{volunteer.batch}</td>
-                              <td>{volunteer.email}</td>
+
                               <td>{volunteer.phnno}</td>
                               <td>{volunteer.dutiesAssigned}</td>
-                              <td>{volunteer.dutiesAccepted}</td>
+
                               <td>{volunteer.workshopAssigned}</td>
-                              <td>{volunteer.workshopDone}</td>
                             </tr>
                           );
                         })}

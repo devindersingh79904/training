@@ -88,7 +88,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
         >
           <i className='fa fa-bars'></i>
         </a>
-        <a href='index.html'>
+        <a href='/'>
           <img
             className='brand-img pull-left'
             src='dist/img/logo.png'
