@@ -1,24 +1,24 @@
-const express = require("express");
-const Company = require("../models/Company");
-const auth = require("../middleware/auth");
+const express = require('express');
+const Company = require('../models/Company');
+const auth = require('../middleware/auth');
 const router = express.Router();
 
-router.get("/", auth, async (req, res) => {
+router.get('/', auth, async (req, res) => {
   try {
     result = await Company.find({});
     return res.json(result);
   } catch (error) {
-    console.error("error ", error.message);
-    res.status(501).json({ msg: "Server error" });
+    console.error('error ', error.message);
+    res.status(501).json({ msg: 'Server error' });
   }
 });
 
-router.post("/", auth, async (req, res) => {
+router.post('/', auth, async (req, res) => {
   const { name, email } = req.body;
   try {
     var companyName = await Company.findOne({ name });
     if (companyName) {
-      return res.status(401).json({ msg: "Company already exists" });
+      return res.status(401).json({ msg: 'Company already exists' });
     }
     var newCompany = new Company({
       name,
@@ -28,8 +28,8 @@ router.post("/", auth, async (req, res) => {
     await newCompany.save();
     return res.json(newCompany);
   } catch (error) {
-    console.error("error ", error.message);
-    res.status(501).json({ msg: "Server error" });
+    console.error('error ', error.message);
+    res.status(501).json({ msg: 'Server error' });
   }
 });
 module.exports = router;

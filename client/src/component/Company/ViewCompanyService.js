@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const ViewVolunteersService = ({ volunteers }) => {
+const ViewCompanyService = ({ companys }) => {
   useEffect(() => {
     setTimeout(() => {
       const script1 = document.createElement('script');
@@ -55,12 +55,11 @@ const ViewVolunteersService = ({ volunteers }) => {
       document.body.appendChild(script9);
     }, 1000);
   }, []);
-
   return (
     <Fragment>
       <div class='row heading-bg bg-green'>
         <div class='col-lg-3 col-md-4 col-sm-4 col-xs-12'>
-          <h5 class='txt-light'>View Volunteer Details</h5>
+          <h5 class='txt-light'>View Company Details</h5>
         </div>
         <div class='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
           <ol class='breadcrumb'>
@@ -69,7 +68,7 @@ const ViewVolunteersService = ({ volunteers }) => {
             </li>
             <li>
               <a href='#'>
-                <span>Volunteers</span>
+                <span>Company</span>
               </a>
             </li>
             <li class='active'>
@@ -84,7 +83,7 @@ const ViewVolunteersService = ({ volunteers }) => {
           <div class='panel panel-default card-view'>
             <div class='panel-heading'>
               <div class='pull-left'>
-                <h6 class='panel-title txt-dark'>Volunteer data</h6>
+                <h6 class='panel-title txt-dark'>Company data</h6>
               </div>
               <div class='clearfix'></div>
             </div>
@@ -98,46 +97,24 @@ const ViewVolunteersService = ({ volunteers }) => {
                     >
                       <thead>
                         <tr>
-                          <th>Roll Number</th>
-                          <th>Full Name</th>
-                          <th>Course</th>
-                          <th>Batch</th>
+                          <th>Company Name</th>
                           <th>Email</th>
-                          <th>Phone Number</th>
-                          <th>Duty Assigned</th>
-                          <th>Duty Accepted</th>
-                          <th>Work Done</th>
                         </tr>
                       </thead>
                       <tfoot>
                         <tr>
-                          <th>Roll Number</th>
-                          <th>Full Name</th>
-                          <th>Course</th>
-                          <th>Batch</th>
+                          <th>Company Name</th>
                           <th>Email</th>
-                          <th>Phone Number</th>
-                          <th>Duty Assigned</th>
-                          <th>Duty Accepted</th>
-                          <th>Work Done</th>
                         </tr>
                       </tfoot>
                       <tbody>
-                        {volunteers !== null &&
-                          volunteers.length > 0 &&
-                          volunteers.map((volunteer) => {
-                            console.log(volunteer);
+                        {companys.length > 0 &&
+                          companys.map((company) => {
+                            console.log(company);
                             return (
-                              <tr key={volunteers._id}>
-                                <td>{volunteer.rollno}</td>
-                                <td>{volunteer.name}</td>
-                                <td>{volunteer.clas}</td>
-                                <td>{volunteer.batch}</td>
-                                <td>{volunteer.email}</td>
-                                <td>{volunteer.phnno}</td>
-                                <td>{volunteer.dutiesAssigned}</td>
-                                <td>{volunteer.dutiesAccepted}</td>
-                                <td>{volunteer.workDone}</td>
+                              <tr key={company._id}>
+                                <td>{company.name}</td>
+                                <td>{company.email}</td>
                               </tr>
                             );
                           })}
@@ -154,8 +131,8 @@ const ViewVolunteersService = ({ volunteers }) => {
   );
 };
 
-ViewVolunteersService.propTypes = {
-  volunteers: PropTypes.array.isRequired,
+ViewCompanyService.propTypes = {
+  companys: PropTypes.array.isRequired,
 };
 
-export default ViewVolunteersService;
+export default ViewCompanyService;

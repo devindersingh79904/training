@@ -1,15 +1,17 @@
-import React, { Fragment, useEffect, useLayoutEffect } from 'react';
+import React, { Fragment, useLayoutEffect } from 'react';
 import { getVolunteers } from '../../actions/volunteerAction';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import ViewVolunteersService from './ViewVolunteersService';
+
 const ViewVolunteers = (props) => {
   useLayoutEffect(() => {
     getVolunteers();
     // eslint-disable-next-line
   }, []);
   const { volunteers, getVolunteers } = props;
-  console.log(props);
+
   return (
     <Fragment>
       {volunteers !== null && volunteers.length > 0 && (

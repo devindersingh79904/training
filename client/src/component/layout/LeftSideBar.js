@@ -34,7 +34,7 @@ const LeftSideBar = () => {
               </a>
             </li>
             <li>
-              <a href='index4.html'>
+              <a href='/add-company'>
                 <span className='icon-plus mr-10'></span>Add Company
               </a>
             </li>
@@ -66,13 +66,20 @@ const LeftSideBar = () => {
               </a>
             </li>
             <li>
+              <a href='./view-company'>
+                <span className='icon-pencil mr-10'></span>View Company
+              </a>
+            </li>
+            <li>
               <a href='./edit-volunteers'>
-                <span className='icon-pencil mr-10 text-danger'></span>Edit Volunteer
+                <span className='icon-pencil mr-10 text-danger'></span>Edit
+                Volunteer
               </a>
             </li>
             <li>
               <a href='./edit-drives'>
-                <span className='icon-pencil mr-10 text-danger'></span>Edit Drive
+                <span className='icon-pencil mr-10 text-danger'></span>Edit
+                Drive
               </a>
             </li>
           </ul>

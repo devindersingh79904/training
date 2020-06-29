@@ -15,8 +15,10 @@ import { loadUser, setLoading } from './actions/authAction';
 import AddAttendence from './component/volunteer/AddAttendence';
 import AddVolunteer from './component/volunteer/AddVolunteer';
 import AddDrive from './component/drive/AddDrive';
+import AddCompany from './component/Company/AddCompany';
 import ViewVolunteers from './component/volunteer/ViewVolunteers';
 import ViewDrives from './component/drive/ViewDrives';
+import ViewCompanys from './component/Company/ViewCompanys';
 import { getVolunteers } from './actions/volunteerAction';
 import EditVolunteers from './component/volunteer/EditVolunteer';
 import EditDrives from './component/drive/EditDrives';
@@ -28,7 +30,7 @@ function App() {
   useEffect(() => {
     store.dispatch(setLoading());
     store.dispatch(loadUser());
-    store.dispatch(getVolunteers());
+
     // eslint-disable-next-line
   }, []);
   var storeData;
@@ -53,6 +55,7 @@ function App() {
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/add-volunteer' component={AddVolunteer} />
                 <Route exact path='/add-drive' component={AddDrive} />
+                <Route exact path='/add-company' component={AddCompany} />
                 <Route exact path='/add-attendence' component={AddAttendence} />
                 <Route
                   exact
@@ -73,10 +76,13 @@ function App() {
                   )}
                 /> */}
                 <Route exact path='/view-drives' component={ViewDrives} />
+                <Route exact path='/view-company' component={ViewCompanys} />
                 <Route exact path='/edit-drives' component={EditDrives} />
-                <Route exact path='/edit-volunteers' component={EditVolunteers} />
-
-
+                <Route
+                  exact
+                  path='/edit-volunteers'
+                  component={EditVolunteers}
+                />
               </Switch>
             </div>
           </div>
