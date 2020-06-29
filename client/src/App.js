@@ -18,6 +18,8 @@ import AddDrive from './component/drive/AddDrive';
 import ViewVolunteers from './component/volunteer/ViewVolunteers';
 import ViewDrives from './component/drive/ViewDrives';
 import { getVolunteers } from './actions/volunteerAction';
+import EditVolunteers from './component/volunteer/EditVolunteer';
+import EditDrives from './component/drive/EditDrives';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -71,6 +73,10 @@ function App() {
                   )}
                 /> */}
                 <Route exact path='/view-drives' component={ViewDrives} />
+                <Route exact path='/edit-drives' component={EditDrives} />
+                <Route exact path='/edit-volunteers' component={EditVolunteers} />
+
+
               </Switch>
             </div>
           </div>

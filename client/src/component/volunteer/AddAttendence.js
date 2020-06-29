@@ -39,7 +39,7 @@ const AddAttendence = ({ volunteers, getVolunteers }) => {
           <div className='panel panel-default card-view'>
             <div className='panel-heading'>
               <div className='pull-left'>
-                <h6 className='panel-title txt-dark'>Editing Table</h6>
+                <h6 className='panel-title txt-dark'>Attendece</h6>
               </div>
               <div className='clearfix'></div>
             </div>

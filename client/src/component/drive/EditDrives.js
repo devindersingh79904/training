@@ -1,16 +1,16 @@
 import React, { Fragment} from 'react';
-const EditVolunteers = () => {
+const EditDrives = () => {
  
   return (
     <Fragment>
 					<div class="row heading-bg bg-green">
 					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-					  <h5 class="txt-light">Edit Volunteer</h5>
+					  <h5 class="txt-light">Edit Drive</h5>
 					</div>
 					<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 					  <ol class="breadcrumb">
 						<li><a href="index.html">Dashboard</a></li>
-						<li><a href="#"><span>Volunteer</span></a></li>
+						<li><a href="#"><span>Drive</span></a></li>
 						<li class="active"><span>Edit</span></li>
 					  </ol>
 					</div>
@@ -20,7 +20,7 @@ const EditVolunteers = () => {
           <div className='panel panel-default card-view'>
             <div className='panel-heading'>
               <div className='pull-left'>
-                <h6 className='panel-title txt-dark'>Edit Volunteer</h6>
+                <h6 className='panel-title txt-dark'>Edit Drive</h6>
               </div>
               <div className='clearfix'></div>
             </div>
@@ -28,7 +28,7 @@ const EditVolunteers = () => {
               <div className='panel-body'>
                 <div className='table-wrap'>
                   <table
-                    id='footable_2'
+                    id='footable_5'
                     className='table'
                     data-paging='true'
                     data-filtering='true'
@@ -37,54 +37,39 @@ const EditVolunteers = () => {
                     <thead>
                       <tr>
                         <th
-                          data-name='rollNo'
-                          data-type='number'
+                          data-name='cname'
+                          data-type='text'
                         >
-                          rollNo
+                          Company Name
                         </th>
-                        <th data-name='fullName'            
-                            
-                        >Full Name</th>
-                        <th data-name='course'                           data-breakpoints='sm'
->Course</th>
-                        <th data-name='batch'
-                            data-breakpoints='sm'
-                        >
-                          Batch
-                        </th>
+                       
                         <th data-name='email'
                         data-breakpoints='sm'>
                           Email
                         </th>
-                        <th data-name='phnno'
+                        <th data-name='driveDate'
                         data-breakpoints='sm'>
-                          Phone Num
+                          Drive Date
                         </th>
-                        <th data-name='assigned'
+                        <th data-name='driveType'
                         data-breakpoints='sm'>
-                          Assigned
+                          Type
                         </th>
-                        <th data-name='accepted'
+                        <th data-name='description'
                         data-breakpoints='sm'>
-                          Accepted
-                        </th>
-                        <th data-name='present'
-                        data-breakpoints='sm'>
-                          Present
+                          Description
                         </th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>1001</td>
+                        
                         <td>Sarvpreet singh</td>
                         <td>MCA</td>
-                        <td>Morning</td>
+                        <td>2018/06/19</td>
                         <td>MCA</td>
                         <td>Morning</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
+                        
                       </tr>
                     </tbody>
                   </table>
@@ -100,7 +85,7 @@ const EditVolunteers = () => {
                     <div className='modal-dialog' role='document'>
                       <form
                         className='modal-content form-horizontal'
-                        id='editor'
+                        id='editor5'
                       >
                         <div className='modal-header'>
                           <button
@@ -114,83 +99,25 @@ const EditVolunteers = () => {
                           <h5 className='modal-title' id='editor-title'></h5>
                         </div>
                         <div className='modal-body'>
-                          <input
-                            type='number'
-                            id='rollNo'
-                            name='rollNo'
-                            className='hidden'
-                          />
-                          <div className='form-group required'>
+                        <div className='form-group required'>
                             <label
-                              for='fullName'
+                              for='cname'
                               className='col-sm-3 control-label'
                             >
-                              Full Name
+                              Company Name
                             </label>
                             <div className='col-sm-9'>
                               <input
                                 type='text'
                                 className='form-control'
-                                id='fullName'
-                                name='fullName'
-                                placeholder='Full Name'
+                                id='cname'
+                                name='name'
+                                placeholder='Company Name'
                                 required
                               />
                             </div>
                           </div>
                           <div className='form-group required'>
-                            <label
-                              for='course'
-                              className='col-sm-3 control-label'
-                            >
-                              Course
-                            </label>
-                            <div className='col-sm-9'>
-                              <input
-                                type='text'
-                                className='form-control'
-                                id='course'
-                                name='course'
-                                placeholder='Course'
-                                required
-                              />
-                            </div>
-                          </div>
-                          <div className='form-group'>
-                            <label
-                              for='batch'
-                              className='col-sm-3 control-label'
-                            >
-                              Batch
-                            </label>
-                            <div className='col-sm-9'>
-                              <input
-                                type='text'
-                                className='form-control'
-                                id='batch'
-                                name='batch'
-                                placeholder='Batch'
-                              />
-                            </div>
-                          </div>
-                          <div className='form-group'>
-                            <label
-                              for='phnno'
-                              className='col-sm-3 control-label'
-                            >
-                              Phone Number
-                            </label>
-                            <div className='col-sm-9'>
-                              <input
-                                type='text'
-                                className='form-control'
-                                id='phnno'
-                                name='phnno'
-                                placeholder='Phone Number'
-                              />
-                            </div>
-                          </div>
-                          <div className='form-group'>
                             <label
                               for='email'
                               className='col-sm-3 control-label'
@@ -199,7 +126,7 @@ const EditVolunteers = () => {
                             </label>
                             <div className='col-sm-9'>
                               <input
-                                type='text'
+                                type='email'
                                 className='form-control'
                                 id='email'
                                 name='email'
@@ -207,62 +134,56 @@ const EditVolunteers = () => {
                               />
                             </div>
                           </div>
-                          <div className='form-group text-center'>
+                          <div className='form-group required'>
                             <label
-                              for='assigned'
+                              for='driveDate'
                               className='col-sm-3 control-label'
                             >
-                              Assigned
+                              Drive Date
                             </label>
                             <div className='col-sm-9'>
                               <input
                                 type='text'
-                                className='text-center text-danger form-control-xs'
-                                id='assigned'
-                                name='assigned'
-                                placeholder='Assigned'
-                                readOnly
+                                className='form-control'
+                                id='driveDate'
+                                name='Date'
+                                placeholder='Drive Date'
+                                required
                               />
                             </div>
                           </div>
-                          <div className='form-group text-center'>
+                          <div className='form-group'>
                             <label
-                              for='accepted'
+                              for='driveType'
                               className='col-sm-3 control-label'
                             >
-                              Accepted
+                              Type
                             </label>
                             <div className='col-sm-9'>
-                              
                               <input
                                 type='text'
-                                className='text-center text-danger form-control-xs'
-                                id='accepted'
-                                name='accepted'
-                                placeholder='Accepted'
-                                readOnly
+                                className='form-control'
+                                id='driveType'
+                                name='type'
+                                placeholder='Drive type'
                               />
-                              
                             </div>
                           </div>
-                          <div className='form-group text-center'>
+                          <div className='form-group'>
                             <label
-                              for='present'
+                              for='description'
                               className='col-sm-3 control-label'
                             >
-                              Present
+                              Description
                             </label>
                             <div className='col-sm-9'>
-                              
                               <input
                                 type='text'
-                                className='text-center text-danger form-control-xs'
-                                id='present'
-                                name='present'
-                                placeholder='Present'
-                                readOnly
+                                className='form-control'
+                                id='description'
+                                name='description'
+                                placeholder='Description'
                               />
-                              
                             </div>
                           </div>
                         </div>
@@ -290,4 +211,4 @@ const EditVolunteers = () => {
     </Fragment>
   );
 };
-export default EditVolunteers;
+export default EditDrives;

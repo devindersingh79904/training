@@ -57,22 +57,22 @@ const LeftSideBar = () => {
           <ul id='dashboard_dr_1' className='collapse collapse-level-1'>
             <li>
               <a href='./view-volunteers'>
-                <span className='icon-pencil mr-10'></span>View / Edit Volunteer
+                <span className='icon-pencil mr-10'></span>View Volunteer
               </a>
             </li>
             <li>
               <a href='./view-drives'>
-                <span className='icon-pencil mr-10'></span>View / Edit Drive
+                <span className='icon-pencil mr-10'></span>View Drive
               </a>
             </li>
             <li>
-              <a href='index3.html'>
-                <span className='icon-pencil mr-10'></span>View / Edit Entry
+              <a href='./edit-volunteers'>
+                <span className='icon-pencil mr-10 text-danger'></span>Edit Volunteer
               </a>
             </li>
             <li>
-              <a href='index4.html'>
-                <span className='icon-pencil mr-10'></span>View / Edit Company
+              <a href='./edit-drives'>
+                <span className='icon-pencil mr-10 text-danger'></span>Edit Drive
               </a>
             </li>
           </ul>
