@@ -5,10 +5,7 @@ const DriveSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  email: {
-    type: String,
-  },
-  Date: {
+  date: {
     type: Date,
     default: Date.now,
   },

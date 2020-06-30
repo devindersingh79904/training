@@ -18,19 +18,18 @@ router.post("/", async (req, res) => {
   // if (req.user.role != "Sadmin") {
   //   return res.status(401).json({ msg: "You are not Authorized user" });
   // }
-  const { name, email, date, type, description, volunteersOnDuty } = req.body;
+  const { name, date, type, description, volunteersOnDuty } = req.body;
 
-  console.log(name, email);
+  // console.log(name, email);
   try {
     //console.log("Duties : " + dutiesAssigned);
-    var companyName = await Drive.findOne({ email, type });
+    var companyName = await Drive.findOne({ date, type });
     if (companyName) {
       return res.status(401).json({ msg: "Company already exists" });
     }
 
     var newCompany = new Drive({
       name,
-      email,
       date,
       type,
       description,
@@ -40,11 +39,13 @@ router.post("/", async (req, res) => {
     const compdetail = {
       _id: newCompany._id,
       name: newCompany.name,
+      date: newCompany.date,
+      type: newCompany.type,
     };
     volunteersOnDuty.map(async (vol) => {
       console.log(vol._id);
       await Volunteer.findByIdAndUpdate(vol._id, {
-        $push: { companies: { _id: newCompany._id, name: newCompany.name } },
+        $push: { companies: compdetail },
       });
     });
 

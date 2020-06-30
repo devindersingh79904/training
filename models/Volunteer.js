@@ -54,6 +54,12 @@ const VolunteerSchema = mongoose.Schema({
       name: {
         type: String,
       },
+      date: {
+        type: Date,
+      },
+      type: {
+        type: String,
+      },
     },
   ],
 });
