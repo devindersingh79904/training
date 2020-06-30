@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const ViewVolunteersService = ({ drives, setCurrentDrive }) => {
+const ViewDrivesService = ({ drives, setCurrentDrive }) => {
   const [driveid, setdriveid] = useState({
     id: "",
   });
@@ -163,8 +163,8 @@ const ViewVolunteersService = ({ drives, setCurrentDrive }) => {
   );
 };
 
-ViewVolunteersService.propTypes = {
+ViewDrivesService.propTypes = {
   drives: PropTypes.array.isRequired,
 };
 
-export default ViewVolunteersService;
+export default ViewDrivesService;

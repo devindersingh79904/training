@@ -1,21 +1,21 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import UpdateAddentaceForm from './UpdateAddentaceForm';
+import React, { Fragment, useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import UpdateAddentaceForm from "./UpdateAddentaceForm";
 
 const AddAttendenceService = ({ volunteers, setCurrentVol }) => {
   const [volid, setVolid] = useState({
-    id: '',
+    id: "",
   });
   useEffect(() => {
-    const script1 = document.createElement('script');
+    const script1 = document.createElement("script");
     script1.async = true;
-    script1.src = 'dist/js/footable-data.js';
+    script1.src = "dist/js/footable-data.js";
     document.body.appendChild(script1);
   }, []);
 
   const { id } = volid;
   const onClick = (e, vol) => {
-    console.log('i am onclick');
+    console.log("i am onclick");
     console.log(vol);
     setVolid({ id: vol._id });
     setCurrentVol(vol);
@@ -59,15 +59,13 @@ const AddAttendenceService = ({ volunteers, setCurrentVol }) => {
                     className='table'
                     data-paging='true'
                     data-filtering='true'
-                    data-sorting='true'
-                  >
+                    data-sorting='true'>
                     <thead>
                       <tr>
                         <th
                           data-name='rollNo'
                           data-breakpoints='xs'
-                          data-type='number'
-                        >
+                          data-type='number'>
                           rollNo
                         </th>
                         <th data-name='fullName'>Full Name</th>
@@ -110,26 +108,21 @@ const AddAttendenceService = ({ volunteers, setCurrentVol }) => {
                         <td>1</td>
                         <td
                           class='footable-editing'
-                          style={{ display: 'none' }}
-                        >
+                          style={{ display: "none" }}>
                           <div class='btn-group btn-group-xs' role='group'>
                             <button
                               type='button'
-                              class='btn btn-default footable-edit'
-                            >
+                              class='btn btn-default footable-edit'>
                               <span
                                 class='fooicon fooicon-pencil'
-                                aria-hidden='true'
-                              ></span>
-                            </button>{' '}
+                                aria-hidden='true'></span>
+                            </button>{" "}
                             <button
                               type='button'
-                              class='btn btn-default footable-delete'
-                            >
+                              class='btn btn-default footable-delete'>
                               <span
                                 class='fooicon fooicon-trash'
-                                aria-hidden='true'
-                              ></span>
+                                aria-hidden='true'></span>
                             </button>
                           </div>
                         </td>

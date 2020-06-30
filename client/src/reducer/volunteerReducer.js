@@ -3,7 +3,7 @@ import {
   GET_VOLUNTEERS,
   VOLUNTEERS_ERROR,
   SET_CURRENT_VOLUNTEER,
-} from '../actions/types';
+} from "../actions/types";
 
 const initialstate = {
   volunteers: [],
@@ -25,12 +25,13 @@ export default (state = initialstate, action) => {
         volunteers: [payload, ...state.volunteers],
       };
     case SET_CURRENT_VOLUNTEER:
+      console.log("i am in ruducer");
       return {
         ...state,
         currentVol: payload,
       };
     case VOLUNTEERS_ERROR:
-      console.log('error while adding drive');
+      console.log("error while adding drive");
 
     default:
       return state;

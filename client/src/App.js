@@ -93,7 +93,7 @@ function App() {
                 />
                 <Route
                   exact
-                  path='/volunteer-profile'
+                  path='/volunteer-profile/:id'
                   component={VolunteerProfile}
                 />
                 <Route component={Error404} />
