@@ -19,6 +19,23 @@ const DriveSchema = mongoose.Schema({
   description: {
     type: String,
   },
+  volunteersOnDuty: [
+    {
+      _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "volunteers",
+      },
+      name: {
+        type: String,
+      },
+      clas: {
+        type: String,
+      },
+      rollno: {
+        type: Number,
+      },
+    },
+  ],
 });
 
 module.exports = mongoose.model("drive", DriveSchema);

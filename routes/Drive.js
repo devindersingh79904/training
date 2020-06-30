@@ -3,6 +3,7 @@ const Drive = require("../models/Drive");
 const config = require("config");
 const router = express.Router();
 const auth = require("../middleware/auth");
+const Volunteer = require("../models/Volunteer");
 
 router.get("/", async (req, res) => {
   try {
@@ -17,12 +18,12 @@ router.post("/", async (req, res) => {
   // if (req.user.role != "Sadmin") {
   //   return res.status(401).json({ msg: "You are not Authorized user" });
   // }
-  const { name, email, date, type, description } = req.body;
+  const { name, email, date, type, description, volunteersOnDuty } = req.body;
 
   console.log(name, email);
   try {
     //console.log("Duties : " + dutiesAssigned);
-    var companyName = await Drive.findOne({ email });
+    var companyName = await Drive.findOne({ email, type });
     if (companyName) {
       return res.status(401).json({ msg: "Company already exists" });
     }
@@ -33,11 +34,22 @@ router.post("/", async (req, res) => {
       date,
       type,
       description,
+      volunteersOnDuty,
+    });
+
+    const compdetail = {
+      _id: newCompany._id,
+      name: newCompany.name,
+    };
+    volunteersOnDuty.map(async (vol) => {
+      console.log(vol._id);
+      await Volunteer.findByIdAndUpdate(vol._id, {
+        $push: { companies: { _id: newCompany._id, name: newCompany.name } },
+      });
     });
 
     await newCompany.save();
     return res.json(newCompany);
-    // return res.json({ msg: "Successfully Added" });
   } catch (error) {
     console.error("error ", error.message);
     res.status(501).json({ msg: "Server error" });
@@ -58,7 +70,7 @@ router.delete("/:id", async (req, res) => {
       return res.status(401).json("No Company found.");
     }
     await Drive.findByIdAndRemove(req.params.id);
-    res.json({ msg: "deleted Succussfuly" });
+    res.json({ msg: "deleted Sucessfully" });
   } catch (error) {
     console.error(error.message);
     res.status(501).json({ msg: "Server error . " });
