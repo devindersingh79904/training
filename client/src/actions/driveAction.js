@@ -1,6 +1,6 @@
-import axios from 'axios';
-import { setAlert } from './alertAction';
-import { GET_DRIVES, ADD_DRIVE, DRIVE_ERROR } from './types';
+import axios from "axios";
+import { setAlert } from "./alertAction";
+import { GET_DRIVES, ADD_DRIVE, DRIVE_ERROR, SET_CURRENT_DRIVE } from "./types";
 
 export const getDrives = () => async (dispatch) => {
   // if (localStorage.getItem('token')) {
@@ -8,7 +8,7 @@ export const getDrives = () => async (dispatch) => {
   // }
 
   try {
-    const res = await axios.get('http://localhost:5000/api/Drive');
+    const res = await axios.get("http://localhost:5000/api/Drive");
 
     // console.log(res.data);
     dispatch({
@@ -25,12 +25,12 @@ export const getDrives = () => async (dispatch) => {
 export const addDrive = (body) => async (dispatch) => {
   const config = {
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
   };
   try {
     const res = await axios.post(
-      'http://localhost:5000/api/Drive',
+      "http://localhost:5000/api/Drive",
       body,
       config
     );
@@ -41,9 +41,17 @@ export const addDrive = (body) => async (dispatch) => {
     });
   } catch (err) {
     var errors = err.response.data;
-    dispatch(setAlert(errors.msg, 'danger'));
+    dispatch(setAlert(errors.msg, "danger"));
     dispatch({
       type: DRIVE_ERROR,
     });
   }
+};
+
+export const setCurrentDrive = (body) => (dispatch) => {
+  console.log(body);
+  dispatch({
+    type: SET_CURRENT_DRIVE,
+    payload: body,
+  });
 };

@@ -1,7 +1,13 @@
-import { ADD_DRIVE, GET_DRIVES, DRIVE_ERROR } from '../actions/types';
+import {
+  ADD_DRIVE,
+  GET_DRIVES,
+  DRIVE_ERROR,
+  SET_CURRENT_DRIVE,
+} from "../actions/types";
 
 const initialstate = {
   drives: [],
+  currentDrive: null,
 };
 
 export default (state = initialstate, action) => {
@@ -10,15 +16,20 @@ export default (state = initialstate, action) => {
     case GET_DRIVES:
       return {
         ...state,
-        drives: [payload],
+        drives: payload,
       };
     case ADD_DRIVE:
       return {
         ...state,
         drives: [payload, ...state.drives],
       };
+    case SET_CURRENT_DRIVE:
+      return {
+        ...state,
+        currentDrive: payload,
+      };
     case DRIVE_ERROR:
-      console.log('error while adding drive');
+      console.log("error while adding drive");
 
     default:
       return state;
