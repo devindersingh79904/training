@@ -11,11 +11,13 @@ const ViewVolunteers = (props) => {
     // eslint-disable-next-line
   }, []);
   const { volunteers, getVolunteers } = props;
-
+  console.log('fgfgfd');
   return (
     <Fragment>
-      {volunteers !== null && volunteers.length > 0 && (
+      {volunteers !== null && volunteers.length > 0 ? (
         <ViewVolunteersService volunteers={volunteers} />
+      ) : (
+        <div>no volunteers</div>
       )}
     </Fragment>
   );
