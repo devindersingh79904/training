@@ -91,7 +91,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
         <a href='/'>
           <img
             className='brand-img pull-left'
-            src='dist/img/logo.png'
+            src={process.env.PUBLIC_URL + '/dist/img/logo.png'}
             alt='brand'
           />
         </a>
