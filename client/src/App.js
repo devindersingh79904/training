@@ -19,9 +19,11 @@ import AddCompany from './component/Company/AddCompany';
 import ViewVolunteers from './component/volunteer/ViewVolunteers';
 import ViewDrives from './component/drive/ViewDrives';
 import ViewCompanys from './component/Company/ViewCompanys';
-import { getVolunteers } from './actions/volunteerAction';
+import DriveProfile from './component/drive/DriveProfile';
+import VolunteerProfile from './component/volunteer/VolunteerProfile';
 import EditVolunteers from './component/volunteer/EditVolunteer';
 import EditDrives from './component/drive/EditDrives';
+import Error404 from './component/pages/Eror404';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -57,6 +59,7 @@ function App() {
                 <Route exact path='/add-drive' component={AddDrive} />
                 <Route exact path='/add-company' component={AddCompany} />
                 <Route exact path='/add-attendence' component={AddAttendence} />
+
                 <Route
                   exact
                   path='/view-volunteers'
@@ -76,13 +79,16 @@ function App() {
                   )}
                 /> */}
                 <Route exact path='/view-drives' component={ViewDrives} />
-                <Route exact path='/view-company' component={ViewCompanys} />
+                <Route exact path='/view-companys' component={ViewCompanys} />
                 <Route exact path='/edit-drives' component={EditDrives} />
                 <Route
                   exact
                   path='/edit-volunteers'
                   component={EditVolunteers}
                 />
+                <Route exact path='/drive-profile' component={DriveProfile} />
+                <Route exact path='/volunteer-profile' component={VolunteerProfile} />
+                <Route component={Error404} />
               </Switch>
             </div>
           </div>

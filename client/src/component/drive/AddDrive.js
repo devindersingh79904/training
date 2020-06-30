@@ -12,6 +12,7 @@ const AddDrive = ({ setAlert, addDrive, getVolunteers, volunteers }) => {
   }, []);
   const [formData, setFormData] = useState({
     name: '',
+    email:'',
     type: '',
     description: '',
     date: '',
@@ -65,7 +66,7 @@ const AddDrive = ({ setAlert, addDrive, getVolunteers, volunteers }) => {
     if (name === '') {
       setAlert('name cannot be empty', 'danger');
     } else if (date === '') {
-      setAlert('email cannot be empty', 'danger');
+      setAlert('date cannot be empty', 'danger');
     } else if (type === '') {
       setAlert('type cannot be empty', 'danger');
     } else if (description === '') {
@@ -73,6 +74,7 @@ const AddDrive = ({ setAlert, addDrive, getVolunteers, volunteers }) => {
     } else {
       var data = {
         name,
+        email,
         type,
         description,
         date,
@@ -81,6 +83,7 @@ const AddDrive = ({ setAlert, addDrive, getVolunteers, volunteers }) => {
       addDrive(data);
       setFormData({
         name: '',
+        email:'',
         type: '',
         description: '',
         date: '',
@@ -133,6 +136,18 @@ const AddDrive = ({ setAlert, addDrive, getVolunteers, volunteers }) => {
                         placeholder='Name'
                         name='name'
                         value={name}
+                        onChange={(e) => onChange(e)}
+                      />
+                    </div>
+
+                    <div class='form-group'>
+                      <label class='control-label mb-10 text-left'>Email</label>
+                      <input
+                        type='text'
+                        class='form-control rounded-input'
+                        placeholder='email'
+                        name='email'
+                        value={email}
                         onChange={(e) => onChange(e)}
                       />
                     </div>

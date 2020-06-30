@@ -18,7 +18,7 @@ router.post("/", async (req, res) => {
   // if (req.user.role != "Sadmin") {
   //   return res.status(401).json({ msg: "You are not Authorized user" });
   // }
-  const { name, date, type, description, volunteersOnDuty } = req.body;
+  const { name,email, date, type, description, volunteersOnDuty } = req.body;
 
   // console.log(name, email);
   try {
@@ -27,9 +27,9 @@ router.post("/", async (req, res) => {
     if (companyName) {
       return res.status(401).json({ msg: "Company already exists" });
     }
-
     var newCompany = new Drive({
       name,
+      email,
       date,
       type,
       description,

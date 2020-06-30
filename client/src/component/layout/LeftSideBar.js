@@ -66,7 +66,7 @@ const LeftSideBar = () => {
               </a>
             </li>
             <li>
-              <a href='./view-company'>
+              <a href='./view-companys'>
                 <span className='icon-pencil mr-10'></span>View Company
               </a>
             </li>
