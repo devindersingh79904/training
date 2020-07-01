@@ -27,12 +27,12 @@ const EditVolunteerService = ({ volunteers, setCurrentVol }) => {
 
   return (
     <Fragment>
-      <div class='row heading-bg bg-green'>
-        <div class='col-lg-3 col-md-4 col-sm-4 col-xs-12'>
-          <h5 class='txt-light'>Edit Volunteer</h5>
+      <div className='row heading-bg bg-green'>
+        <div className='col-lg-3 col-md-4 col-sm-4 col-xs-12'>
+          <h5 className='txt-light'>Edit Volunteer</h5>
         </div>
-        <div class='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
-          <ol class='breadcrumb'>
+        <div className='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
+          <ol className='breadcrumb'>
             <li>
               <a href='index.html'>Dashboard</a>
             </li>
@@ -41,7 +41,7 @@ const EditVolunteerService = ({ volunteers, setCurrentVol }) => {
                 <span>Volunteer</span>
               </a>
             </li>
-            <li class='active'>
+            <li className='active'>
               <span>Edit</span>
             </li>
           </ol>
@@ -95,7 +95,7 @@ const EditVolunteerService = ({ volunteers, setCurrentVol }) => {
                           //   console.log(volunteer);
                           return (
                             <tr
-                              key={volunteers._id}
+                              key={volunteer._id}
                               onClick={(e) => onClick(e, volunteer)}
                             >
                               <td>{volunteer.rollno}</td>

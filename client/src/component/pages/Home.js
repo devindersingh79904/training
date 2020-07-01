@@ -3,12 +3,12 @@ import React, { Fragment } from 'react';
 const Home = () => {
   return (
     <Fragment>
-      <div class='row heading-bg  bg-blue'>
-        <div class='col-lg-3 col-md-4 col-sm-4 col-xs-12'>
-          <h5 class='txt-light'>Home</h5>
+      <div className='row heading-bg  bg-blue'>
+        <div className='col-lg-3 col-md-4 col-sm-4 col-xs-12'>
+          <h5 className='txt-light'>Home</h5>
         </div>
-        <div class='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
-          <ol class='breadcrumb'>
+        <div className='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
+          <ol className='breadcrumb'>
             <li>
               <a href='/'>Home</a>
             </li>
@@ -16,34 +16,34 @@ const Home = () => {
         </div>
       </div>
 
-      <div class='row'>
+      <div className='row'>
         <h6 className='text-center font-18 mb-20'>Welcome to TPC, DCSA, PU</h6>
       </div>
 
-      <div class='row'>
-        <div class='col-lg-4 col-md-4 col-sm-5 col-xs-12'>
-          <div class='panel panel-default card-view'>
-            <div class='panel-heading'>
-              <div class='pull-left'>
-                <h6 class='panel-title txt-dark'>
+      <div className='row'>
+        <div className='col-lg-4 col-md-4 col-sm-5 col-xs-12'>
+          <div className='panel panel-default card-view'>
+            <div className='panel-heading'>
+              <div className='pull-left'>
+                <h6 className='panel-title txt-dark'>
                   No of Volunteers Registered on module
                 </h6>
               </div>
-              <div class='clearfix'></div>
+              <div className='clearfix'></div>
             </div>
-            <div class='panel-wrapper collapse in'>
-              <div class='panel-body'>
-                <div class='sm-graph-box'>
-                  <div class='row'>
-                    <div class='col-xs-6'>
+            <div className='panel-wrapper collapse in'>
+              <div className='panel-body'>
+                <div className='sm-graph-box'>
+                  <div className='row'>
+                    <div className='col-xs-6'>
                       <div id='sparkline_1'></div>
                     </div>
-                    <div class='col-xs-6'>
-                      <div class='counter-wrap text-right'>
-                        <span class='counter-cap'>
-                          <i class='fa txt-success'></i>
+                    <div className='col-xs-6'>
+                      <div className='counter-wrap text-right'>
+                        <span className='counter-cap'>
+                          <i className='fa txt-success'></i>
                         </span>
-                        <span class='counter'>23</span>
+                        <span className='counter'>23</span>
                       </div>
                     </div>
                   </div>
@@ -52,29 +52,29 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div class='col-lg-4 col-md-4 col-sm-5 col-xs-12'>
-          <div class='panel panel-default card-view'>
-            <div class='panel-heading'>
-              <div class='pull-left'>
-                <h6 class='panel-title txt-dark'>
+        <div className='col-lg-4 col-md-4 col-sm-5 col-xs-12'>
+          <div className='panel panel-default card-view'>
+            <div className='panel-heading'>
+              <div className='pull-left'>
+                <h6 className='panel-title txt-dark'>
                   No of Companies added to module
                 </h6>
               </div>
-              <div class='clearfix'></div>
+              <div className='clearfix'></div>
             </div>
-            <div class='panel-wrapper collapse in'>
-              <div class='panel-body'>
-                <div class='sm-graph-box'>
-                  <div class='row'>
-                    <div class='col-xs-6'>
+            <div className='panel-wrapper collapse in'>
+              <div className='panel-body'>
+                <div className='sm-graph-box'>
+                  <div className='row'>
+                    <div className='col-xs-6'>
                       <div id='sparkline_1'></div>
                     </div>
-                    <div class='col-xs-6'>
-                      <div class='counter-wrap text-right'>
-                        <span class='counter-cap'>
-                          <i class='fa  txt-success'></i>
+                    <div className='col-xs-6'>
+                      <div className='counter-wrap text-right'>
+                        <span className='counter-cap'>
+                          <i className='fa  txt-success'></i>
                         </span>
-                        <span class='counter'>23</span>
+                        <span className='counter'>23</span>
                       </div>
                     </div>
                   </div>
@@ -83,29 +83,29 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div class='col-lg-4 col-md-4 col-sm-5 col-xs-12'>
-          <div class='panel panel-default card-view'>
-            <div class='panel-heading'>
-              <div class='pull-left'>
-                <h6 class='panel-title txt-dark'>
+        <div className='col-lg-4 col-md-4 col-sm-5 col-xs-12'>
+          <div className='panel panel-default card-view'>
+            <div className='panel-heading'>
+              <div className='pull-left'>
+                <h6 className='panel-title txt-dark'>
                   No of Drives added to module
                 </h6>
               </div>
-              <div class='clearfix'></div>
+              <div className='clearfix'></div>
             </div>
-            <div class='panel-wrapper collapse in'>
-              <div class='panel-body'>
-                <div class='sm-graph-box'>
-                  <div class='row'>
-                    <div class='col-xs-6'>
+            <div className='panel-wrapper collapse in'>
+              <div className='panel-body'>
+                <div className='sm-graph-box'>
+                  <div className='row'>
+                    <div className='col-xs-6'>
                       <div id='sparkline_1'></div>
                     </div>
-                    <div class='col-xs-6'>
-                      <div class='counter-wrap text-right'>
-                        <span class='counter-cap'>
-                          <i class='fa  txt-success'></i>
+                    <div className='col-xs-6'>
+                      <div className='counter-wrap text-right'>
+                        <span className='counter-cap'>
+                          <i className='fa  txt-success'></i>
                         </span>
-                        <span class='counter'>23</span>
+                        <span className='counter'>23</span>
                       </div>
                     </div>
                   </div>

@@ -38,13 +38,13 @@ const AddCompany = ({ addCompany, setAlert }) => {
 
   return (
     <Fragment>
-      <div class='row heading-bg bg-blue'>
-        <div class='col-lg-3 col-md-4 col-sm-4 col-xs-12'>
-          <h5 class='txt-light'>Add Drive Form</h5>
+      <div className='row heading-bg bg-blue'>
+        <div className='col-lg-3 col-md-4 col-sm-4 col-xs-12'>
+          <h5 className='txt-light'>Add Drive Form</h5>
         </div>
 
-        <div class='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
-          <ol class='breadcrumb'>
+        <div className='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
+          <ol className='breadcrumb'>
             <li>
               <a href='index.html'>Home</a>
             </li>
@@ -53,47 +53,47 @@ const AddCompany = ({ addCompany, setAlert }) => {
                 <span>Add</span>
               </a>
             </li>
-            <li class='active'>
+            <li className='active'>
               <span>Company</span>
             </li>
           </ol>
         </div>
       </div>
 
-      <div class='row'>
-        <div class='col-sm-12'>
-          <div class='panel panel-default card-view'>
-            <div class='panel-heading'>
-              <div class='pull-left'>
-                <h6 class='panel-title txt-dark'>Add Company Form</h6>
+      <div className='row'>
+        <div className='col-sm-12'>
+          <div className='panel panel-default card-view'>
+            <div className='panel-heading'>
+              <div className='pull-left'>
+                <h6 className='panel-title txt-dark'>Add Company Form</h6>
               </div>
-              <div class='clearfix'></div>
+              <div className='clearfix'></div>
             </div>
-            <div class='panel-wrapper collapse in'>
-              <div class='panel-body'>
-                <div class='form-wrap'>
+            <div className='panel-wrapper collapse in'>
+              <div className='panel-body'>
+                <div className='form-wrap'>
                   <form onSubmit={(e) => onSubmit(e)}>
-                    <div class='form-group'>
-                      <label class='control-label mb-10 text-left'>
+                    <div className='form-group'>
+                      <label className='control-label mb-10 text-left'>
                         Company Name
                       </label>
                       <input
                         type='text'
-                        class='form-control rounded-input'
+                        className='form-control rounded-input'
                         placeholder='Company Name'
                         name='name'
                         value={name}
                         onChange={(e) => onChange(e)}
                       />
                     </div>
-                    <div class='form-group'>
-                      <label class='control-label mb-10 text-left' for='email'>
+                    <div className='form-group'>
+                      <label className='control-label mb-10 text-left' htmlFor='email'>
                         Email
                       </label>
                       <input
                         type='email'
                         id='email'
-                        class='form-control rounded-input'
+                        className='form-control rounded-input'
                         placeholder='Email'
                         name='email'
                         value={email}

@@ -27,7 +27,7 @@ const AddVolunteer = ({ setAlert, addVolunteer }) => {
     } else if (name === '') {
       setAlert('name cannot be empty', 'danger');
     } else if (clas === '') {
-      setAlert('Class cannot be empty', 'danger');
+      setAlert('className cannot be empty', 'danger');
     } else if (batch === '') {
       setAlert('batch cannot be empty', 'danger');
     } else if (email === '') {
@@ -58,13 +58,13 @@ const AddVolunteer = ({ setAlert, addVolunteer }) => {
 
   return (
     <Fragment>
-      <div class='row heading-bg bg-blue'>
-        <div class='col-lg-3 col-md-4 col-sm-4 col-xs-12'>
-          <h5 class='txt-light'>Add Volunteer Form</h5>
+      <div className='row heading-bg bg-blue'>
+        <div className='col-lg-3 col-md-4 col-sm-4 col-xs-12'>
+          <h5 className='txt-light'>Add Volunteer Form</h5>
         </div>
 
-        <div class='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
-          <ol class='breadcrumb'>
+        <div className='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
+          <ol className='breadcrumb'>
             <li>
               <a href='index.html'>Home</a>
             </li>
@@ -73,103 +73,103 @@ const AddVolunteer = ({ setAlert, addVolunteer }) => {
                 <span>Add</span>
               </a>
             </li>
-            <li class='active'>
+            <li className='active'>
               <span>Volunteer</span>
             </li>
           </ol>
         </div>
       </div>
 
-      <div class='row'>
-        <div class='col-sm-12'>
-          <div class='panel panel-default card-view'>
-            <div class='panel-heading'>
-              <div class='pull-left'>
-                <h6 class='panel-title txt-dark'>Add Volunteer Form</h6>
+      <div className='row'>
+        <div className='col-sm-12'>
+          <div className='panel panel-default card-view'>
+            <div className='panel-heading'>
+              <div className='pull-left'>
+                <h6 className='panel-title txt-dark'>Add Volunteer Form</h6>
               </div>
-              <div class='clearfix'></div>
+              <div className='clearfix'></div>
             </div>
-            <div class='panel-wrapper collapse in'>
-              <div class='panel-body'>
-                <div class='form-wrap'>
+            <div className='panel-wrapper collapse in'>
+              <div className='panel-body'>
+                <div className='form-wrap'>
                   <form onSubmit={(e) => onSubmit(e)}>
-                    <div class='form-group'>
-                      <label class='control-label mb-10 text-left'>
+                    <div className='form-group'>
+                      <label className='control-label mb-10 text-left'>
                         Roll Number
                       </label>
                       <input
                         type='number'
-                        class='form-control rounded-input'
+                        className='form-control rounded-input'
                         placeholder='Roll Number'
                         name='rollno'
                         value={rollno}
                         onChange={(e) => onChange(e)}
                       />
                     </div>
-                    <div class='form-group'>
-                      <label class='control-label mb-10 text-left'>
+                    <div className='form-group'>
+                      <label className='control-label mb-10 text-left'>
                         Full Name
                       </label>
                       <input
                         type='text'
-                        class='form-control rounded-input'
+                        className='form-control rounded-input'
                         placeholder='Full name'
                         name='name'
                         value={name}
                         onChange={(e) => onChange(e)}
                       />
                     </div>
-                    <div class='form-group'>
-                      <label class='control-label mb-10 text-left' for='email'>
+                    <div className='form-group'>
+                      <label className='control-label mb-10 text-left' htmlFor='email'>
                         Email
                       </label>
                       <input
                         type='email'
                         id='email'
-                        class='form-control rounded-input'
+                        className='form-control rounded-input'
                         placeholder='Email'
                         name='email'
                         value={email}
                         onChange={(e) => onChange(e)}
                       />
                     </div>
-                    <div class='form-group'>
-                      <label class='control-label mb-10 text-left' for='class'>
-                        Class
+                    <div className='form-group'>
+                      <label className='control-label mb-10 text-left' htmlFor='className'>
+                        className
                       </label>
                       <input
                         type='text'
-                        id='class'
-                        class='form-control rounded-input'
-                        placeholder='Class'
+                        id='className'
+                        className='form-control rounded-input'
+                        placeholder='className'
                         name='clas'
                         value={clas}
                         onChange={(e) => onChange(e)}
                       />
                     </div>
-                    <div class='form-group'>
-                      <label class='control-label mb-10 text-left' for='batch'>
+                    <div className='form-group'>
+                      <label className='control-label mb-10 text-left' htmlFor='batch'>
                         Batch
                       </label>
                       <input
                         type='text'
                         id='batch'
-                        class='form-control rounded-input'
+                        className='form-control rounded-input'
                         placeholder='Batch'
                         name='batch'
                         value={batch}
                         onChange={(e) => onChange(e)}
                       />
                     </div>
-                    <div class='form-group'>
-                      <label class='control-label mb-10 text-left'>
+                    <div className='form-group'>
+                      <label className='control-label mb-10 text-left'>
                         Phone Number
                       </label>
                       <input
                         type='text'
                         placeholder=''
                         // data-mask='99999-99999'
-                        class='form-control rounded-input'
+                        className='form-control rounded-input'
                         name='phnno'
                         value={phnno}
                         onChange={(e) => onChange(e)}

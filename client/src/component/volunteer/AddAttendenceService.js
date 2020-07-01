@@ -22,12 +22,12 @@ const AddAttendenceService = ({ volunteers, setCurrentVol }) => {
   };
   return (
     <Fragment>
-      <div class='row heading-bg bg-green'>
-        <div class='col-lg-3 col-md-4 col-sm-4 col-xs-12'>
-          <h5 class='txt-light'>Add Volunteer Duty</h5>
+      <div className='row heading-bg bg-green'>
+        <div className='col-lg-3 col-md-4 col-sm-4 col-xs-12'>
+          <h5 className='txt-light'>Add Volunteer Duty</h5>
         </div>
-        <div class='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
-          <ol class='breadcrumb'>
+        <div className='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
+          <ol className='breadcrumb'>
             <li>
               <a href='index.html'>Dashboard</a>
             </li>
@@ -36,7 +36,7 @@ const AddAttendenceService = ({ volunteers, setCurrentVol }) => {
                 <span>Volunteer</span>
               </a>
             </li>
-            <li class='active'>
+            <li className='active'>
               <span>Add Duty</span>
             </li>
           </ol>
@@ -107,21 +107,21 @@ const AddAttendenceService = ({ volunteers, setCurrentVol }) => {
                         <td>1</td>
                         <td>1</td>
                         <td
-                          class='footable-editing'
+                          className='footable-editing'
                           style={{ display: "none" }}>
-                          <div class='btn-group btn-group-xs' role='group'>
+                          <div className='btn-group btn-group-xs' role='group'>
                             <button
                               type='button'
-                              class='btn btn-default footable-edit'>
+                              className='btn btn-default footable-edit'>
                               <span
-                                class='fooicon fooicon-pencil'
+                                className='fooicon fooicon-pencil'
                                 aria-hidden='true'></span>
                             </button>{" "}
                             <button
                               type='button'
-                              class='btn btn-default footable-delete'>
+                              className='btn btn-default footable-delete'>
                               <span
-                                class='fooicon fooicon-trash'
+                                className='fooicon fooicon-trash'
                                 aria-hidden='true'></span>
                             </button>
                           </div>

@@ -14,12 +14,12 @@ const DriveProfile = ({match, getDrive,currentDrive }) => {
 
   return (
     <Fragment>
-      <div class='row heading-bg  bg-blue'>
-        <div class='col-lg-3 col-md-4 col-sm-4 col-xs-12'>
-          <h5 class='txt-light'>Company Profile</h5>
+      <div className='row heading-bg  bg-blue'>
+        <div className='col-lg-3 col-md-4 col-sm-4 col-xs-12'>
+          <h5 className='txt-light'>Company Profile</h5>
         </div>
-        <div class='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
-          <ol class='breadcrumb'>
+        <div className='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
+          <ol className='breadcrumb'>
             <li>
               <a href='/'>Dashboard</a>
             </li>
@@ -32,25 +32,25 @@ const DriveProfile = ({match, getDrive,currentDrive }) => {
         </div>
       </div>
 
-      <div class='row'>
-        <div class='col-md-12'>
-          <div class='panel panel-default card-view'>
-            <div class='panel-heading'>
-              <div class='pull-left'>
-                <h6 class='panel-title txt-dark'>Drive Details</h6>
+      <div className='row'>
+        <div className='col-md-12'>
+          <div className='panel panel-default card-view'>
+            <div className='panel-heading'>
+              <div className='pull-left'>
+                <h6 className='panel-title txt-dark'>Drive Details</h6>
               </div>
-              <div class='pull-right'>
-                <h6 class='txt-dark'>Summary</h6>
+              <div className='pull-right'>
+                <h6 className='txt-dark'>Summary</h6>
               </div>
-              <div class='clearfix'></div>
+              <div className='clearfix'></div>
             </div>
-            <div class='panel-wrapper collapse in'>
-              <div class='panel-body'>
-                <div class='row'>
-                  <div class='col-xs-6'>
-                    <span class='txt-dark head-font inline-block capitalize-font mb-5'></span>
-                    <address class='mb-15'>
-                      <span class='address-head mb-5'>
+            <div className='panel-wrapper collapse in'>
+              <div className='panel-body'>
+                <div className='row'>
+                  <div className='col-xs-6'>
+                    <span className='txt-dark head-font inline-block capitalize-font mb-5'></span>
+                    <address className='mb-15'>
+                      <span className='address-head mb-5'>
                         {currentDrive && currentDrive.name}
                       </span>
                       {/* Company city Here <br /> */}
@@ -58,39 +58,39 @@ const DriveProfile = ({match, getDrive,currentDrive }) => {
                       {currentDrive && currentDrive.email}
                     </address>
                   </div>
-                  <div class='col-xs-6 text-right'>
-                    <span class='txt-dark head-font inline-block capitalize-font mb-5'></span>
-                    <address class='mb-15'>
-                      <span class='address-head mb-5'>
+                  <div className='col-xs-6 text-right'>
+                    <span className='txt-dark head-font inline-block capitalize-font mb-5'></span>
+                    <address className='mb-15'>
+                      <span className='address-head mb-5'>
                         Date of Drive : {currentDrive && currentDrive.date}
                       </span>
-                      <span class='address-head mb-5'>
+                      <span className='address-head mb-5'>
                         Type of Drive : {currentDrive && currentDrive.type}
                       </span>
                     </address>
                   </div>
                 </div>
-                <div class='seprator-block'></div>
+                <div className='seprator-block'></div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class='row'>
-        <div class='col-lg-4 col-md-6'>
-          <div class='panel panel-primary card-view'>
-            <div class='panel-heading mb-20'>
-              <div class='pull-left'>
-                <h6 class='panel-title txt-light'>Volunteers in Drive</h6>
+      <div className='row'>
+        <div className='col-lg-4 col-md-6'>
+          <div className='panel panel-primary card-view'>
+            <div className='panel-heading mb-20'>
+              <div className='pull-left'>
+                <h6 className='panel-title txt-light'>Volunteers in Drive</h6>
               </div>
-              <div class='clearfix'></div>
+              <div className='clearfix'></div>
             </div>
-            <div class='panel-wrapper collapse in'>
-              <div class='panel-body'>
-                <div class='table-wrap'>
-                  <div class='table-responsive'>
-                    <table class='table  top-countries'>
+            <div className='panel-wrapper collapse in'>
+              <div className='panel-body'>
+                <div className='table-wrap'>
+                  <div className='table-responsive'>
+                    <table className='table  top-countries'>
                       <tbody>
                         {currentDrive &&
                           currentDrive.volunteersOnDuty.map((vol) => {
@@ -110,19 +110,19 @@ const DriveProfile = ({match, getDrive,currentDrive }) => {
           </div>
         </div>
 
-        <div class='col-lg-4 col-md-6'>
-          <div class='panel panel-primary card-view'>
-            <div class='panel-heading mb-20'>
-              <div class='pull-left'>
-                <h6 class='panel-title txt-light'>Students in Drive</h6>
+        <div className='col-lg-4 col-md-6'>
+          <div className='panel panel-primary card-view'>
+            <div className='panel-heading mb-20'>
+              <div className='pull-left'>
+                <h6 className='panel-title txt-light'>Students in Drive</h6>
               </div>
-              <div class='clearfix'></div>
+              <div className='clearfix'></div>
             </div>
-            <div class='panel-wrapper collapse in'>
-              <div class='panel-body'>
-                <div class='table-wrap'>
-                  <div class='table-responsive'>
-                    <table class='table  top-countries'>
+            <div className='panel-wrapper collapse in'>
+              <div className='panel-body'>
+                <div className='table-wrap'>
+                  <div className='table-responsive'>
+                    <table className='table  top-countries'>
                       <tbody>
                         <tr>
                           <td>Student Rollno</td>
@@ -137,19 +137,19 @@ const DriveProfile = ({match, getDrive,currentDrive }) => {
           </div>
         </div>
 
-        <div class='col-lg-4 col-md-6'>
-          <div class='panel panel-primary card-view'>
-            <div class='panel-heading mb-20'>
-              <div class='pull-left'>
-                <h6 class='panel-title txt-light'>Students Shortlisted</h6>
+        <div className='col-lg-4 col-md-6'>
+          <div className='panel panel-primary card-view'>
+            <div className='panel-heading mb-20'>
+              <div className='pull-left'>
+                <h6 className='panel-title txt-light'>Students Shortlisted</h6>
               </div>
-              <div class='clearfix'></div>
+              <div className='clearfix'></div>
             </div>
-            <div class='panel-wrapper collapse in'>
-              <div class='panel-body'>
-                <div class='table-wrap'>
-                  <div class='table-responsive'>
-                    <table class='table  top-countries'>
+            <div className='panel-wrapper collapse in'>
+              <div className='panel-body'>
+                <div className='table-wrap'>
+                  <div className='table-responsive'>
+                    <table className='table  top-countries'>
                       <tbody>
                         <tr>
                           <td>Shortlist Rollno</td>

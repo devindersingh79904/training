@@ -53,7 +53,7 @@ const EditVolunteerModel = ({ id, vol, updateVolunteer }) => {
     <div
       className='modal fade'
       id='editor-modal'
-      tabindex='-1'
+      tabIndex='-1'
       role='dialog'
       aria-labelledby='editor-title'
     >
@@ -77,7 +77,7 @@ const EditVolunteerModel = ({ id, vol, updateVolunteer }) => {
           <div className='modal-body'>
             <input type='number' id='rollNo' name='rollNo' className='hidden' />
             <div className='form-group required'>
-              <label for='fullName' className='col-sm-3 control-label'>
+              <label htmlFor='fullName' className='col-sm-3 control-label'>
                 Full Name
               </label>
               <div className='col-sm-9'>
@@ -94,7 +94,7 @@ const EditVolunteerModel = ({ id, vol, updateVolunteer }) => {
               </div>
             </div>
             <div className='form-group required'>
-              <label for='course' className='col-sm-3 control-label'>
+              <label htmlFor='course' className='col-sm-3 control-label'>
                 Course
               </label>
               <div className='col-sm-9'>
@@ -111,7 +111,7 @@ const EditVolunteerModel = ({ id, vol, updateVolunteer }) => {
               </div>
             </div>
             <div className='form-group'>
-              <label for='batch' className='col-sm-3 control-label'>
+              <label htmlFor='batch' className='col-sm-3 control-label'>
                 Batch
               </label>
               <div className='col-sm-9'>
@@ -127,7 +127,7 @@ const EditVolunteerModel = ({ id, vol, updateVolunteer }) => {
               </div>
             </div>
             <div className='form-group'>
-              <label for='phnno' className='col-sm-3 control-label'>
+              <label htmlFor='phnno' className='col-sm-3 control-label'>
                 Phone Number
               </label>
               <div className='col-sm-9'>
@@ -143,7 +143,7 @@ const EditVolunteerModel = ({ id, vol, updateVolunteer }) => {
               </div>
             </div>
             <div className='form-group'>
-              <label for='email' className='col-sm-3 control-label'>
+              <label htmlFor='email' className='col-sm-3 control-label'>
                 Email
               </label>
               <div className='col-sm-9'>
@@ -159,7 +159,7 @@ const EditVolunteerModel = ({ id, vol, updateVolunteer }) => {
               </div>
             </div>
             <div className='form-group text-center'>
-              <label for='assigned' className='col-sm-3 control-label'>
+              <label htmlFor='assigned' className='col-sm-3 control-label'>
                 Assigned
               </label>
               <div className='col-sm-9'>
@@ -175,7 +175,7 @@ const EditVolunteerModel = ({ id, vol, updateVolunteer }) => {
               </div>
             </div>
             <div className='form-group text-center'>
-              <label for='accepted' className='col-sm-3 control-label'>
+              <label htmlFor='accepted' className='col-sm-3 control-label'>
                 Accepted
               </label>
               <div className='col-sm-9'>
@@ -191,7 +191,7 @@ const EditVolunteerModel = ({ id, vol, updateVolunteer }) => {
               </div>
             </div>
             <div className='form-group text-center'>
-              <label for='accepted' className='col-sm-3 control-label'>
+              <label htmlFor='accepted' className='col-sm-3 control-label'>
                 Workshop assinnged
               </label>
               <div className='col-sm-9'>
@@ -207,7 +207,7 @@ const EditVolunteerModel = ({ id, vol, updateVolunteer }) => {
               </div>
             </div>
             <div className='form-group text-center'>
-              <label for='accepted' className='col-sm-3 control-label'>
+              <label htmlFor='accepted' className='col-sm-3 control-label'>
                 Workshop done
               </label>
               <div className='col-sm-9'>
@@ -243,7 +243,7 @@ const EditVolunteerModel = ({ id, vol, updateVolunteer }) => {
 
 EditVolunteerModel.propTypes = {
   id: PropTypes.string.isRequired,
-  vol: PropTypes.object.isRequired,
+  // vol: PropTypes.object.isRequired,
 };
 
 export default connect(null, { updateVolunteer })(EditVolunteerModel);

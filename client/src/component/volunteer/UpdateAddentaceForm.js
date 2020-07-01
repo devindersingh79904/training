@@ -21,7 +21,7 @@ const UpdateAddentaceForm = ({ id }) => {
     <div
       className='modal fade'
       id='editor-modal'
-      tabindex='-1'
+      tabIndex='-1'
       role='dialog'
       aria-labelledby='editor-title'
     >
@@ -41,7 +41,7 @@ const UpdateAddentaceForm = ({ id }) => {
           <div className='modal-body'>
             <input type='number' id='rollNo' name='rollNo' className='hidden' />
             <div className='form-group required'>
-              <label for='fullName' className='col-sm-3 control-label'>
+              <label htmlFor='fullName' className='col-sm-3 control-label'>
                 Full Name
               </label>
               <div className='col-sm-9'>
@@ -57,7 +57,7 @@ const UpdateAddentaceForm = ({ id }) => {
               </div>
             </div>
             <div className='form-group required'>
-              <label for='course' className='col-sm-3 control-label'>
+              <label htmlFor='course' className='col-sm-3 control-label'>
                 Course
               </label>
               <div className='col-sm-9'>
@@ -73,7 +73,7 @@ const UpdateAddentaceForm = ({ id }) => {
               </div>
             </div>
             <div className='form-group'>
-              <label for='batch' className='col-sm-3 control-label'>
+              <label htmlFor='batch' className='col-sm-3 control-label'>
                 Batch
               </label>
               <div className='col-sm-9'>
@@ -88,7 +88,7 @@ const UpdateAddentaceForm = ({ id }) => {
               </div>
             </div>
             <div className='form-group text-center'>
-              <label for='assigned' className='col-sm-3 control-label'>
+              <label htmlFor='assigned' className='col-sm-3 control-label'>
                 Assigned
               </label>
               <div className='col-sm-9'>
@@ -113,7 +113,7 @@ const UpdateAddentaceForm = ({ id }) => {
               </div>
             </div>
             <div className='form-group text-center'>
-              <label for='accepted' className='col-sm-3 control-label'>
+              <label htmlFor='accepted' className='col-sm-3 control-label'>
                 Accepted
               </label>
               <div className='col-sm-9'>
@@ -138,7 +138,7 @@ const UpdateAddentaceForm = ({ id }) => {
               </div>
             </div>
             <div className='form-group text-center'>
-              <label for='present' className='col-sm-3 control-label'>
+              <label htmlFor='present' className='col-sm-3 control-label'>
                 Present
               </label>
               <div className='col-sm-9'>
@@ -182,7 +182,7 @@ const UpdateAddentaceForm = ({ id }) => {
 };
 
 UpdateAddentaceForm.propTypes = {
-  msg: PropTypes.string.isRequired,
+  // msg: PropTypes.string.isRequired,
 };
 
 export default UpdateAddentaceForm;

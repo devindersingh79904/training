@@ -124,7 +124,7 @@ const LeftSideBar = () => {
 
         <li>
           <Link to='about'>
-            <i class='icon-drawar mr-10'></i>About us
+            <i className='icon-drawar mr-10'></i>About us
           </Link>
         </li>
       </ul>

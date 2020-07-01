@@ -69,12 +69,12 @@ const ViewDrivesService = ({ drives, setCurrentDrive }) => {
 
   return (
     <Fragment>
-      <div class='row heading-bg bg-green'>
-        <div class='col-lg-3 col-md-4 col-sm-4 col-xs-12'>
-          <h5 class='txt-light'>View Drives Details</h5>
+      <div className='row heading-bg bg-green'>
+        <div className='col-lg-3 col-md-4 col-sm-4 col-xs-12'>
+          <h5 className='txt-light'>View Drives Details</h5>
         </div>
-        <div class='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
-          <ol class='breadcrumb'>
+        <div className='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
+          <ol className='breadcrumb'>
             <li>
               <a href='/'>Dashboard</a>
             </li>
@@ -83,29 +83,29 @@ const ViewDrivesService = ({ drives, setCurrentDrive }) => {
                 <span>Drives</span>
               </a>
             </li>
-            <li class='active'>
+            <li className='active'>
               <span>Data</span>
             </li>
           </ol>
         </div>
       </div>
 
-      <div class='row'>
-        <div class='col-sm-12'>
-          <div class='panel panel-default card-view'>
-            <div class='panel-heading'>
-              <div class='pull-left'>
-                <h6 class='panel-title txt-dark'>Drive data</h6>
+      <div className='row'>
+        <div className='col-sm-12'>
+          <div className='panel panel-default card-view'>
+            <div className='panel-heading'>
+              <div className='pull-left'>
+                <h6 className='panel-title txt-dark'>Drive data</h6>
               </div>
-              <div class='clearfix'></div>
+              <div className='clearfix'></div>
             </div>
-            <div class='panel-wrapper collapse in'>
-              <div class='panel-body'>
-                <div class='table-wrap'>
-                  <div class='table-responsive'>
+            <div className='panel-wrapper collapse in'>
+              <div className='panel-body'>
+                <div className='table-wrap'>
+                  <div className='table-responsive'>
                     <table
                       id='example'
-                      class='table table-hover display  pb-30'>
+                      className='table table-hover display  pb-30'>
                       <thead>
                         <tr>
                           <th>Name</th>
@@ -140,7 +140,7 @@ const ViewDrivesService = ({ drives, setCurrentDrive }) => {
                                 </td>
                                 <td>{drive.email}</td>
                                 <td>{drive.type}</td>
-                                <td>{drive.date}</td>
+                                <td>{drive.date.substring(0, 10)}</td>
                                 <td>{drive.description}</td>
                                 <td>
                                   {drive.volunteersOnDuty.map((vol) => {

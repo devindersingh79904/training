@@ -93,13 +93,13 @@ const AddDrive = ({ setAlert, addDrive, getVolunteers, volunteers }) => {
   };
   return (
     <Fragment>
-      <div class='row heading-bg bg-blue'>
-        <div class='col-lg-3 col-md-4 col-sm-4 col-xs-12'>
-          <h5 class='txt-light'>Add Drive Form</h5>
+      <div className='row heading-bg bg-blue'>
+        <div className='col-lg-3 col-md-4 col-sm-4 col-xs-12'>
+          <h5 className='txt-light'>Add Drive Form</h5>
         </div>
 
-        <div class='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
-          <ol class='breadcrumb'>
+        <div className='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
+          <ol className='breadcrumb'>
             <li>
               <a href='index.html'>Home</a>
             </li>
@@ -108,31 +108,31 @@ const AddDrive = ({ setAlert, addDrive, getVolunteers, volunteers }) => {
                 <span>Add</span>
               </a>
             </li>
-            <li class='active'>
+            <li className='active'>
               <span>Drive</span>
             </li>
           </ol>
         </div>
       </div>
 
-      <div class='row'>
-        <div class='col-sm-12'>
-          <div class='panel panel-default card-view'>
-            <div class='panel-heading'>
-              <div class='pull-left'>
-                <h6 class='panel-title txt-dark'>Add Drive Form</h6>
+      <div className='row'>
+        <div className='col-sm-12'>
+          <div className='panel panel-default card-view'>
+            <div className='panel-heading'>
+              <div className='pull-left'>
+                <h6 className='panel-title txt-dark'>Add Drive Form</h6>
               </div>
-              <div class='clearfix'></div>
+              <div className='clearfix'></div>
             </div>
-            <div class='panel-wrapper collapse in'>
-              <div class='panel-body'>
-                <div class='form-wrap'>
+            <div className='panel-wrapper collapse in'>
+              <div className='panel-body'>
+                <div className='form-wrap'>
                   <form onSubmit={(e) => onSubmit(e)}>
-                    <div class='form-group'>
-                      <label class='control-label mb-10 text-left'>Name</label>
+                    <div className='form-group'>
+                      <label className='control-label mb-10 text-left'>Name</label>
                       <input
                         type='text'
-                        class='form-control rounded-input'
+                        className='form-control rounded-input'
                         placeholder='Name'
                         name='name'
                         value={name}
@@ -140,11 +140,11 @@ const AddDrive = ({ setAlert, addDrive, getVolunteers, volunteers }) => {
                       />
                     </div>
 
-                    <div class='form-group'>
-                      <label class='control-label mb-10 text-left'>Email</label>
+                    <div className='form-group'>
+                      <label className='control-label mb-10 text-left'>Email</label>
                       <input
                         type='text'
-                        class='form-control rounded-input'
+                        className='form-control rounded-input'
                         placeholder='email'
                         name='email'
                         value={email}
@@ -152,27 +152,27 @@ const AddDrive = ({ setAlert, addDrive, getVolunteers, volunteers }) => {
                       />
                     </div>
 
-                    <div class='form-group'>
-                      <label class='control-label mb-10 text-left' for='date'>
+                    <div className='form-group'>
+                      <label className='control-label mb-10 text-left' htmlFor='date'>
                         Date
                       </label>
                       <input
                         type='date'
                         id='date'
-                        class='form-control rounded-input'
+                        className='form-control rounded-input'
                         placeholder='Date'
                         name='date'
                         value={date}
                         onChange={(e) => onChange(e)}
                       />
                     </div>
-                    <div class='form-group'>
-                      <label class='control-label mb-10 text-left' for='class'>
+                    <div className='form-group'>
+                      <label className='control-label mb-10 text-left' htmlFor='className'>
                         Type
                       </label>
                       <select
                         id='type'
-                        class='form-control rounded-input'
+                        className='form-control rounded-input'
                         name='type'
                         value={type}
                         onChange={(e) => onChange(e)}
@@ -182,14 +182,14 @@ const AddDrive = ({ setAlert, addDrive, getVolunteers, volunteers }) => {
                         <option>Workshop</option>
                       </select>
                     </div>
-                    <div class='form-group'>
-                      <label class='control-label mb-10 text-left' for='batch'>
+                    <div className='form-group'>
+                      <label className='control-label mb-10 text-left' htmlFor='batch'>
                         Description
                       </label>
                       <input
                         type='text'
                         id='description'
-                        class='form-control rounded-input'
+                        className='form-control rounded-input'
                         placeholder='Description'
                         name='description'
                         value={description}
@@ -197,14 +197,15 @@ const AddDrive = ({ setAlert, addDrive, getVolunteers, volunteers }) => {
                       />
                     </div>
 
-                    <div class='form-group'>
-                      <label class='control-label mb-10 text-left'>
+                    <div className='form-group'>
+                      <label className='control-label mb-10 text-left'>
                         Volunteer's On duty
                       </label>
-                      <div class='form-group'>
+                      <div className='form-group'>
                         {volunteers.map((vol) => {
                           return (
                             <ShowVolunteerInDrive
+                              key = {vol._id}
                               volunteer={vol}
                               onCheckChange={onCheckChange}
                             />

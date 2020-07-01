@@ -10,15 +10,15 @@ const EditDrives = () => {
     }, 100);
   }, []);  return (
     <Fragment>
-					<div class="row heading-bg bg-green">
-					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-					  <h5 class="txt-light">Edit Drive</h5>
+					<div className="row heading-bg bg-green">
+					<div className="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+					  <h5 className="txt-light">Edit Drive</h5>
 					</div>
-					<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-					  <ol class="breadcrumb">
+					<div className="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+					  <ol className="breadcrumb">
 						<li><a href="index.html">Dashboard</a></li>
 						<li><a href="#"><span>Drive</span></a></li>
-						<li class="active"><span>Edit</span></li>
+						<li className="active"><span>Edit</span></li>
 					  </ol>
 					</div>
 				</div>
@@ -85,7 +85,7 @@ const EditDrives = () => {
                   <div
                     className='modal fade'
                     id='editor-modal'
-                    tabindex='-1'
+                    tabIndex='-1'
                     role='dialog'
                     aria-labelledby='editor-title'
                   >
@@ -108,7 +108,7 @@ const EditDrives = () => {
                         <div className='modal-body'>
                         <div className='form-group required'>
                             <label
-                              for='cname'
+                              htmlFor='cname'
                               className='col-sm-3 control-label'
                             >
                               Company Name
@@ -126,7 +126,7 @@ const EditDrives = () => {
                           </div>
                           <div className='form-group required'>
                             <label
-                              for='email'
+                              htmlFor='email'
                               className='col-sm-3 control-label'
                             >
                               Email
@@ -143,7 +143,7 @@ const EditDrives = () => {
                           </div>
                           <div className='form-group required'>
                             <label
-                              for='driveDate'
+                              htmlFor='driveDate'
                               className='col-sm-3 control-label'
                             >
                               Drive Date
@@ -161,7 +161,7 @@ const EditDrives = () => {
                           </div>
                           <div className='form-group'>
                             <label
-                              for='driveType'
+                              htmlFor='driveType'
                               className='col-sm-3 control-label'
                             >
                               Type
@@ -178,7 +178,7 @@ const EditDrives = () => {
                           </div>
                           <div className='form-group'>
                             <label
-                              for='description'
+                              htmlFor='description'
                               className='col-sm-3 control-label'
                             >
                               Description
