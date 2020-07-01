@@ -1,11 +1,12 @@
-import axios from "axios";
-import { setAlert } from "./alertAction";
+import axios from 'axios';
+import { setAlert } from './alertAction';
 import {
+  GET_VOLUNTEER,
   GET_VOLUNTEERS,
   ADD_VOLUNTEER,
   VOLUNTEERS_ERROR,
   SET_CURRENT_VOLUNTEER,
-} from "./types";
+} from './types';
 
 export const getVolunteers = () => async (dispatch) => {
   // if (localStorage.getItem('token')) {
@@ -13,7 +14,7 @@ export const getVolunteers = () => async (dispatch) => {
   // }
 
   try {
-    const res = await axios.get("http://localhost:5000/api/Volunteer");
+    const res = await axios.get('http://localhost:5000/api/Volunteer');
 
     // console.log(res.data);
     dispatch({
@@ -57,7 +58,7 @@ export const setCurrentVol = (body) => (dispatch) => {
 
 export const IncAssined = (id) => async (dispatch) => {
   try {
-    const res = await axios.get("http://localhost:5000/api/Volunteer");
+    const res = await axios.get('http://localhost:5000/api/Volunteer');
 
     // console.log(res.data);
     dispatch({
@@ -73,17 +74,17 @@ export const IncAssined = (id) => async (dispatch) => {
 
 export const updateVolunteer = (body) => async (dispatch) => {
   console.log(
-    "address : " + `http://localhost:5000/api/Volunteer/update/${body._id}`
+    'address : ' + `http://localhost:5000/api/Volunteer/update/${body._id}`
   );
 
   const config = {
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   };
   try {
     console.log(
-      "address : " + `http://localhost:5000/api/Volunteer/update/${body._id}`
+      'address : ' + `http://localhost:5000/api/Volunteer/update/${body._id}`
     );
     const res = await axios.put(
       `http://localhost:5000/api/Volunteer/update/${body._id}`,
@@ -97,7 +98,7 @@ export const updateVolunteer = (body) => async (dispatch) => {
     });
   } catch (err) {
     var errors = err.response.data;
-    dispatch(setAlert(errors.msg, "danger"));
+    dispatch(setAlert(errors.msg, 'danger'));
     dispatch({
       type: VOLUNTEERS_ERROR,
     });
@@ -107,12 +108,12 @@ export const updateVolunteer = (body) => async (dispatch) => {
 export const addVolunteer = (body) => async (dispatch) => {
   const config = {
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   };
   try {
     const res = await axios.post(
-      "http://localhost:5000/api/Volunteer",
+      'http://localhost:5000/api/Volunteer',
       body,
       config
     );
@@ -123,7 +124,7 @@ export const addVolunteer = (body) => async (dispatch) => {
     });
   } catch (err) {
     var errors = err.response.data;
-    dispatch(setAlert(errors.msg, "danger"));
+    dispatch(setAlert(errors.msg, 'danger'));
     dispatch({
       type: VOLUNTEERS_ERROR,
     });
