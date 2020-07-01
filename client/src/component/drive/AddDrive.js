@@ -190,6 +190,8 @@ const AddDrive = ({ setAlert, addDrive, getVolunteers, volunteers }) => {
                         <option value=''>Select</option>
                         <option>Drive</option>
                         <option>Workshop</option>
+                        <option>Mock Placement</option>
+                        <option>Tech Talks</option>
                       </select>
                     </div>
                     <div className='form-group'>
