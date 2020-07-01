@@ -1,6 +1,6 @@
 import axios from "axios";
 import { setAlert } from "./alertAction";
-import { GET_DRIVES, ADD_DRIVE, DRIVE_ERROR, SET_CURRENT_DRIVE } from "./types";
+import { GET_DRIVES, ADD_DRIVE, DRIVE_ERROR, SET_CURRENT_DRIVE, GET_DRIVE } from "./types";
 
 export const getDrives = () => async (dispatch) => {
   // if (localStorage.getItem('token')) {
@@ -54,4 +54,24 @@ export const setCurrentDrive = (body) => (dispatch) => {
     type: SET_CURRENT_DRIVE,
     payload: body,
   });
+};
+
+export const getDrive = (id) => async (dispatch) => {
+  // if (localStorage.getItem('token')) {
+  //   setAuthToken(localStorage.token);
+  // }
+
+  try {
+    const res = await axios.get(`http://localhost:5000/api/Drive/${id}`);
+
+    // console.log(res.data);
+    dispatch({
+      type: GET_DRIVE,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: DRIVE_ERROR,
+    });
+  }
 };

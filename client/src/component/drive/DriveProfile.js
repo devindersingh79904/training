@@ -1,9 +1,16 @@
-import React, { Fragment } from "react";
+import React, { Fragment ,useEffect} from "react";
+import {getDrive} from '../../actions/driveAction';
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-const DriveProfile = ({ currentDrive }) => {
-  console.log(currentDrive);
+const DriveProfile = ({match, getDrive,currentDrive }) => {
+  useEffect(
+    ()=>{
+      if(match.params.id){
+        getDrive(match.params.id)
+      }
+    },[]
+  )
 
   return (
     <Fragment>
@@ -168,4 +175,4 @@ const mapStateToProps = (state) => ({
   currentDrive: state.driveReducer.currentDrive,
 });
 
-export default connect(mapStateToProps)(DriveProfile);
+export default connect(mapStateToProps,{getDrive})(DriveProfile);

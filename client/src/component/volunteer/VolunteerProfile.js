@@ -1,8 +1,14 @@
-import React, { Fragment } from "react";
+import React, { Fragment , useEffect} from "react";
+import {getVolunteer} from '../../actions/volunteerAction'
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-const CompanyProfile = ({ currentVol }) => {
+const VolunteerProfile = ({ match,getVolunteer,currentVol }) => {
+  useEffect(()=>{
+    if(match.params.id){
+      getVolunteer(match.params.id);
+    }
+  },[])
   console.log(currentVol);
   return (
     <Fragment>
@@ -102,6 +108,6 @@ const CompanyProfile = ({ currentVol }) => {
 };
 
 const mapStateToProps = (state) => ({
-  currentVol: state.volunteerReducer.currentVol,
+  currentVol: state.volunteerReducer.currentVol
 });
-export default connect(mapStateToProps)(CompanyProfile);
+export default connect(mapStateToProps,{getVolunteer})(VolunteerProfile);

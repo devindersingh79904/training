@@ -21,6 +21,8 @@ export const ADD_DRIVE = "ADD_DRIVE";
 export const GET_DRIVES = "GET_DRIVES";
 export const DRIVE_ERROR = "DRIVE_ERROR";
 export const SET_CURRENT_DRIVE = "SET_CURRENT_DRIVE";
+export const GET_DRIVE = "GET_DRIVE";
 export const ADD_COMPANY = "ADD_COMPANY";
 export const GET_COMPANYS = "GET_COMPANYS";
 export const COMPANY_ERROR = "COMPANY_ERROR";
+

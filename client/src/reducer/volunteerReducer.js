@@ -1,6 +1,7 @@
 import {
   ADD_VOLUNTEER,
   GET_VOLUNTEERS,
+  GET_VOLUNTEER,
   VOLUNTEERS_ERROR,
   SET_CURRENT_VOLUNTEER,
 } from "../actions/types";
@@ -24,6 +25,7 @@ export default (state = initialstate, action) => {
         ...state,
         volunteers: [payload, ...state.volunteers],
       };
+      case GET_VOLUNTEER:
     case SET_CURRENT_VOLUNTEER:
       console.log("i am in ruducer");
       return {

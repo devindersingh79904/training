@@ -27,6 +27,26 @@ export const getVolunteers = () => async (dispatch) => {
   }
 };
 
+export const getVolunteer = (id) => async (dispatch) => {
+  // if (localStorage.getItem('token')) {
+  //   setAuthToken(localStorage.token);
+  // }
+
+  try {
+    const res = await axios.get(`http://localhost:5000/api/Volunteer/${id}`);
+
+    // console.log(res.data);
+    dispatch({
+      type: GET_VOLUNTEER,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: VOLUNTEERS_ERROR,
+    });
+  }
+};
+
 export const setCurrentVol = (body) => (dispatch) => {
   console.log(body);
   dispatch({

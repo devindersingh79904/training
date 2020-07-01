@@ -1,6 +1,7 @@
 import {
   ADD_DRIVE,
   GET_DRIVES,
+  GET_DRIVE,
   DRIVE_ERROR,
   SET_CURRENT_DRIVE,
 } from "../actions/types";
@@ -23,6 +24,7 @@ export default (state = initialstate, action) => {
         ...state,
         drives: [payload, ...state.drives],
       };
+    case GET_DRIVE:
     case SET_CURRENT_DRIVE:
       return {
         ...state,
