@@ -1,21 +1,21 @@
-import React, { Fragment, useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import UpdateAddentaceForm from "./UpdateAddentaceForm";
+import React, { Fragment, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import UpdateAddentaceForm from './UpdateAddentaceForm';
 
 const AddAttendenceService = ({ volunteers, setCurrentVol }) => {
   const [volid, setVolid] = useState({
-    id: "",
+    id: '',
   });
   useEffect(() => {
-    const script1 = document.createElement("script");
+    const script1 = document.createElement('script');
     script1.async = true;
-    script1.src = "dist/js/footable-data.js";
+    script1.src = 'dist/js/footable-data.js';
     document.body.appendChild(script1);
   }, []);
 
   const { id } = volid;
   const onClick = (e, vol) => {
-    console.log("i am onclick");
+    console.log('i am onclick');
     console.log(vol);
     setVolid({ id: vol._id });
     setCurrentVol(vol);
@@ -59,13 +59,15 @@ const AddAttendenceService = ({ volunteers, setCurrentVol }) => {
                     className='table'
                     data-paging='true'
                     data-filtering='true'
-                    data-sorting='true'>
+                    data-sorting='true'
+                  >
                     <thead>
                       <tr>
                         <th
                           data-name='rollNo'
                           data-breakpoints='xs'
-                          data-type='number'>
+                          data-type='number'
+                        >
                           rollNo
                         </th>
                         <th data-name='fullName'>Full Name</th>
@@ -79,8 +81,11 @@ const AddAttendenceService = ({ volunteers, setCurrentVol }) => {
                         <th data-name='accepted' data-breakpoints='xs'>
                           Accepted
                         </th>
-                        <th data-name='present' data-breakpoints='xs'>
-                          Present
+                        <th data-name='workshopAssign' data-breakpoints='xs'>
+                          Wokrshop assinged
+                        </th>
+                        <th data-name='workshopDone' data-breakpoints='xs'>
+                          Wokrshop done
                         </th>
                       </tr>
                     </thead>
@@ -94,39 +99,46 @@ const AddAttendenceService = ({ volunteers, setCurrentVol }) => {
                             <td>{vol.batch}</td>
                             <td>{vol.dutiesAssigned}</td>
                             <td>{vol.dutiesAccepted}</td>
-                            <td>{vol.workDone}</td>
+                            <td>{vol.workshopAssigned}</td>
+                            <td>{vol.workshopDone}</td>
                           </tr>
                         );
                       })}
-                      <tr>
-                        <td>1001</td>
-                        <td>naman singh</td>
+                      {/* <tr>
+                        {/* <td>1001</td>
+                        <td>zzz</td>
                         <td>MCA</td>
                         <td>Morning</td>
                         <td>1</td>
                         <td>1</td>
                         <td>1</td>
+                        <td>1</td> 
                         <td
                           className='footable-editing'
-                          style={{ display: "none" }}>
+                          style={{ display: 'none' }}
+                        >
                           <div className='btn-group btn-group-xs' role='group'>
                             <button
                               type='button'
-                              className='btn btn-default footable-edit'>
+                              className='btn btn-default footable-edit'
+                            >
                               <span
                                 className='fooicon fooicon-pencil'
-                                aria-hidden='true'></span>
-                            </button>{" "}
+                                aria-hidden='true'
+                              ></span>
+                            </button>{' '}
                             <button
                               type='button'
-                              className='btn btn-default footable-delete'>
+                              className='btn btn-default footable-delete'
+                            >
                               <span
                                 className='fooicon fooicon-trash'
-                                aria-hidden='true'></span>
+                                aria-hidden='true'
+                              ></span>
                             </button>
                           </div>
                         </td>
-                      </tr>
+                      </tr> */}
                     </tbody>
                   </table>
                   <UpdateAddentaceForm id={id} />

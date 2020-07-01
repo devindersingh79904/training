@@ -12,7 +12,7 @@ const AddDrive = ({ setAlert, addDrive, getVolunteers, volunteers }) => {
   }, []);
   const [formData, setFormData] = useState({
     name: '',
-    email:'',
+    email: '',
     type: '',
     description: '',
     date: '',
@@ -83,7 +83,7 @@ const AddDrive = ({ setAlert, addDrive, getVolunteers, volunteers }) => {
       addDrive(data);
       setFormData({
         name: '',
-        email:'',
+        email: '',
         type: '',
         description: '',
         date: '',
@@ -129,7 +129,9 @@ const AddDrive = ({ setAlert, addDrive, getVolunteers, volunteers }) => {
                 <div className='form-wrap'>
                   <form onSubmit={(e) => onSubmit(e)}>
                     <div className='form-group'>
-                      <label className='control-label mb-10 text-left'>Name</label>
+                      <label className='control-label mb-10 text-left'>
+                        Name
+                      </label>
                       <input
                         type='text'
                         className='form-control rounded-input'
@@ -141,7 +143,9 @@ const AddDrive = ({ setAlert, addDrive, getVolunteers, volunteers }) => {
                     </div>
 
                     <div className='form-group'>
-                      <label className='control-label mb-10 text-left'>Email</label>
+                      <label className='control-label mb-10 text-left'>
+                        Email
+                      </label>
                       <input
                         type='text'
                         className='form-control rounded-input'
@@ -153,7 +157,10 @@ const AddDrive = ({ setAlert, addDrive, getVolunteers, volunteers }) => {
                     </div>
 
                     <div className='form-group'>
-                      <label className='control-label mb-10 text-left' htmlFor='date'>
+                      <label
+                        className='control-label mb-10 text-left'
+                        htmlFor='date'
+                      >
                         Date
                       </label>
                       <input
@@ -167,7 +174,10 @@ const AddDrive = ({ setAlert, addDrive, getVolunteers, volunteers }) => {
                       />
                     </div>
                     <div className='form-group'>
-                      <label className='control-label mb-10 text-left' htmlFor='className'>
+                      <label
+                        className='control-label mb-10 text-left'
+                        htmlFor='className'
+                      >
                         Type
                       </label>
                       <select
@@ -183,7 +193,10 @@ const AddDrive = ({ setAlert, addDrive, getVolunteers, volunteers }) => {
                       </select>
                     </div>
                     <div className='form-group'>
-                      <label className='control-label mb-10 text-left' htmlFor='batch'>
+                      <label
+                        className='control-label mb-10 text-left'
+                        htmlFor='batch'
+                      >
                         Description
                       </label>
                       <input
@@ -205,7 +218,7 @@ const AddDrive = ({ setAlert, addDrive, getVolunteers, volunteers }) => {
                         {volunteers.map((vol) => {
                           return (
                             <ShowVolunteerInDrive
-                              key = {vol._id}
+                              key={vol._id}
                               volunteer={vol}
                               onCheckChange={onCheckChange}
                             />
