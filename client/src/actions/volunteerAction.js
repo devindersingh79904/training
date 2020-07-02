@@ -15,8 +15,6 @@ export const getVolunteers = () => async (dispatch) => {
 
   try {
     const res = await axios.get('http://localhost:5000/api/Volunteer');
-
-    // console.log(res.data);
     dispatch({
       type: GET_VOLUNTEERS,
       payload: res.data,
@@ -35,8 +33,6 @@ export const getVolunteer = (id) => async (dispatch) => {
 
   try {
     const res = await axios.get(`http://localhost:5000/api/Volunteer/${id}`);
-
-    // console.log(res.data);
     dispatch({
       type: GET_VOLUNTEER,
       payload: res.data,
@@ -49,7 +45,6 @@ export const getVolunteer = (id) => async (dispatch) => {
 };
 
 export const setCurrentVol = (body) => (dispatch) => {
-  console.log(body);
   dispatch({
     type: SET_CURRENT_VOLUNTEER,
     payload: body,
@@ -59,8 +54,6 @@ export const setCurrentVol = (body) => (dispatch) => {
 export const IncAssined = (id) => async (dispatch) => {
   try {
     const res = await axios.get('http://localhost:5000/api/Volunteer');
-
-    // console.log(res.data);
     dispatch({
       type: GET_VOLUNTEERS,
       payload: res.data,
@@ -73,25 +66,18 @@ export const IncAssined = (id) => async (dispatch) => {
 };
 
 export const updateVolunteer = (body) => async (dispatch) => {
-  console.log(
-    'address : ' + `http://localhost:5000/api/Volunteer/update/${body._id}`
-  );
-
   const config = {
     headers: {
       'Content-Type': 'application/json',
     },
   };
   try {
-    console.log(
-      'address : ' + `http://localhost:5000/api/Volunteer/update/${body._id}`
-    );
     const res = await axios.put(
       `http://localhost:5000/api/Volunteer/update/${body._id}`,
       body,
       config
     );
-    console.log(res);
+
     dispatch({
       type: ADD_VOLUNTEER,
       payload: res.data,
@@ -117,7 +103,7 @@ export const addVolunteer = (body) => async (dispatch) => {
       body,
       config
     );
-    console.log(res);
+
     dispatch({
       type: ADD_VOLUNTEER,
       payload: res.data,

@@ -44,7 +44,6 @@ const AddStudent = ({ setAlert, addStudent }) => {
         phnno,
         session,
       };
-      //   console.log(date);
       addStudent(data);
       setFormData({
         rollno: 0,

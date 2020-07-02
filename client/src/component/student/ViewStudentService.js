@@ -62,8 +62,6 @@ const ViewStudentService = ({ students, setCurrentStudent }) => {
 
   const { id } = stdid;
   const onClick = (e, student) => {
-    console.log('i am onclick');
-    console.log(student);
     setStdid({ id: student._id });
     setCurrentStudent(student);
   };
@@ -129,7 +127,6 @@ const ViewStudentService = ({ students, setCurrentStudent }) => {
                         {students !== null &&
                           students.length > 0 &&
                           students.map((student) => {
-                            console.log(student);
                             return (
                               <tr
                                 key={student._id}
