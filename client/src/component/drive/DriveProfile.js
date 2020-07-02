@@ -2,6 +2,7 @@ import React, { Fragment ,useEffect} from "react";
 import {getDrive} from '../../actions/driveAction';
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const DriveProfile = ({match, getDrive,currentDrive }) => {
   useEffect(
@@ -21,12 +22,14 @@ const DriveProfile = ({match, getDrive,currentDrive }) => {
         <div className='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
           <ol className='breadcrumb'>
             <li>
-              <a href='/'>Dashboard</a>
+              <Link to='/'>
+                Home
+              </Link>
             </li>
             <li>
-              <a href='#'>
-                <span>Company profile</span>
-              </a>
+              <Link className='active' to='#'>
+              <span>Company profile</span>
+              </Link>
             </li>
           </ol>
         </div>
@@ -57,12 +60,20 @@ const DriveProfile = ({match, getDrive,currentDrive }) => {
                       <abbr title='Email'>Email :</abbr>{" "}
                       {currentDrive && currentDrive.email}
                     </address>
+                    <address className='mb-15'>
+                      <span className='address-head mb-5'>
+                        Description : 
+                      </span>
+                      {/* Company city Here <br /> */}
+                      <abbr title='Email'></abbr>{" "}
+                      {currentDrive && currentDrive.description}
+                    </address>
                   </div>
                   <div className='col-xs-6 text-right'>
                     <span className='txt-dark head-font inline-block capitalize-font mb-5'></span>
                     <address className='mb-15'>
                       <span className='address-head mb-5'>
-                        Date of Drive : {currentDrive && currentDrive.date}
+                        Date of Drive : {currentDrive && currentDrive.date.substring(0, 10)}
                       </span>
                       <span className='address-head mb-5'>
                         Type of Drive : {currentDrive && currentDrive.type}
@@ -91,13 +102,17 @@ const DriveProfile = ({match, getDrive,currentDrive }) => {
                 <div className='table-wrap'>
                   <div className='table-responsive'>
                     <table className='table  top-countries'>
+                      <thead>
+                        <th className='text-center'>RollNo</th>
+                        <th className='text-center'>Name</th>
+                      </thead>
                       <tbody>
                         {currentDrive &&
                           currentDrive.volunteersOnDuty.map((vol) => {
                             return (
                               <tr>
-                                <td>{vol.rollno}</td>
-                                <td>{vol.name}</td>
+                                <td className='text-center'>{vol.rollno}</td>
+                                <td className='text-center'>{vol.name}</td>
                               </tr>
                             );
                           })}

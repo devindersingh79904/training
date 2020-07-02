@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import { Link } from 'react-router-dom';
 
 const Error404 = () =>{
     return(
@@ -19,7 +20,7 @@ const Error404 = () =>{
 											<h3 className="mb-20 txt-danger">Page Not Found</h3>
 											<p className="font-18 txt-dark mb-15">We are sorry, the page you requested cannot be found.</p>
 											<p>The URL may be misspelled or the page you're looking for is no longer available.	</p>
-											<a className="btn btn-success btn-icon right-icon btn-rounded mt-30" href="/"><span>back to home</span><i className="fa fa-space-shuttle"></i></a>
+											<Link className="btn btn-success btn-icon right-icon btn-rounded mt-30" to="/"><span>back to home</span><i className="fa fa-space-shuttle"></i></Link>
 											<p className="font-12 mt-15">TPC, DCSA, PU</p>
 										</div>	
 									</div>

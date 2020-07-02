@@ -11,9 +11,9 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
   };
   const guestRoutes = (
     <li className='dropdown'>
-      <a href='#' className='dropdown-toggle' data-toggle='dropdown'>
+      <Link to='/' className='dropdown-toggle' data-toggle='dropdown'>
         <i className='fa fa-th top-nav-icon'></i>
-      </a>
+      </Link>
       <ul
         className='dropdown-menu app-dropdown'
         data-dropdown-in='fadeIn'
@@ -41,23 +41,27 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
 
   const authRoutes = (
     <li className='dropdown'>
-      <a href='#' className='dropdown-toggle pr-0' data-toggle='dropdown'>
-        <img
+      <Link className='dropdown-toggle pr-0' data-toggle='dropdown' to='#'>
+      <img
           src='dist/img/user1.png'
           alt='user_auth'
           className='user-auth-img img-circle'
         />
         <span className='user-online-status'></span>
-      </a>
+      </Link>
       <ul
         className='dropdown-menu user-auth-dropdown'
         data-dropdown-in='fadeIn'
         data-dropdown-out='fadeOut'
       >
         <li>
-          <a href='#'>
-            <i className='fa fa-fw fa-user'></i> {user && user.name}
-          </a>
+          <Link to='#'>
+          <i className='fa fa-fw fa-user'></i> {user && user.name}
+          </Link>
+          <Link to='#'>
+          <i className='fa fa-fw fa-user'></i> {user && user.name}
+
+          </Link>
         </li>
         <li>
           <Link to='/about' className='connection-item'>
@@ -65,9 +69,10 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
           </Link>
         </li>
         <li>
-          <a href='#'>
-            <i className='fa fa-fw fa-gear'></i> Settings
-          </a>
+          <Link to='#'>
+          <i className='fa fa-fw fa-gear'></i> Settings
+
+          </Link>
         </li>
         <li className='divider'></li>
         <li>
@@ -81,20 +86,20 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
   return (
     <div className='wrapper'>
       <nav className='navbar navbar-inverse navbar-fixed-top'>
-        <a
+        <Link
           id='toggle_nav_btn'
           className='toggle-left-nav-btn inline-block mr-20 pull-left'
-          href='#!'
+         to='#'
         >
           <i className='fa fa-bars'></i>
-        </a>
-        <a href='/'>
+        </Link>
+        <Link to='/'>
           <img
             className='brand-img pull-left'
             src={process.env.PUBLIC_URL + '/dist/img/logo.png'}
             alt='brand'
           />
-        </a>
+        </Link>
         <ul className='nav navbar-right top-nav pull-right'>
           {isAuthenticated && !loading ? authRoutes : guestRoutes}
         </ul>

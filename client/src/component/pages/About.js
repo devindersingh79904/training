@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
 const About = () => {
   return (
@@ -10,12 +11,12 @@ const About = () => {
         <div className='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
           <ol className='breadcrumb'>
             <li>
-              <a href='/'>Dashboard</a>
+              <Link to='/'>Home</Link>
             </li>
             <li>
-              <a href='#'>
+              <Link to='#'>
                 <span>About us</span>
-              </a>
+              </Link>
             </li>
           </ol>
         </div>
@@ -72,7 +73,7 @@ const About = () => {
         <div className='panel panel-default card-view'>
           <div className='panel-wrapper collapse in'>
             <div className='panel-body contact-card'>
-              <a href='#'>
+              <Link to='#'>
                 <div className='text-center'>
                   <span className='block card-user-name mt-10'>Devinder singh</span>
                   <span className='block card-user-email mt-10'>
@@ -83,7 +84,7 @@ const About = () => {
                   </span>
                   <span className='inline-block label label-danger'>DCSA, PU</span>
                 </div>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -93,7 +94,7 @@ const About = () => {
         <div className='panel panel-default card-view'>
           <div className='panel-wrapper collapse in'>
             <div className='panel-body contact-card'>
-              <a href='#'>
+              <Link to='#'>
                 <div className='text-center'>
                   <span className='block card-user-name mt-10'>Aditi Jain</span>
                   <span className='block card-user-email mt-10'>
@@ -104,7 +105,7 @@ const About = () => {
                   </span>
                   <span className='inline-block label label-danger'>DCSA, PU</span>
                 </div>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -114,7 +115,7 @@ const About = () => {
         <div className='panel panel-default card-view'>
           <div className='panel-wrapper collapse in'>
             <div className='panel-body contact-card'>
-              <a href='#'>
+              <Link to='#'>
                 <div className='text-center'>
                   <span className='block card-user-name mt-10'>
                     Sarvpreet singh
@@ -127,7 +128,7 @@ const About = () => {
                   </span>
                   <span className='inline-block label label-danger'>DCSA, PU</span>
                 </div>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

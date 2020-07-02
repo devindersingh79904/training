@@ -1,7 +1,8 @@
 import React, { Fragment , useEffect} from "react";
 import {getVolunteer} from '../../actions/volunteerAction'
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
+import { Link } from 'react-router-dom';
 
 const VolunteerProfile = ({ match,getVolunteer,currentVol }) => {
   useEffect(()=>{
@@ -19,12 +20,12 @@ const VolunteerProfile = ({ match,getVolunteer,currentVol }) => {
         <div className='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
           <ol className='breadcrumb'>
             <li>
-              <a href='/'>Dashboard</a>
+              <Link to='/'>Dashboard</Link>
             </li>
             <li>
-              <a href='#'>
+              <Link to='#'>
                 <span>Volunteer profile</span>
-              </a>
+              </Link>
             </li>
           </ol>
         </div>
@@ -51,15 +52,23 @@ const VolunteerProfile = ({ match,getVolunteer,currentVol }) => {
                       <span className='address-head mb-5'>
                         {currentVol && currentVol.name}
                       </span>
+                      <abbr>Rollno :</abbr>{" "}
                       {currentVol && currentVol.rollno} <br />
+                      <abbr>Class and Batch :</abbr>{" "}
+                      {currentVol && currentVol.clas} {currentVol && currentVol.batch} <br />
                       <abbr title='Email'>Email :</abbr>{" "}
-                      {currentVol && currentVol.email}
+                      {currentVol && currentVol.email} <br />
+                      <abbr>Phone :</abbr>{" "}
+                      {currentVol && currentVol.phnno}
                     </address>
                   </div>
                   <div className='col-xs-6 text-right'>
                     <span className='txt-dark head-font inline-block capitalize-font mb-5'></span>
                     <address className='mb-15'>
-                      <span className='address-head mb-5'>Total drives : 20</span>
+                      <span className='address-head mb-5'>Total Duty : {currentVol && currentVol.dutiesAssigned}</span>
+                      <span className='address-head mb-5'>Total Workshops : {currentVol && currentVol.workshopAssigned}</span>
+                      <span className='address-head mb-5'>Total Duty accepted : {currentVol && currentVol.dutiesAccepted}</span>
+                      <span className='address-head mb-5'>Total Workshop Done : {currentVol && currentVol.workshopDone}</span>
                     </address>
                   </div>
                 </div>

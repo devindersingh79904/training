@@ -92,12 +92,11 @@ const Login = ({ setAlert, setLoading, loginUser, isAuthenticated }) => {
                         <input id='checkbox_2' required='' type='checkbox' />
                         <label for='checkbox_2'> keep me logged in </label>
                       </div>
-                      <a
-                        class='capitalize-font txt-danger block pt-5 pull-right'
-                        href='#'
-                      >
+                      
+                      <Link className='capitalize-font txt-danger block pt-5 pull-right' to='#'>
                         forgot password
-                      </a>
+                      </Link>
+                        
                       <div class='clearfix'></div>
                     </div>
                     <div class='form-group'>

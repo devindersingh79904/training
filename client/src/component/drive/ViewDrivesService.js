@@ -76,15 +76,14 @@ const ViewDrivesService = ({ drives, setCurrentDrive }) => {
         <div className='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
           <ol className='breadcrumb'>
             <li>
-              <a href='/'>Dashboard</a>
+              <Link to='/'>
+                Home
+              </Link>
             </li>
             <li>
-              <a href='#'>
-                <span>Drives</span>
-              </a>
-            </li>
-            <li className='active'>
-              <span>Data</span>
+              <Link className='active' to='#'>
+                Drives Date
+              </Link>
             </li>
           </ol>
         </div>

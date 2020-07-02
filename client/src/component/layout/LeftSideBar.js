@@ -5,119 +5,108 @@ const LeftSideBar = () => {
     <div className='fixed-sidebar-left'>
       <ul className='nav navbar-nav side-nav nicescroll-bar'>
         <li>
-          <a
-            className='active'
-            href='#!'
-            data-toggle='collapse'
-            data-target='#dashboard_dr'
-          >
+          <Link className='active' data-toggle='collapse' data-target='#dashboard_dr' to='#'>
             <i className='icon-arrow-right-circle mr-10'></i>Add menu{' '}
-            <span className='pull-right'>
-              <span className='label label-success mr-10'>4</span>
-              <i className='fa fa-fw fa-angle-down'></i>
-            </span>
-          </a>
+              <span className='pull-right'>
+                <span className='label label-success mr-10'>4</span>
+                <i className='fa fa-fw fa-angle-down'></i>
+              </span>
+          </Link>
           <ul id='dashboard_dr' className='collapse collapse-level-1'>
             <li>
-              <a href='./add-volunteer'>
+              <Link to='/add-volunteer'>
                 <span className='icon-plus mr-10'></span>Add Volunteer
-              </a>
+              </Link>
             </li>
             <li>
-              <a href='./add-drive'>
+              <Link to='/add-drive'>
                 <span className='icon-plus mr-10'></span>Add Drive
-              </a>
+              </Link>
             </li>
             <li>
-              <a href='./add-attendence'>
+              <Link to='/add-attendence'>
                 <span className='icon-plus mr-10'></span>Add Entry
-              </a>
+              </Link>
             </li>
             <li>
-              <a href='/add-company'>
+              <Link to='/add-company'>
                 <span className='icon-plus mr-10'></span>Add Company
-              </a>
+              </Link>
             </li>
           </ul>
         </li>
 
         <li>
-          <a
-            className='active'
-            href='#!'
+          <Link  className='active'
             data-toggle='collapse'
-            data-target='#dashboard_dr_1'
-          >
-            <i className='icon-arrow-right-circle mr-10'></i>View / Edit menu{' '}
+            data-target='#dashboard_dr_1' to='#'>
+              <i className='icon-arrow-right-circle mr-10'></i>View / Edit menu{' '}
             <span className='pull-right'>
               <span className='label label-success mr-10'>4</span>
               <i className='fa fa-fw fa-angle-down'></i>
             </span>
-          </a>
+          </Link>
           <ul id='dashboard_dr_1' className='collapse collapse-level-1'>
             <li>
-              <a href='./view-volunteers'>
+              <Link to='/view-volunteers'>
                 <span className='icon-pencil mr-10'></span>View Volunteer
-              </a>
+              </Link>
             </li>
             <li>
-              <a href='./view-drives'>
-                <span className='icon-pencil mr-10'></span>View Drive
-              </a>
+            <Link to='/view-drives'>
+              <span className='icon-pencil mr-10'></span>View Drive
+            </Link>
             </li>
             <li>
-              <a href='./view-companys'>
-                <span className='icon-pencil mr-10'></span>View Company
-              </a>
+            <Link to='/view-companys'>
+            <span className='icon-pencil mr-10'></span>View Company
+            </Link>
             </li>
             <li>
-              <a href='./edit-volunteers'>
-                <span className='icon-pencil mr-10 text-danger'></span>Edit
-                Volunteer
-              </a>
+            <Link to='/edit-volunteers'>
+            <span className='icon-pencil mr-10 text-danger'></span>Edit Volunteer
+            </Link>
             </li>
             <li>
-              <a href='./edit-drives'>
-                <span className='icon-pencil mr-10 text-danger'></span>Edit
-                Drive
-              </a>
+            <Link to='/edit-drives'>
+            <span className='icon-pencil mr-10 text-danger'></span>Edit Drive
+            </Link>
             </li>
           </ul>
         </li>
 
         <li>
-          <a
-            className='active'
-            href='#!'
-            data-toggle='collapse'
-            data-target='#dashboard_dr_2'
-          >
+          <Link
+          className='active'
+          data-toggle='collapse'
+          data-target='#dashboard_dr_2'
+          to='#'>
             <i className='icon-arrow-right-circle mr-10'></i>Delete menu{' '}
             <span className='pull-right'>
               <span className='label label-success mr-10'>4</span>
               <i className='fa fa-fw fa-angle-down'></i>
             </span>
-          </a>
+          </Link>
           <ul id='dashboard_dr_2' className='collapse collapse-level-1'>
             <li>
-              <a href='index.html'>
+              <Link to='/delete-volunteer'>
                 <span className='icon-ban mr-10'></span>Delete Volunteer
-              </a>
+              </Link>
             </li>
             <li>
-              <a href='index2.html'>
-                <span className='icon-ban mr-10'></span>Delete Drive
-              </a>
+            <Link to='/delete-drive'>
+            <span className='icon-ban mr-10'></span>Delete Drive
+              </Link>
             </li>
             <li>
-              <a href='index3.html'>
-                <span className='icon-ban mr-10'></span>Delete Entry
-              </a>
+            <Link to='/delete-entry'>
+            <span className='icon-ban mr-10'></span>Delete Entry
+              </Link>
             </li>
             <li>
-              <a href='index4.html'>
-                <span className='icon-ban mr-10'></span>Delete Company
-              </a>
+            <Link to='/delete-company'>
+            <span className='icon-ban mr-10'></span>Delete Company
+              </Link>
             </li>
           </ul>
         </li>

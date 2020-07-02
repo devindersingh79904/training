@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { addVolunteer } from '../../actions/volunteerAction';
 import { setAlert } from '../../actions/alertAction';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const AddVolunteer = ({ setAlert, addVolunteer }) => {
   const [formData, setFormData] = useState({
@@ -66,15 +67,12 @@ const AddVolunteer = ({ setAlert, addVolunteer }) => {
         <div className='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
           <ol className='breadcrumb'>
             <li>
-              <a href='index.html'>Home</a>
+              <Link to='/'>Home</Link>
             </li>
             <li>
-              <a href='#'>
-                <span>Add</span>
-              </a>
-            </li>
-            <li className='active'>
-              <span>Volunteer</span>
+              <Link to='#'>
+                <span>Add Volunteer</span>
+              </Link>
             </li>
           </ol>
         </div>

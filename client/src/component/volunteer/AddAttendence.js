@@ -3,6 +3,7 @@ import { getVolunteers, setCurrentVol } from '../../actions/volunteerAction';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import AddAttendenceService from './AddAttendenceService';
+
 const AddAttendence = ({ volunteers, getVolunteers, setCurrentVol }) => {
   useEffect(() => {
     console.log('i am getting all volunteers');

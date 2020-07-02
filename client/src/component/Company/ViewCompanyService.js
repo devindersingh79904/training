@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const ViewCompanyService = ({ companys }) => {
   useEffect(() => {
@@ -64,15 +65,14 @@ const ViewCompanyService = ({ companys }) => {
         <div className='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
           <ol className='breadcrumb'>
             <li>
-              <a href='index.html'>Dashboard</a>
+              <Link to='/' >
+                Home
+              </Link>
             </li>
             <li>
-              <a href='#'>
-                <span>Company</span>
-              </a>
-            </li>
-            <li className='active'>
-              <span>Data</span>
+              <Link className='active' to='#' >
+                <span>Company Data</span>
+              </Link>
             </li>
           </ol>
         </div>
