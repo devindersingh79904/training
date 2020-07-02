@@ -4,7 +4,7 @@ import { getVolunteers, setCurrentVol } from '../../actions/volunteerAction';
 import EditVolunteerService from './EditVolunteerService';
 import PropTypes from 'prop-types';
 
-const EditVolunteers = ({ getVolunteers, volunteers }) => {
+const EditVolunteers = ({ getVolunteers, volunteers, setCurrentVol }) => {
   useEffect(() => {
     getVolunteers();
   }, []);
@@ -29,4 +29,6 @@ const mapStateToProps = (state) => ({
   volunteers: state.volunteerReducer.volunteers,
 });
 
-export default connect(mapStateToProps, { getVolunteers })(EditVolunteers);
+export default connect(mapStateToProps, { getVolunteers, setCurrentVol })(
+  EditVolunteers
+);

@@ -1,9 +1,8 @@
-import React, { Fragment, useLayoutEffect } from "react";
-import { getVolunteers, setCurrentVol } from "../../actions/volunteerAction";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-
-import ViewVolunteersService from "./ViewVolunteersService";
+import React, { Fragment, useLayoutEffect } from 'react';
+import { getVolunteers, setCurrentVol } from '../../actions/volunteerAction';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import ViewVolunteersService from './ViewVolunteersService';
 
 const ViewVolunteers = ({ volunteers, getVolunteers, setCurrentVol }) => {
   useLayoutEffect(() => {
@@ -11,7 +10,6 @@ const ViewVolunteers = ({ volunteers, getVolunteers, setCurrentVol }) => {
     // eslint-disable-next-line
   }, []);
 
-  console.log("fgfgfd");
   return (
     <Fragment>
       {volunteers !== null && volunteers.length > 0 ? (
