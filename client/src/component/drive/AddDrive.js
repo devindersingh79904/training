@@ -3,14 +3,24 @@ import { connect } from 'react-redux';
 import { addDrive } from '../../actions/driveAction';
 import { setAlert } from '../../actions/alertAction';
 import { getVolunteers } from '../../actions/volunteerAction';
+import { getCompany } from '../../actions/companyAction';
 import ShowVolunteerInDrive from './ShowVolunteerInDrive';
 import PropTypes from 'prop-types';
 
-const AddDrive = ({ setAlert, addDrive, getVolunteers, volunteers }) => {
+const AddDrive = ({
+  setAlert,
+  addDrive,
+  getVolunteers,
+  volunteers,
+  getCompany,
+  companys,
+}) => {
   useLayoutEffect(() => {
     getVolunteers();
+    getCompany();
   }, []);
   const [formData, setFormData] = useState({
+    isCompany: false,
     name: '',
     email: '',
     type: '',
@@ -19,9 +29,27 @@ const AddDrive = ({ setAlert, addDrive, getVolunteers, volunteers }) => {
     volunteersOnDuty: [],
   });
 
-  const { name, email, type, description, date, volunteersOnDuty } = formData;
+  const {
+    name,
+    email,
+    type,
+    description,
+    date,
+    volunteersOnDuty,
+    isCompany,
+  } = formData;
 
   volunteers.sort(function (a, b) {
+    if (a.name.toUpperCase() < b.name.toUpperCase()) {
+      return -1;
+    }
+    if (a.name.toUpperCase() > b.name.toUpperCase()) {
+      return 1;
+    }
+    return 0;
+  });
+
+  companys.sort(function (a, b) {
     if (a.name.toUpperCase() < b.name.toUpperCase()) {
       return -1;
     }
@@ -34,6 +62,16 @@ const AddDrive = ({ setAlert, addDrive, getVolunteers, volunteers }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const onIsCompChange = (e) => {
+    setFormData({ ...formData, isCompany: !isCompany, email: '', name: '' });
+  };
+
+  const onCompanyChange = (e) => {
+    console.log('i am on');
+    var sel = companys.filter((comp) => comp.name == e.target.value);
+    var email = sel[0].email;
+    setFormData({ ...formData, [e.target.name]: e.target.value, email: email });
+  };
   const onCheckChange = (e, vol) => {
     console.log(e.target.checked);
     console.log(vol);
@@ -128,19 +166,55 @@ const AddDrive = ({ setAlert, addDrive, getVolunteers, volunteers }) => {
               <div className='panel-body'>
                 <div className='form-wrap'>
                   <form onSubmit={(e) => onSubmit(e)}>
-                    <div className='form-group'>
-                      <label className='control-label mb-10 text-left'>
-                        Name
-                      </label>
+                    <div className='checkbox checkbox-inline checkbox-primary'>
                       <input
-                        type='text'
-                        className='form-control rounded-input'
-                        placeholder='Name'
-                        name='name'
-                        value={name}
-                        onChange={(e) => onChange(e)}
+                        id='isCompany'
+                        type='checkbox'
+                        value={isCompany}
+                        name='isCompany'
+                        onChange={(e) => onIsCompChange(e)}
                       />
+                      <label htmlFor='isCompany'>isCompany</label>
                     </div>
+
+                    {!isCompany ? (
+                      <div className='form-group'>
+                        <label className='control-label mb-10 text-left'>
+                          Name
+                        </label>
+                        <input
+                          type='text'
+                          className='form-control rounded-input'
+                          placeholder='Name'
+                          name='name'
+                          value={name}
+                          onChange={(e) => onChange(e)}
+                        />
+                      </div>
+                    ) : (
+                      <div className='form-group'>
+                        <label
+                          className='control-label mb-10 text-left'
+                          htmlFor='className'
+                        >
+                          Company name
+                        </label>
+                        <select
+                          id='name'
+                          className='form-control rounded-input'
+                          name='name'
+                          value={name}
+                          onChange={(e) => onCompanyChange(e)}
+                        >
+                          <option value=''>Select</option>
+                          {companys.map((company) => {
+                            return (
+                              <option key={company._id}>{company.name}</option>
+                            );
+                          })}
+                        </select>
+                      </div>
+                    )}
 
                     <div className='form-group'>
                       <label className='control-label mb-10 text-left'>
@@ -252,8 +326,12 @@ AddDrive.propTypes = {
 
 const mapStateToProps = (state) => ({
   volunteers: state.volunteerReducer.volunteers,
+  companys: state.companyRuducer.companys,
 });
 
-export default connect(mapStateToProps, { addDrive, setAlert, getVolunteers })(
-  AddDrive
-);
+export default connect(mapStateToProps, {
+  addDrive,
+  setAlert,
+  getVolunteers,
+  getCompany,
+})(AddDrive);
