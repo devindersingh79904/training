@@ -3,9 +3,10 @@ import {
   ADD_STUDENT,
   GET_STUDENT,
   GET_STUDENTS,
+  UPDATE_STUDENT,
   DELETE_STUDENT,
   SET_CURRENT_STUDENT,
-} from '../actions/types';
+} from "../actions/types";
 
 const initialstate = {
   students: [],
@@ -26,6 +27,14 @@ export default (state = initialstate, action) => {
         ...state,
         students: [payload, ...state.students],
       };
+    case UPDATE_STUDENT:
+      console.log(payload);
+      return {
+        ...state,
+        students: state.students.map((std) =>
+          std._id === payload._id ? payload : std
+        ),
+      };
     case GET_STUDENT:
     case SET_CURRENT_STUDENT:
       return {
@@ -33,7 +42,7 @@ export default (state = initialstate, action) => {
         currentStudent: payload,
       };
     case STUDENTS_ERROR:
-      console.log('error while adding drive');
+      console.log("error while adding drive");
     default:
       return state;
   }
