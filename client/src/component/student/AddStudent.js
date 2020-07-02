@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { addStudent } from '../../actions/studentAction';
 import { setAlert } from '../../actions/alertAction';
@@ -9,11 +9,12 @@ const AddStudent = ({ setAlert, addStudent }) => {
     name: '',
     clas: '',
     batch: '',
+    session: '',
     phnno: 0,
     email: '',
   });
 
-  const { rollno, name, clas, batch, phnno, email } = formData;
+  const { rollno, name, clas, batch, phnno, email, session } = formData;
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -41,15 +42,17 @@ const AddStudent = ({ setAlert, addStudent }) => {
         batch,
         email,
         phnno,
+        session,
       };
       //   console.log(date);
-      addVolunteer(data);
+      addStudent(data);
       setFormData({
         rollno: 0,
         name: '',
         clas: '',
         batch: '',
         phnno: 0,
+        session: '',
         email: '',
       });
     }
@@ -59,7 +62,7 @@ const AddStudent = ({ setAlert, addStudent }) => {
     <Fragment>
       <div className='row heading-bg bg-blue'>
         <div className='col-lg-3 col-md-4 col-sm-4 col-xs-12'>
-          <h5 className='txt-light'>Add Volunteer Form</h5>
+          <h5 className='txt-light'>Add Student Form</h5>
         </div>
 
         <div className='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
@@ -73,7 +76,7 @@ const AddStudent = ({ setAlert, addStudent }) => {
               </a>
             </li>
             <li className='active'>
-              <span>Volunteer</span>
+              <span>Student</span>
             </li>
           </ol>
         </div>
@@ -84,7 +87,7 @@ const AddStudent = ({ setAlert, addStudent }) => {
           <div className='panel panel-default card-view'>
             <div className='panel-heading'>
               <div className='pull-left'>
-                <h6 className='panel-title txt-dark'>Add Volunteer Form</h6>
+                <h6 className='panel-title txt-dark'>Add Student Form</h6>
               </div>
               <div className='clearfix'></div>
             </div>
@@ -170,13 +173,29 @@ const AddStudent = ({ setAlert, addStudent }) => {
                       />
                     </div>
                     <div className='form-group'>
+                      <label
+                        className='control-label mb-10 text-left'
+                        htmlFor='session'
+                      >
+                        Session
+                      </label>
+                      <input
+                        type='text'
+                        id='session'
+                        className='form-control rounded-input'
+                        placeholder='session'
+                        name='session'
+                        value={session}
+                        onChange={(e) => onChange(e)}
+                      />
+                    </div>
+                    <div className='form-group'>
                       <label className='control-label mb-10 text-left'>
                         Phone Number
                       </label>
                       <input
                         type='text'
                         placeholder=''
-                        // data-mask='99999-99999'
                         className='form-control rounded-input'
                         name='phnno'
                         value={phnno}

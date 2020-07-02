@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment, useLayoutEffect } from 'react';
 import { connect } from 'react-redux';
 import { getStudents, setCurrentStudent } from '../../actions/studentAction';
 import EditStudentService from './EditStudentService';
@@ -11,7 +11,7 @@ const EditStudent = ({ students, getStudents, setCurrentStudent }) => {
   }, []);
   return (
     <Fragment>
-      {volunteers !== null && volunteers.length > 0 && (
+      {students !== null && students.length > 0 && (
         <EditStudentService
           students={students}
           setCurrentStudent={setCurrentStudent}
