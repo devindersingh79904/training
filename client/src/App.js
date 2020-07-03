@@ -13,6 +13,7 @@ import setAuthToken from './utils/setAuthToken';
 import PrivateRoute from './component/routing/PrivateRoute';
 import { loadUser, setLoading } from './actions/authAction';
 import AssignDriveVol from './component/drive/AssignDriveVol';
+import AcceptDriveVol from './component/drive/AcceptDriveVol';
 import AddVolunteer from './component/volunteer/AddVolunteer';
 import AddDrive from './component/drive/AddDrive';
 import AddCompany from './component/Company/AddCompany';
@@ -69,16 +70,9 @@ function App() {
                   path='/assign-drive-vol'
                   component={AssignDriveVol}
                 />
-                <Route
-                  exact
-                  path='/mark-accepted'
-                  component={MarkAccepted}
-                />
-                <Route
-                  exact
-                  path='/mark-present'
-                  component={MarkPresent}
-                />
+
+                <Route exact path='/mark-accepted' component={AcceptDriveVol} />
+                <Route exact path='/mark-present' component={MarkPresent} />
                 {/* <Route exact path='/add-attendence' component={AddAttendence} /> */}
 
                 <Route

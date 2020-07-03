@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const VolunteerSchema = mongoose.Schema({
   rollno: {
@@ -36,20 +36,28 @@ const VolunteerSchema = mongoose.Schema({
     type: Number,
     defult: 0,
   },
-
-  workshopAssigned: {
+  present: {
     type: Number,
     defult: 0,
   },
-  workshopDone: {
-    type: Number,
-    defult: 0,
-  },
-  companies: [
+  presentArray: [
     {
       _id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "drives",
+        ref: 'drives',
+        unique: true,
+      },
+      name: {
+        type: String,
+      },
+    },
+  ],
+  dutiesAssignedArray: [
+    {
+      _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'drives',
+        unique: true,
       },
       name: {
         type: String,
@@ -62,6 +70,18 @@ const VolunteerSchema = mongoose.Schema({
       },
     },
   ],
+  dutiesAcceptedArray: [
+    {
+      _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'drives',
+        unique: true,
+      },
+      name: {
+        type: String,
+      },
+    },
+  ],
 });
 
-module.exports = mongoose.model("volunteers", VolunteerSchema);
+module.exports = mongoose.model('volunteers', VolunteerSchema);

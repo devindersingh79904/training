@@ -106,7 +106,9 @@ const MarkAccepted = ({
         <form>
           <div className='row heading-bg bg-blue'>
             <div className='col-lg-3 col-md-4 col-sm-4 col-xs-12'>
-              <h5 className='txt-light'>Change status of volunteer to accepted</h5>
+              <h5 className='txt-light'>
+                Change status of volunteer to accepted
+              </h5>
             </div>
             <div className='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
               <ol className='breadcrumb'>
@@ -219,10 +221,10 @@ const MarkAccepted = ({
   );
 };
 
-AssignDriveVol.propTypes = {
+MarkAccepted.propTypes = {
   getVolunteers: PropTypes.func.isRequired,
   getDrives: PropTypes.func.isRequired,
-  assignDriveVol: PropTypes.func.isRequired,
+  // assignDriveVol: PropTypes.func.isRequired,
   drives: PropTypes.array.isRequired,
   volunteers: PropTypes.array.isRequired,
 };
