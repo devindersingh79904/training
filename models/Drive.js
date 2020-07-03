@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const DriveSchema = mongoose.Schema({
   name: {
@@ -20,11 +20,45 @@ const DriveSchema = mongoose.Schema({
   description: {
     type: String,
   },
+  volunteersAssigned: [
+    {
+      _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'volunteers',
+      },
+      name: {
+        type: String,
+      },
+      clas: {
+        type: String,
+      },
+      rollno: {
+        type: Number,
+      },
+    },
+  ],
+  volunteersAccepted: [
+    {
+      _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'volunteers',
+      },
+      name: {
+        type: String,
+      },
+      clas: {
+        type: String,
+      },
+      rollno: {
+        type: Number,
+      },
+    },
+  ],
   volunteersOnDuty: [
     {
       _id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "volunteers",
+        ref: 'volunteers',
       },
       name: {
         type: String,
@@ -39,4 +73,4 @@ const DriveSchema = mongoose.Schema({
   ],
 });
 
-module.exports = mongoose.model("drive", DriveSchema);
+module.exports = mongoose.model('drive', DriveSchema);

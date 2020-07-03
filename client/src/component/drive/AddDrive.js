@@ -27,7 +27,7 @@ const AddDrive = ({
     type: '',
     description: '',
     date: '',
-    volunteersOnDuty: [],
+    volunteersAssigned: [],
   });
 
   const {
@@ -36,7 +36,7 @@ const AddDrive = ({
     type,
     description,
     date,
-    volunteersOnDuty,
+    volunteersAssigned,
     isCompany,
   } = formData;
 
@@ -80,14 +80,17 @@ const AddDrive = ({
     if (e.target.checked) {
       setFormData({
         ...formData,
-        [e.target.name]: [...formData.volunteersOnDuty, { _id, name, rollno }],
+        [e.target.name]: [
+          ...formData.volunteersAssigned,
+          { _id, name, rollno },
+        ],
       });
     } else {
       console.log('in else');
       console.log();
       setFormData({
         ...formData,
-        [e.target.name]: volunteersOnDuty.filter(
+        [e.target.name]: volunteersAssigned.filter(
           (volunteer) => volunteer._id != vol._id
         ),
       });
@@ -117,7 +120,7 @@ const AddDrive = ({
         type,
         description,
         date,
-        volunteersOnDuty,
+        volunteersAssigned,
       };
       addDrive(data);
       setFormData({
@@ -126,7 +129,7 @@ const AddDrive = ({
         type: '',
         description: '',
         date: '',
-        volunteersOnDuty: [],
+        volunteersAssigned: [],
       });
     }
   };
@@ -140,13 +143,11 @@ const AddDrive = ({
         <div className='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
           <ol className='breadcrumb'>
             <li>
-              <Link to='/'>
-                Home
-              </Link>
+              <Link to='/'>Home</Link>
             </li>
             <li>
               <Link className='active' to='#'>
-              <span>Add Drive</span>
+                <span>Add Drive</span>
               </Link>
             </li>
           </ol>

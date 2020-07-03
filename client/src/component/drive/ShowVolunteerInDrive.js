@@ -8,7 +8,7 @@ const ShowVolunteerInDrive = ({ volunteer, onCheckChange }) => {
         id={volunteer._id}
         type='checkbox'
         value={volunteer}
-        name='volunteersOnDuty'
+        name='volunteersAssigned'
         onChange={(e) => onCheckChange(e, volunteer)}
       />
       <label htmlFor={volunteer._id}>{volunteer.name}</label>

@@ -1,6 +1,12 @@
-import axios from "axios";
-import { setAlert } from "./alertAction";
-import { GET_DRIVES, ADD_DRIVE, DRIVE_ERROR, SET_CURRENT_DRIVE, GET_DRIVE } from "./types";
+import axios from 'axios';
+import { setAlert } from './alertAction';
+import {
+  GET_DRIVES,
+  ADD_DRIVE,
+  DRIVE_ERROR,
+  SET_CURRENT_DRIVE,
+  GET_DRIVE,
+} from './types';
 
 export const getDrives = () => async (dispatch) => {
   // if (localStorage.getItem('token')) {
@@ -8,7 +14,7 @@ export const getDrives = () => async (dispatch) => {
   // }
 
   try {
-    const res = await axios.get("http://localhost:5000/api/Drive");
+    const res = await axios.get('http://localhost:5000/api/Drive');
 
     // console.log(res.data);
     dispatch({
@@ -23,14 +29,15 @@ export const getDrives = () => async (dispatch) => {
 };
 
 export const addDrive = (body) => async (dispatch) => {
+  console.log(body);
   const config = {
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   };
   try {
     const res = await axios.post(
-      "http://localhost:5000/api/Drive",
+      'http://localhost:5000/api/Drive',
       body,
       config
     );
@@ -41,7 +48,7 @@ export const addDrive = (body) => async (dispatch) => {
     });
   } catch (err) {
     var errors = err.response.data;
-    dispatch(setAlert(errors.msg, "danger"));
+    dispatch(setAlert(errors.msg, 'danger'));
     dispatch({
       type: DRIVE_ERROR,
     });
@@ -70,6 +77,84 @@ export const getDrive = (id) => async (dispatch) => {
       payload: res.data,
     });
   } catch (err) {
+    dispatch({
+      type: DRIVE_ERROR,
+    });
+  }
+};
+
+export const assignDriveVol = (id, body) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  try {
+    const res = await axios.put(
+      `http://localhost:5000/api/Drive/assignDriveVol/${id}`,
+      body,
+      config
+    );
+    console.log(res);
+    dispatch({
+      type: ADD_DRIVE,
+      payload: res.data,
+    });
+  } catch (err) {
+    var errors = err.response.data;
+    dispatch(setAlert(errors.msg, 'danger'));
+    dispatch({
+      type: DRIVE_ERROR,
+    });
+  }
+};
+
+export const acceptDriveVol = (id, body) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  try {
+    const res = await axios.put(
+      `http://localhost:5000/api/Drive/assignDriveVol/${id}`,
+      body,
+      config
+    );
+    console.log(res);
+    dispatch({
+      type: ADD_DRIVE,
+      payload: res.data,
+    });
+  } catch (err) {
+    var errors = err.response.data;
+    dispatch(setAlert(errors.msg, 'danger'));
+    dispatch({
+      type: DRIVE_ERROR,
+    });
+  }
+};
+
+export const doneDriveVol = (id, body) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  try {
+    const res = await axios.put(
+      `http://localhost:5000/api/Drive/assignDriveVol/${id}`,
+      body,
+      config
+    );
+    console.log(res);
+    dispatch({
+      type: ADD_DRIVE,
+      payload: res.data,
+    });
+  } catch (err) {
+    var errors = err.response.data;
+    dispatch(setAlert(errors.msg, 'danger'));
     dispatch({
       type: DRIVE_ERROR,
     });
