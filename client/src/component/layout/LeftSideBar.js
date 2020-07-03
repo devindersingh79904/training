@@ -33,6 +33,21 @@ const LeftSideBar = () => {
                 <span className='icon-plus mr-10'></span>Add Company
               </Link>
             </li>
+            <li>
+              <Link to='/assign-drive-vol'>
+                <span className='icon-plus mr-10'></span>Assign Volunteer
+              </Link>
+            </li>
+            <li>
+              <Link to='/mark-accepted'>
+                <span className='icon-plus mr-10'></span>Change to accepted
+              </Link>
+            </li>
+            <li>
+              <Link to='/mark-present'>
+                <span className='icon-plus mr-10'></span>Change to present
+              </Link>
+            </li>
           </ul>
         </li>
 

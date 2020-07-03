@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const AssignDriveVol = ({
+const MarkPresent = ({
   getVolunteers,
   getDrives,
   assignDriveVol,
@@ -106,7 +106,7 @@ const AssignDriveVol = ({
         <form>
           <div className='row heading-bg bg-blue'>
             <div className='col-lg-3 col-md-4 col-sm-4 col-xs-12'>
-              <h5 className='txt-light'>Assign Volunteer for Drive</h5>
+              <h5 className='txt-light'>Change status of volunteer to Present</h5>
             </div>
             <div className='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
               <ol className='breadcrumb'>
@@ -115,7 +115,7 @@ const AssignDriveVol = ({
                 </li>
                 <li>
                   <Link to='#'>
-                    <span>Assign Duty</span>
+                    <span>Mark Present</span>
                   </Link>
                 </li>
               </ol>
@@ -127,7 +127,7 @@ const AssignDriveVol = ({
                 <div className='panel-heading'>
                   <div className='pull-left'>
                     <h6 className='panel-title txt-dark'>
-                      Assign Duty to Volunteer
+                      Change status of Duty
                     </h6>
                   </div>
                   <div className='clearfix'></div>
@@ -235,4 +235,4 @@ export default connect(mapStateToProps, {
   getDrives,
   getVolunteers,
   assignDriveVol,
-})(AssignDriveVol);
+})(MarkPresent);

@@ -27,6 +27,8 @@ import AddStudent from './component/student/AddStudent';
 import ViewStudents from './component/student/ViewStudents';
 import EditStudent from './component/student/EditStudent';
 import Error404 from './component/pages/Eror404';
+import MarkAccepted from './component/drive/MarkAccepted';
+import MarkPresent from './component/drive/MarkPresent';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -66,6 +68,16 @@ function App() {
                   exact
                   path='/assign-drive-vol'
                   component={AssignDriveVol}
+                />
+                <Route
+                  exact
+                  path='/mark-accepted'
+                  component={MarkAccepted}
+                />
+                <Route
+                  exact
+                  path='/mark-present'
+                  component={MarkPresent}
                 />
                 {/* <Route exact path='/add-attendence' component={AddAttendence} /> */}
 
