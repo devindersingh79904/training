@@ -34,18 +34,18 @@ const AssignDriveVol = ({
     return 0;
   });
 
-  drives.sort(function (a, b) {
-    if (a.name.toUpperCase() < b.name.toUpperCase()) {
-      return -1;
-    }
-    if (a.name.toUpperCase() > b.name.toUpperCase()) {
-      return 1;
-    }
-    return 0;
-  });
+  // drives.sort(function (a, b) {
+  //   if (a.name.toUpperCase() < b.name.toUpperCase()) {
+  //     return -1;
+  //   }
+  //   if (a.name.toUpperCase() > b.name.toUpperCase()) {
+  //     return 1;
+  //   }
+  //   return 0;
+  // });
 
   const onCompanyChange = (e) => {
-    var sel = drives.filter((comp) => comp.name == e.target.value);
+    var sel = drives.filter((comp) => comp._id == e.target.value);
     console.log(sel[0]);
     setFormData({
       ...formData,
@@ -78,9 +78,10 @@ const AssignDriveVol = ({
   };
 
   const onSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     console.log(id);
-    console.log(formData);
+    console.log(assignVolunteers);
+    assignDriveVol(id,{assignVolunteers});
   };
 
   function containsObject(obj, list) {
@@ -143,7 +144,7 @@ const AssignDriveVol = ({
                       <option value=''>Select Drive Name</option>
                       {drives &&
                         drives.map((drive) => {
-                          return <option key={drive._id}>{drive.name}</option>;
+                        return <option key={drive._id} value={drive._id}>{drive.name}+" "+{drive.date}</option>;
                         })}
                     </select>
                     <button onClick={(e) => onSubmit(e)}>Submit</button>

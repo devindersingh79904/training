@@ -76,13 +76,13 @@ const AddDrive = ({
   const onCheckChange = (e, vol) => {
     console.log(e.target.checked);
     console.log(vol);
-    const { _id, name, rollno } = vol;
+    const { _id, name, rollno ,clas} = vol;
     if (e.target.checked) {
       setFormData({
         ...formData,
         [e.target.name]: [
           ...formData.volunteersAssigned,
-          { _id, name, rollno },
+          { _id, name, rollno,clas },
         ],
       });
     } else {

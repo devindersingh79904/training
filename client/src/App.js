@@ -30,6 +30,7 @@ import EditStudent from './component/student/EditStudent';
 import Error404 from './component/pages/Eror404';
 import MarkAccepted from './component/drive/MarkAccepted';
 import MarkPresent from './component/drive/MarkPresent';
+import DoneDriveVol from './component/drive/DoneDriveVol';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -72,7 +73,7 @@ function App() {
                 />
 
                 <Route exact path='/mark-accepted' component={AcceptDriveVol} />
-                <Route exact path='/mark-present' component={MarkPresent} />
+                <Route exact path='/mark-present' component={DoneDriveVol} />
                 {/* <Route exact path='/add-attendence' component={AddAttendence} /> */}
 
                 <Route

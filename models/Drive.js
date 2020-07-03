@@ -42,33 +42,35 @@ const DriveSchema = mongoose.Schema({
       _id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'volunteers',
-      },
-      name: {
-        type: String,
-      },
-      clas: {
-        type: String,
-      },
-      rollno: {
-        type: Number,
-      },
+      }
+      // ,
+      // name: {
+      //   type: String,
+      // },
+      // clas: {
+      //   type: String,
+      // },
+      // rollno: {
+      //   type: Number,
+      // },
     },
   ],
-  volunteersOnDuty: [
+  volunteersPresent: [
     {
       _id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'volunteers',
-      },
-      name: {
-        type: String,
-      },
-      clas: {
-        type: String,
-      },
-      rollno: {
-        type: Number,
-      },
+      }
+      // ,
+      // name: {
+      //   type: String,
+      // },
+      // clas: {
+      //   type: String,
+      // },
+      // rollno: {
+      //   type: Number,
+      // },
     },
   ],
 });

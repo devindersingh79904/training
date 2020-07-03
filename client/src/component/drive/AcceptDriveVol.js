@@ -28,7 +28,7 @@ const AcceptDriveVol = ({ getDrives, acceptDriveVol, drives }) => {
   });
 
   const onCompanyChange = (e) => {
-    var sel = drives.filter((comp) => comp.name == e.target.value);
+    var sel = drives.filter((comp) => comp._id === e.target.value);
     console.log(sel[0]);
     setFormData({
       ...formData,
@@ -59,12 +59,13 @@ const AcceptDriveVol = ({ getDrives, acceptDriveVol, drives }) => {
   };
 
   const onSubmit = (e) => {
-    e.preventDefault();
+  //  e.preventDefault();
     console.log(id);
     console.log(formData);
+    acceptDriveVol(id,{acceptVolunteers})
   };
 
-  function containsObject(obj, list) {
+  function containsObject(obj) {
     var i;
     // console.log(drive);
     var volunteersAccepted = [];
@@ -127,7 +128,7 @@ const AcceptDriveVol = ({ getDrives, acceptDriveVol, drives }) => {
                       <option value=''>Select Drive Name</option>
                       {drives &&
                         drives.map((drive) => {
-                          return <option key={drive._id}>{drive.name}</option>;
+                          return <option key={drive._id} value={drive._id}>{drive.name + ' ' + drive.date}</option>;
                         })}
                     </select>
                     <button onClick={(e) => onSubmit(e)}>Submit</button>
@@ -139,14 +140,14 @@ const AcceptDriveVol = ({ getDrives, acceptDriveVol, drives }) => {
                               <th>Rollno</th>
                               <th>Full Name</th>
                               <th>Class</th>
-                              <th>Assign</th>
+                              <th>Accept</th>
                             </tr>
                           </thead>
                           <tbody>
                             {assignVolunteers &&
                               assignVolunteers.length > 0 &&
                               assignVolunteers.map((volunteer) => {
-                                if (containsObject(volunteer, drive)) {
+                                if (containsObject(volunteer)) {
                                   return (
                                     <tr key={volunteer._id}>
                                       <td>{volunteer.rollno}</td>

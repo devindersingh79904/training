@@ -1,29 +1,30 @@
-const express = require('express');
-const Drive = require('../models/Drive');
-const config = require('config');
+const express = require("express");
+const Drive = require("../models/Drive");
+const Volunteer = require("../models/Volunteer");
+const Student = require("../models/Student");
+const config = require("config");
 const router = express.Router();
-const auth = require('../middleware/auth');
-const Volunteer = require('../models/Volunteer');
+const auth = require("../middleware/auth");
 
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     result = await Drive.find();
     return res.json(result);
   } catch (err) {
-    res.status(501).json({ msg: 'Server error' });
+    res.status(501).json({ msg: "Server error" });
   }
 });
 
-router.get('/:id', async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     result = await Drive.findById(req.params.id);
     return res.json(result);
   } catch (err) {
-    res.status(501).json({ msg: 'Server error' });
+    res.status(501).json({ msg: "Server error" });
   }
 });
 
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   // if (req.user.role != "Sadmin") {
   //   return res.status(401).json({ msg: "You are not Authorized user" });
   // }
@@ -33,7 +34,7 @@ router.post('/', async (req, res) => {
     date,
     type,
     description,
-    volunteersOnDuty,
+    volunteersPresent,
     volunteersAssigned,
     volunteersAccepted,
   } = req.body;
@@ -43,7 +44,7 @@ router.post('/', async (req, res) => {
     //console.log("Duties : " + dutiesAssigned);
     var companyName = await Drive.findOne({ date, type });
     // if (companyName) {
-    //   return res.status(401).json({ msg: 'Company already exists' });
+    //   return res.status(401).json({ msg: "Company already exists" });
     // }
     var newCompany = new Drive({
       name,
@@ -51,7 +52,7 @@ router.post('/', async (req, res) => {
       date,
       type,
       description,
-      volunteersOnDuty,
+      volunteersPresent,
       volunteersAssigned,
       volunteersAccepted,
     });
@@ -59,24 +60,247 @@ router.post('/', async (req, res) => {
     await newCompany.save();
     return res.json({ newCompany });
   } catch (error) {
-    console.error('error ', error.message);
-    res.status(501).json({ msg: 'Server error' });
+    console.error("error ", error.message);
+    res.status(501).json({ msg: "Server error" });
   }
 });
+
+router.put("/assignDriveVol/:id", async (req, res) => {
+  console.log(req.body)
+  // if (req.user.role != "Sadmin") {
+  //   return res.status(401).json({ msg: "You are not Authorized user" });
+  // }
+  try {
+    var drive = await Drive.findById(req.params.id);
+    if (!drive) {
+      return res.json({ msg: "Drive not found." });
+    }
+
+    const compdetail = {
+      _id: drive._id,
+      name: drive.name,
+      date: drive.date,
+      type: drive.type,
+    };
+    const volunteersAssigned = req.body.assignVolunteers;
+
+    volunteersAssigned.map(async (vol) => {
+      const v = await Volunteer.findById(vol._id);
+      console.log(v);
+      const voldetail = {
+        _id: v._id,
+        name: v.name,
+        clas: v.clas,
+        rollno: v.rollno,
+      };
+      await Drive.findByIdAndUpdate(req.params.id, {
+        $push: { volunteersAssigned: voldetail },
+      });
+
+      await Volunteer.findByIdAndUpdate(vol._id, {
+        $push: { dutiesAssignedArray: compdetail },
+      });
+    });
+    return res.json(volunteersAssigned);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ msg: "Server error" });
+  }
+});
+
+router.put("/acceptDriveVol/:id", async (req, res) => {
+  console.log("I am in accept drive")
+  console.log("id "+req.params.id)
+  // if (req.user.role != "Sadmin") {
+  //   return res.status(401).json({ msg: "You are not Authorized user" });
+  // }
+  try {
+    var drive = await Drive.findById(req.params.id);
+    console.log(req.params.id);
+    if (!drive) {
+      return res.json({ msg: "Drive not found." });
+    }
+
+    const compdetail = {
+      _id: drive._id
+      // ,
+      // name: drive.name,
+      // date: drive.date,
+      // type: drive.type,
+    };
+    // console.log(compdetail);
+    const volunteersAccepted = req.body.acceptVolunteers;
+
+    volunteersAccepted.map(async (vol) => {
+      const v = await Volunteer.findById(vol._id);
+      console.log(v);
+      const voldetail = {
+        _id: v._id
+        // ,
+        // name: v.name,
+        // clas: v.clas,
+        // rollno: v.rollno,
+      };
+      await Drive.findByIdAndUpdate(req.params.id, {
+        $push: { volunteersAccepted: voldetail },
+      });
+
+      await Volunteer.findByIdAndUpdate(vol._id, {
+        $push: { dutiesAcceptedArray: compdetail },
+      });
+    });
+    return res.json({msg:"Success Drive accept "});
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ msg: "Server error" });
+  }
+});
+
+router.put("/presentDriveVol/:id", async (req, res) => {
+  console.log(req.body)
+  // if (req.user.role != "Sadmin") {
+  //   return res.status(401).json({ msg: "You are not Authorized user" });
+  // }
+  try {
+    var drive = await Drive.findById(req.params.id);
+    if (!drive) {
+      return res.json({ msg: "Drive not found." });
+    }
+
+    const compdetail = {
+      _id: drive._id
+      // ,
+      // name: drive.name,
+      // date: drive.date,
+      // type: drive.type,
+    };
+    const volunteersPresent = req.body.doneVolunteers;
+
+    volunteersPresent.map(async (vol) => {
+      const v = await Volunteer.findById(vol._id);
+      console.log(v);
+      const voldetail = {
+        _id: v._id
+        // ,
+        // name: v.name,
+        // clas: v.clas,
+        // rollno: v.rollno,
+      };
+      await Drive.findByIdAndUpdate(req.params.id, {
+        $push: { volunteersPresent: voldetail },
+      });
+
+      await Volunteer.findByIdAndUpdate(vol._id, {
+        $push: { presentArray: compdetail },
+      });
+    });
+    return res.json(volunteersPresent);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ msg: "Server error" });
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  // if (req.user.role != "Sadmin") {
+  //   return res.status(401).json({ msg: "You are not Authorized user" });
+  // }
+
+  try {
+    var comp = await Drive.findById(req.params.id);
+    if (!comp) {
+      return res.status(401).json("No Company found.");
+    }
+    const compdetail = {
+      _id: comp._id,
+      name: comp.name,
+      date: comp.date,
+      type: comp.type,
+    };
+    const volunteersOnDuty = comp.volunteersOnDuty;
+    const volunteersAccepted = comp.volunteersAccepted;
+    const volunteersAssigned = comp.volunteersAssigned;
+    volunteersOnDuty.map( async (vol) => {
+      console.log(vol._id);
+      await Volunteer.findByIdAndUpdate(vol._id, {
+        $pull: { presentArray: compdetail },
+      });
+    });
+
+    volunteersAccepted.map(async (vol) => {
+      console.log(vol._id);
+      await Volunteer.findByIdAndUpdate(vol._id, {
+        $pull: { dutiesAcceptedArray: compdetail },
+      });
+    });
+
+    volunteersAssigned.map(async (vol) => {
+      console.log(vol._id);
+      await Volunteer.findByIdAndUpdate(vol._id, {
+        $pull: { dutiesAssignedArray: compdetail },
+      });
+    });
+
+    await Drive.findByIdAndRemove(req.params.id);
+    res.json({ msg: "deleted Sucessfully" });
+  } catch (error) {
+    console.error(error.message);
+    res.status(501).json({ msg: "Server error . " });
+  }
+});
+
+module.exports = router;
+
+
+
+
+// const express = require('express');
+// const Drive = require('../models/Drive');
+// const config = require('config');
+// const router = express.Router();
+// const auth = require('../middleware/auth');
+// const Volunteer = require('../models/Volunteer');
+
+// router.get('/', async (req, res) => {
+//   try {
+//     result = await Drive.find();
+//     return res.json(result);
+//   } catch (err) {
+//     res.status(501).json({ msg: 'Server error' });
+//   }
+// });
+
+// router.get('/:id', async (req, res) => {
+//   try {
+//     result = await Drive.findById(req.params.id);
+//     return res.json(result);
+//   } catch (err) {
+//     res.status(501).json({ msg: 'Server error' });
+//   }
+// });
 
 // router.post('/', async (req, res) => {
 //   // if (req.user.role != "Sadmin") {
 //   //   return res.status(401).json({ msg: "You are not Authorized user" });
 //   // }
-//   const { name, email, date, type, description, volunteersOnDuty } = req.body;
+//   const {
+//     name,
+//     email,
+//     date,
+//     type,
+//     description,
+//     volunteersOnDuty,
+//     volunteersAssigned,
+//     volunteersAccepted,
+//   } = req.body;
 
 //   // console.log(name, email);
 //   try {
 //     //console.log("Duties : " + dutiesAssigned);
 //     var companyName = await Drive.findOne({ date, type });
-//     if (companyName) {
-//       return res.status(401).json({ msg: 'Company already exists' });
-//     }
+//     // if (companyName) {
+//     //   return res.status(401).json({ msg: 'Company already exists' });
+//     // }
 //     var newCompany = new Drive({
 //       name,
 //       email,
@@ -84,48 +308,80 @@ router.post('/', async (req, res) => {
 //       type,
 //       description,
 //       volunteersOnDuty,
-//     });
-
-//     const compdetail = {
-//       _id: newCompany._id,
-//       name: newCompany.name,
-//       date: newCompany.date,
-//       type: newCompany.type,
-//     };
-//     volunteersOnDuty.map(async (vol) => {
-//       console.log(vol._id);
-//       await Volunteer.findByIdAndUpdate(vol._id, {
-//         $push: { companies: compdetail },
-//       });
+//       volunteersAssigned,
+//       volunteersAccepted,
 //     });
 
 //     await newCompany.save();
-//     return res.json(newCompany);
+//     return res.json({ newCompany });
 //   } catch (error) {
 //     console.error('error ', error.message);
 //     res.status(501).json({ msg: 'Server error' });
 //   }
 // });
 
-router.delete('/:id', async (req, res) => {
-  if (req.user.role != 'Sadmin') {
-    return res.status(401).json({ msg: 'You are not Authorized user' });
-  }
+// // router.post('/', async (req, res) => {
+// //   // if (req.user.role != "Sadmin") {
+// //   //   return res.status(401).json({ msg: "You are not Authorized user" });
+// //   // }
+// //   const { name, email, date, type, description, volunteersOnDuty } = req.body;
 
-  // const _id = req.params.id;
-  // console.log("params : ", _id);
+// //   // console.log(name, email);
+// //   try {
+// //     //console.log("Duties : " + dutiesAssigned);
+// //     var companyName = await Drive.findOne({ date, type });
+// //     if (companyName) {
+// //       return res.status(401).json({ msg: 'Company already exists' });
+// //     }
+// //     var newCompany = new Drive({
+// //       name,
+// //       email,
+// //       date,
+// //       type,
+// //       description,
+// //       volunteersOnDuty,
+// //     });
 
-  try {
-    var comp = await Drive.findById(req.params.id);
-    if (!comp) {
-      return res.status(401).json('No Company found.');
-    }
-    await Drive.findByIdAndRemove(req.params.id);
-    res.json({ msg: 'deleted Sucessfully' });
-  } catch (error) {
-    console.error(error.message);
-    res.status(501).json({ msg: 'Server error . ' });
-  }
-});
+// //     const compdetail = {
+// //       _id: newCompany._id,
+// //       name: newCompany.name,
+// //       date: newCompany.date,
+// //       type: newCompany.type,
+// //     };
+// //     volunteersOnDuty.map(async (vol) => {
+// //       console.log(vol._id);
+// //       await Volunteer.findByIdAndUpdate(vol._id, {
+// //         $push: { companies: compdetail },
+// //       });
+// //     });
 
-module.exports = router;
+// //     await newCompany.save();
+// //     return res.json(newCompany);
+// //   } catch (error) {
+// //     console.error('error ', error.message);
+// //     res.status(501).json({ msg: 'Server error' });
+// //   }
+// // });
+
+// router.delete('/:id', async (req, res) => {
+//   if (req.user.role != 'Sadmin') {
+//     return res.status(401).json({ msg: 'You are not Authorized user' });
+//   }
+
+//   // const _id = req.params.id;
+//   // console.log("params : ", _id);
+
+//   try {
+//     var comp = await Drive.findById(req.params.id);
+//     if (!comp) {
+//       return res.status(401).json('No Company found.');
+//     }
+//     await Drive.findByIdAndRemove(req.params.id);
+//     res.json({ msg: 'deleted Sucessfully' });
+//   } catch (error) {
+//     console.error(error.message);
+//     res.status(501).json({ msg: 'Server error . ' });
+//   }
+// });
+
+// module.exports = router;

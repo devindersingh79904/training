@@ -46,10 +46,11 @@ const VolunteerSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'drives',
         unique: true,
-      },
-      name: {
-        type: String,
-      },
+      }
+      // ,
+      // name: {
+      //   type: String,
+      // },
     },
   ],
   dutiesAssignedArray: [
@@ -76,10 +77,11 @@ const VolunteerSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'drives',
         unique: true,
-      },
-      name: {
-        type: String,
-      },
+      }
+      // ,
+      // name: {
+      //   type: String,
+      // },
     },
   ],
 });
