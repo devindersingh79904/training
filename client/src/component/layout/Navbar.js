@@ -100,7 +100,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
             alt='brand'
           />
         </Link>
-        <ul className='nav navbar-right top-nav pull-right'>
+        <ul className='nav navbar-right pull-right'>
           {isAuthenticated && !loading ? authRoutes : guestRoutes}
         </ul>
       </nav>
