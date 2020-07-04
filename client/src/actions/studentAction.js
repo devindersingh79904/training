@@ -1,5 +1,5 @@
-import axios from "axios";
-import { setAlert } from "./alertAction";
+import axios from 'axios';
+import { setAlert } from './alertAction';
 import {
   STUDENTS_ERROR,
   ADD_STUDENT,
@@ -8,7 +8,7 @@ import {
   DELETE_STUDENT,
   UPDATE_STUDENT,
   SET_CURRENT_STUDENT,
-} from "../actions/types";
+} from '../actions/types';
 
 export const getStudents = () => async (dispatch) => {
   // if (localStorage.getItem('token')) {
@@ -16,7 +16,8 @@ export const getStudents = () => async (dispatch) => {
   // }
 
   try {
-    const res = await axios.get("http://localhost:5000/api/Student");
+    const res = await axios.get('http://localhost:5000/api/Student');
+    console.log();
     dispatch({
       type: GET_STUDENTS,
       payload: res.data,
@@ -56,7 +57,7 @@ export const setCurrentStudent = (body) => (dispatch) => {
 export const updateStudent = (body) => async (dispatch) => {
   const config = {
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   };
   try {
@@ -71,7 +72,7 @@ export const updateStudent = (body) => async (dispatch) => {
     });
   } catch (err) {
     var errors = err.response.data;
-    dispatch(setAlert(errors.msg, "danger"));
+    dispatch(setAlert(errors.msg, 'danger'));
     dispatch({
       type: STUDENTS_ERROR,
     });
@@ -81,12 +82,12 @@ export const updateStudent = (body) => async (dispatch) => {
 export const addStudent = (body) => async (dispatch) => {
   const config = {
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   };
   try {
     const res = await axios.post(
-      "http://localhost:5000/api/Student",
+      'http://localhost:5000/api/Student',
       body,
       config
     );
@@ -97,7 +98,7 @@ export const addStudent = (body) => async (dispatch) => {
     dispatch(setAlert('added Successfully', 'success'));
   } catch (err) {
     var errors = err.response.data;
-    dispatch(setAlert(errors.msg, "danger"));
+    dispatch(setAlert(errors.msg, 'danger'));
     dispatch({
       type: STUDENTS_ERROR,
     });

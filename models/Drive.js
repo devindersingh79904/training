@@ -42,17 +42,7 @@ const DriveSchema = mongoose.Schema({
       _id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'volunteers',
-      }
-      // ,
-      // name: {
-      //   type: String,
-      // },
-      // clas: {
-      //   type: String,
-      // },
-      // rollno: {
-      //   type: Number,
-      // },
+      },
     },
   ],
   volunteersPresent: [
@@ -60,17 +50,39 @@ const DriveSchema = mongoose.Schema({
       _id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'volunteers',
-      }
-      // ,
-      // name: {
-      //   type: String,
-      // },
-      // clas: {
-      //   type: String,
-      // },
-      // rollno: {
-      //   type: Number,
-      // },
+      },
+    },
+  ],
+
+  studentsAttended: [
+    {
+      _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'student',
+      },
+      name: {
+        type: String,
+      },
+      clas: {
+        type: String,
+      },
+      batch: {
+        type: String,
+      },
+      rollno: {
+        type: Number,
+      },
+    },
+  ],
+  selectedStudents: [
+    {
+      _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'student',
+      },
+      package: {
+        type: String,
+      },
     },
   ],
 });

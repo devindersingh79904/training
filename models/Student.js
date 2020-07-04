@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const StudentSchema = mongoose.Schema({
   name: {
@@ -29,11 +29,11 @@ const StudentSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  attendedCompanies: [
+  driveAttended: [
     {
       _id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "companies",
+        ref: 'drive',
       },
       name: {
         type: String,
@@ -46,23 +46,17 @@ const StudentSchema = mongoose.Schema({
       },
     },
   ],
-  selected: [
+  driveShortlisted: [
     {
       _id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "company",
+        ref: 'drive',
       },
-      name: {
-        type: String,
-      },
-      date: {
-        type: Date,
-      },
-      type: {
+      package: {
         type: String,
       },
     },
   ],
 });
 
-module.exports = mongoose.model("student", StudentSchema);
+module.exports = mongoose.model('student', StudentSchema);

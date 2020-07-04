@@ -9,6 +9,8 @@ import {
   DRIVE_ERROR,
   SET_CURRENT_DRIVE,
   GET_DRIVE,
+  DRIVE_ATTENDED_STD,
+  DRIVE_SHORTLISTED_STD,
 } from './types';
 
 export const getDrives = () => async (dispatch) => {
@@ -119,7 +121,7 @@ export const acceptDriveVol = (id, body) => async (dispatch) => {
       'Content-Type': 'application/json',
     },
   };
-  const {acceptVolunteers} = body;
+  const { acceptVolunteers } = body;
   try {
     const res = await axios.put(
       `http://localhost:5000/api/Drive/acceptDriveVol/${id}`,
@@ -129,7 +131,7 @@ export const acceptDriveVol = (id, body) => async (dispatch) => {
     console.log(res);
     dispatch({
       type: DRIVE_ACCEPT_VOL,
-      payload: {id,acceptVolunteers}
+      payload: { id, acceptVolunteers },
     });
   } catch (err) {
     var errors = err.response.data;
@@ -155,6 +157,58 @@ export const doneDriveVol = (id, body) => async (dispatch) => {
     console.log(res);
     dispatch({
       type: DRIVE_DONE_VOL,
+      payload: res.data,
+    });
+  } catch (err) {
+    var errors = err.response.data;
+    dispatch(setAlert(errors.msg, 'danger'));
+    dispatch({
+      type: DRIVE_ERROR,
+    });
+  }
+};
+
+export const attendedDriveStd = (id, body) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  try {
+    const res = await axios.put(
+      `http://localhost:5000/api/Drive/attendDriveStd/${id}`,
+      body,
+      config
+    );
+    console.log(res);
+    dispatch({
+      type: DRIVE_ATTENDED_STD,
+      payload: res.data,
+    });
+  } catch (err) {
+    var errors = err.response.data;
+    dispatch(setAlert(errors.msg, 'danger'));
+    dispatch({
+      type: DRIVE_ERROR,
+    });
+  }
+};
+
+export const shortlistedDriveStd = (id, body) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  try {
+    const res = await axios.put(
+      `http://localhost:5000/api/Drive/selectDriveStd/${id}`,
+      body,
+      config
+    );
+    console.log(res);
+    dispatch({
+      type: DRIVE_ATTENDED_STD,
       payload: res.data,
     });
   } catch (err) {

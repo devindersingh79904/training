@@ -31,6 +31,8 @@ import Error404 from './component/pages/Eror404';
 import MarkAccepted from './component/drive/MarkAccepted';
 import MarkPresent from './component/drive/MarkPresent';
 import DoneDriveVol from './component/drive/DoneDriveVol';
+import AttendedDriveStudents from './component/drive/AttendedDriveStudents';
+import ShortlistedDriveStudent from './component/drive/ShortlistedDriveStudent';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -99,6 +101,16 @@ function App() {
                 <Route exact path='/view-companys' component={ViewCompanys} />
                 <Route exact path='/edit-drives' component={EditDrives} />
                 <Route exact path='/edit-students' component={EditStudent} />
+                <Route
+                  exact
+                  path='/attend-drive-students'
+                  component={AttendedDriveStudents}
+                />
+                <Route
+                  exact
+                  path='/shorlisted-drive-students'
+                  component={ShortlistedDriveStudent}
+                />
                 <Route
                   exact
                   path='/edit-volunteers'
