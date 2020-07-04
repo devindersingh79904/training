@@ -108,6 +108,7 @@ export const addVolunteer = (body) => async (dispatch) => {
       type: ADD_VOLUNTEER,
       payload: res.data,
     });
+    dispatch(setAlert('added Successfully', 'success'));
   } catch (err) {
     var errors = err.response.data;
     dispatch(setAlert(errors.msg, 'danger'));

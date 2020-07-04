@@ -8,14 +8,10 @@ const EditVolunteerModel = ({ id, vol, updateVolunteer }) => {
   const [formData, setFormData] = useState({
     batch: '',
     clas: '',
-    dutiesAccepted: 0,
-    dutiesAssigned: 0,
     email: '',
     name: '',
     phnno: 0,
     rollno: 0,
-    workshopAssigned: 0,
-    workshopDone: 0,
     _id: '',
   });
   //   const { rollno, name, clas, batch, phnno, email } = formData;
@@ -42,10 +38,6 @@ const EditVolunteerModel = ({ id, vol, updateVolunteer }) => {
     phnno,
     batch,
     clas,
-    dutiesAccepted,
-    dutiesAssigned,
-    workshopAssigned,
-    workshopDone,
   } = formData;
 
   console.log(formData);
@@ -93,157 +85,130 @@ const EditVolunteerModel = ({ id, vol, updateVolunteer }) => {
                 />
               </div>
             </div>
-            <div className='form-group required'>
-              <label htmlFor='course' className='col-sm-3 control-label'>
-                Course
-              </label>
-              <div className='col-sm-9'>
-                <input
-                  type='text'
-                  className='form-control'
-                  id='course'
-                  placeholder='Course'
-                  name='clas'
-                  value={clas}
-                  onChange={(e) => onChange(e)}
-                  required
-                />
-              </div>
-            </div>
+
+
+
+
+
+
             <div className='form-group'>
-              <label htmlFor='batch' className='col-sm-3 control-label'>
+              <label
+                className='col-sm-3 control-label'
+                htmlFor='class'
+              >
                 Batch
-              </label>
+                        </label>
               <div className='col-sm-9'>
-                <input
-                  type='text'
-                  className='form-control'
+                <select
                   id='batch'
+                  className='form-control rounded-input'
                   name='batch'
                   value={batch}
                   onChange={(e) => onChange(e)}
-                  placeholder='Batch'
-                />
+                >
+                  <option value=''>Select</option>
+
+                  <option value='Morning'>Morning</option>
+                  <option value='Evening'>Evening</option>
+
+                </select>
               </div>
-            </div>
-            <div className='form-group'>
-              <label htmlFor='phnno' className='col-sm-3 control-label'>
-                Phone Number
+              </div>
+
+
+
+              <div className='form-group'>
+                <label
+                  className='col-sm-3 control-label'
+                  htmlFor='class'
+                >
+                  Class
+                        </label>
+                <div className='col-sm-9'>
+                  <select
+                    id='class'
+                    className='form-control rounded-input'
+                    name='clas'
+                    value={clas}
+                    onChange={(e) => onChange(e)}
+                  >
+                    <option value=''>Select</option>
+
+                    <option value='MCA'>MCA</option>
+                    <option value='MSC'>MSC</option>
+
+                  </select>
+                </div>
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div className='form-group'>
+                <label htmlFor='phnno' className='col-sm-3 control-label'>
+                  Phone Number
               </label>
-              <div className='col-sm-9'>
-                <input
-                  type='text'
-                  className='form-control'
-                  id='phnno'
-                  name='phhno'
-                  value={phnno}
-                  onChange={(e) => onChange(e)}
-                  placeholder='Phone Number'
-                />
+                <div className='col-sm-9'>
+                  <input
+                    type='text'
+                    className='form-control'
+                    id='phnno'
+                    name='phnno'
+                    value={phnno}
+                    onChange={(e) => onChange(e)}
+                    placeholder='Phone Number'
+                  />
+                </div>
               </div>
-            </div>
-            <div className='form-group'>
-              <label htmlFor='email' className='col-sm-3 control-label'>
-                Email
+              <div className='form-group'>
+                <label htmlFor='email' className='col-sm-3 control-label'>
+                  Email
               </label>
-              <div className='col-sm-9'>
-                <input
-                  type='text'
-                  className='form-control'
-                  id='email'
-                  name='email'
-                  value={email}
-                  onChange={(e) => onChange(e)}
-                  placeholder='Email'
-                />
+                <div className='col-sm-9'>
+                  <input
+                    type='text'
+                    className='form-control'
+                    id='email'
+                    name='email'
+                    value={email}
+                    onChange={(e) => onChange(e)}
+                    placeholder='Email'
+                  />
+                </div>
               </div>
             </div>
-            <div className='form-group text-center'>
-              <label htmlFor='assigned' className='col-sm-3 control-label'>
-                Assigned
-              </label>
-              <div className='col-sm-9'>
-                <input
-                  type='text'
-                  className='text-center text-danger form-control-xs'
-                  id='assigned'
-                  name='dutiesAssigned'
-                  value={dutiesAssigned}
-                  onChange={(e) => onChange(e)}
-                  placeholder='Assigned'
-                />
-              </div>
-            </div>
-            <div className='form-group text-center'>
-              <label htmlFor='accepted' className='col-sm-3 control-label'>
-                Accepted
-              </label>
-              <div className='col-sm-9'>
-                <input
-                  type='text'
-                  className='text-center text-danger form-control-xs'
-                  id='accepted'
-                  name='dutiesAccepted'
-                  value={dutiesAccepted}
-                  onChange={(e) => onChange(e)}
-                  placeholder='Accepted'
-                />
-              </div>
-            </div>
-            <div className='form-group text-center'>
-              <label htmlFor='accepted' className='col-sm-3 control-label'>
-                Workshop assinnged
-              </label>
-              <div className='col-sm-9'>
-                <input
-                  type='text'
-                  className='text-center text-danger form-control-xs'
-                  id='accepted'
-                  name='workshopAssigned'
-                  value={workshopAssigned}
-                  onChange={(e) => onChange(e)}
-                  placeholder='Accepted'
-                />
-              </div>
-            </div>
-            <div className='form-group text-center'>
-              <label htmlFor='accepted' className='col-sm-3 control-label'>
-                Workshop done
-              </label>
-              <div className='col-sm-9'>
-                <input
-                  type='text'
-                  className='text-center text-danger form-control-xs'
-                  id='accepted'
-                  name='workshopDone'
-                  value={workshopDone}
-                  onChange={(e) => onChange(e)}
-                  placeholder='Accepted'
-                />
-              </div>
-            </div>
-          </div>
-          <div className='modal-footer'>
-            <button type='submit' className='btn btn-primary'>
-              Save changes
+            <div className='modal-footer'>
+              <button type='submit' className='btn btn-primary'>
+                Save changes
             </button>
-            <button
-              type='button'
-              className='btn btn-default'
-              data-dismiss='modal'
-            >
-              Cancel
+              <button
+                type='button'
+                className='btn btn-default'
+                data-dismiss='modal'
+              >
+                Cancel
             </button>
-          </div>
+            </div>
         </form>
       </div>
-    </div>
+      </div>
   );
 };
 
 EditVolunteerModel.propTypes = {
-  id: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
   // vol: PropTypes.object.isRequired,
 };
 
-export default connect(null, { updateVolunteer })(EditVolunteerModel);
+export default connect(null, { updateVolunteer})(EditVolunteerModel);

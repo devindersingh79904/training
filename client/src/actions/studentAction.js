@@ -94,6 +94,7 @@ export const addStudent = (body) => async (dispatch) => {
       type: ADD_STUDENT,
       payload: res.data,
     });
+    dispatch(setAlert('added Successfully', 'success'));
   } catch (err) {
     var errors = err.response.data;
     dispatch(setAlert(errors.msg, "danger"));

@@ -111,7 +111,7 @@ const ViewDrivesService = ({ drives, setCurrentDrive }) => {
                           <th>Type</th>
                           <th>Date</th>
                           <th>Description</th>
-                          <th>Volunteers On Duty</th>
+                          {/* <th>Volunteers On Duty</th> */}
                         </tr>
                       </thead>
                       <tfoot>

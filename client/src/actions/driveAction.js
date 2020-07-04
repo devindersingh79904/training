@@ -49,6 +49,7 @@ export const addDrive = (body) => async (dispatch) => {
       type: ADD_DRIVE,
       payload: res.data,
     });
+    dispatch(setAlert('added Successfully', 'success'));
   } catch (err) {
     var errors = err.response.data;
     dispatch(setAlert(errors.msg, 'danger'));

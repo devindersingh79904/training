@@ -119,8 +119,9 @@ const AddDrive = ({
         email,
         type,
         description,
-        date,
-        volunteersAssigned,
+        date
+        // ,
+        // volunteersAssigned,
       };
       addDrive(data);
       setFormData({
@@ -128,8 +129,9 @@ const AddDrive = ({
         email: '',
         type: '',
         description: '',
-        date: '',
-        volunteersAssigned: [],
+        date: ''
+        // ,
+        // volunteersAssigned: [],
       });
     }
   };
@@ -287,7 +289,7 @@ const AddDrive = ({
                       />
                     </div>
 
-                    <div className='form-group'>
+                    {/* <div className='form-group'>
                       <label className='control-label mb-10 text-left'>
                         Volunteer's On duty
                       </label>
@@ -302,7 +304,7 @@ const AddDrive = ({
                           );
                         })}
                       </div>
-                    </div>
+                    </div> */}
                     <input
                       type='submit'
                       className='btn btn-block btn-success'
