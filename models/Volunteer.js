@@ -45,8 +45,8 @@ const VolunteerSchema = mongoose.Schema({
       _id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'drives',
-        unique: true,
-      }
+        //   unique: true,
+      },
       // ,
       // name: {
       //   type: String,
@@ -58,7 +58,7 @@ const VolunteerSchema = mongoose.Schema({
       _id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'drives',
-        unique: true,
+        // unique: true,
       },
       name: {
         type: String,
@@ -76,8 +76,8 @@ const VolunteerSchema = mongoose.Schema({
       _id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'drives',
-        unique: true,
-      }
+        // unique: true,
+      },
       // ,
       // name: {
       //   type: String,
