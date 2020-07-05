@@ -2,6 +2,8 @@ import {
   ADD_VOLUNTEER,
   GET_VOLUNTEERS,
   GET_VOLUNTEER,
+  UPDATE_VOLUNTEER,
+  DELETE_VOLUNTEER,
   VOLUNTEERS_ERROR,
   SET_CURRENT_VOLUNTEER,
 } from '../actions/types';
@@ -32,7 +34,9 @@ export default (state = initialstate, action) => {
         currentVol: payload,
       };
     case VOLUNTEERS_ERROR:
-
+      return {
+        ...state,
+      };
     default:
       return state;
   }

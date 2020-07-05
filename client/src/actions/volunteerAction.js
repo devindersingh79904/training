@@ -6,6 +6,8 @@ import {
   ADD_VOLUNTEER,
   VOLUNTEERS_ERROR,
   SET_CURRENT_VOLUNTEER,
+  DELETE_VOLUNTEER,
+  UPDATE_VOLUNTEER,
 } from './types';
 
 export const getVolunteers = () => async (dispatch) => {
@@ -27,7 +29,7 @@ export const getVolunteers = () => async (dispatch) => {
 };
 
 export const getVolunteer = (id) => async (dispatch) => {
-   try {
+  try {
     const res = await axios.get(`http://localhost:5000/api/Volunteer/${id}`);
     dispatch({
       type: GET_VOLUNTEER,
@@ -47,20 +49,6 @@ export const setCurrentVol = (body) => (dispatch) => {
   });
 };
 
-export const IncAssined = (id) => async (dispatch) => {
-  try {
-    const res = await axios.get('http://localhost:5000/api/Volunteer');
-    dispatch({
-      type: GET_VOLUNTEERS,
-      payload: res.data,
-    });
-  } catch (err) {
-    dispatch({
-      type: VOLUNTEERS_ERROR,
-    });
-  }
-};
-
 export const updateVolunteer = (body) => async (dispatch) => {
   const config = {
     headers: {
@@ -75,7 +63,7 @@ export const updateVolunteer = (body) => async (dispatch) => {
     );
 
     dispatch({
-      type: ADD_VOLUNTEER,
+      type: UPDATE_VOLUNTEER,
       payload: res.data,
     });
   } catch (err) {

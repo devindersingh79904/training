@@ -1,20 +1,27 @@
 import axios from 'axios';
 import { setAlert } from './alertAction';
 import {
-  DRIVE_ACCEPT_VOL,
-  DRIVE_ASSIGN_VOL,
-  DRIVE_DONE_VOL,
   GET_DRIVES,
   ADD_DRIVE,
   DRIVE_ERROR,
   SET_CURRENT_DRIVE,
   GET_DRIVE,
+  SET_LOADING,
+  DRIVE_ACCEPT_VOL,
+  DRIVE_ASSIGN_VOL,
+  DRIVE_DONE_VOL,
   DRIVE_ATTENDED_STD,
   DRIVE_SHORTLISTED_STD,
 } from './types';
 
+export const setLoading = () => (dispatch) => {
+  dispatch({
+    type: SET_LOADING,
+  });
+};
+
 export const getDrives = () => async (dispatch) => {
- try {
+  try {
     const res = await axios.get('http://localhost:5000/api/Drive');
     dispatch({
       type: GET_DRIVES,
@@ -61,9 +68,9 @@ export const setCurrentDrive = (body) => (dispatch) => {
 };
 
 export const getDrive = (id) => async (dispatch) => {
- try {
+  try {
     const res = await axios.get(`http://localhost:5000/api/Drive/${id}`);
-     dispatch({
+    dispatch({
       type: GET_DRIVE,
       payload: res.data,
     });
@@ -188,7 +195,7 @@ export const shortlistedDriveStd = (id, body) => async (dispatch) => {
       config
     );
     dispatch({
-      type: DRIVE_ATTENDED_STD,
+      type: DRIVE_SHORTLISTED_STD,
       payload: res.data,
     });
   } catch (err) {
