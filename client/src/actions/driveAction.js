@@ -34,7 +34,7 @@ export const getDrives = () => async (dispatch) => {
   }
 };
 
-export const addDrive = (body) => async (dispatch) => {
+export const addDrive = (body,history) => async (dispatch) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -51,6 +51,7 @@ export const addDrive = (body) => async (dispatch) => {
       payload: res.data,
     });
     dispatch(setAlert('added Successfully', 'success'));
+    history.push('/');
   } catch (err) {
     var errors = err.response.data;
     dispatch(setAlert(errors.msg, 'danger'));

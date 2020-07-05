@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const AddDrive = ({
+  history,
   setAlert,
   addDrive,
   getVolunteers,
@@ -77,7 +78,10 @@ const AddDrive = ({
     e.preventDefault();
     if (name === '') {
       setAlert('name cannot be empty', 'danger');
-    } else if (date === '') {
+    }else if (email === '') {
+      setAlert('email cannot be empty', 'danger');
+    } 
+    else if (date === '') {
       setAlert('date cannot be empty', 'danger');
     } else if (type === '') {
       setAlert('type cannot be empty', 'danger');
@@ -91,14 +95,16 @@ const AddDrive = ({
         description,
         date
       };
-      addDrive(data);
+      addDrive(data,history);
       setFormData({
         name: '',
         email: '',
         type: '',
         description: '',
-        date: ''
+        date: '',
+        isCompany: false,
       });
+
     }
   };
   return (

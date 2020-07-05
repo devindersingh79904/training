@@ -14,7 +14,6 @@ export const getVolunteers = () => async (dispatch) => {
   // if (localStorage.getItem('token')) {
   //   setAuthToken(localStorage.token);
   // }
-
   try {
     const res = await axios.get('/api/Volunteer');
     dispatch({
