@@ -90,6 +90,43 @@ const LeftSideBar = () => {
           </ul>
         </li>
 
+
+        <li>
+          <Link  className='active'
+            data-toggle='collapse'
+            data-target='#dashboard_dr_5' to='#'>
+              <i className='icon-arrow-right-circle mr-10'></i>Student Menu{' '}
+            <span className='pull-right'>
+              <span className='label label-success mr-10'></span>
+              <i className='fa fa-fw fa-angle-down'></i>
+            </span>
+          </Link>
+          <ul id='dashboard_dr_5' className='collapse collapse-level-1'>
+            <li>
+              <Link to='/add-student'>
+                <span className='icon-plus mr-10'></span>Add Student
+              </Link>
+            </li>
+            <li>
+            <Link to='/edit-students'>
+              <span className='icon-pencil mr-10 text-primary'></span>Edit Student
+            </Link>
+            </li>
+            <li>
+            <Link to='/delete-student'>
+            <span className='icon-ban mr-10 text-danger'></span>Delete Student
+            </Link>
+            </li>
+            <li>
+            <Link to='/view-students'>
+            <span className='icon-list mr-10'></span>View Student
+            </Link>
+            </li>
+          </ul>
+        </li>
+
+
+
         <li>
           <Link
           className='active'

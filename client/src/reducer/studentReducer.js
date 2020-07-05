@@ -37,7 +37,8 @@ export default (state = initialstate, action) => {
       };
     case GET_STUDENT:
     case SET_CURRENT_STUDENT:
-      return {
+    console.log(payload)  
+    return {
         ...state,
         currentStudent: payload,
       };

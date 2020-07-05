@@ -135,7 +135,7 @@ const ViewStudentService = ({ students, setCurrentStudent }) => {
                                 <td>{student.rollno}</td>
                                 <td>
                                   <Link
-                                    to={`/volunteer-profile/${student._id}`}
+                                    to={`/student-profile/${student._id}`}
                                   >
                                     {student.name}
                                   </Link>

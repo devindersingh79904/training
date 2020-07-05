@@ -1,16 +1,18 @@
 import React, { Fragment , useEffect} from "react";
-import {getVolunteer} from '../../actions/volunteerAction'
+import {getStudent} from '../../actions/studentAction'
 import { connect } from "react-redux";
 // import PropTypes from "prop-types";
 import { Link } from 'react-router-dom';
 
-const StudentProfile = ({ match,getVolunteer,currentVol }) => {
+const StudentProfile = ({ match,getStudent,currentStudent }) => {
   useEffect(()=>{
     if(match.params.id){
-      getVolunteer(match.params.id);
+      getStudent(match.params.id);
     }
   },[])
-  console.log(currentVol);
+  console.log("-----------");
+  console.log(currentStudent);
+  console.log(currentStudent);
   return (
     <Fragment>
       <div className='row heading-bg  bg-blue'>
@@ -50,24 +52,23 @@ const StudentProfile = ({ match,getVolunteer,currentVol }) => {
                     <span className='txt-dark head-font inline-block capitalize-font mb-5'></span>
                     <address className='mb-15'>
                       <span className='address-head mb-5'>
-                        {currentVol && currentVol.name}
+                        {currentStudent && currentStudent.name}
                       </span>
                       <abbr>Rollno :</abbr>{" "}
-                      {currentVol && currentVol.rollno} <br />
+                      {currentStudent && currentStudent.rollno} <br />
                       <abbr>Class and Batch :</abbr>{" "}
-                      {currentVol && currentVol.clas} {currentVol && currentVol.batch} <br />
+                      {currentStudent && currentStudent.clas} {currentStudent && currentStudent.batch} <br />
                       <abbr title='Email'>Email :</abbr>{" "}
-                      {currentVol && currentVol.email} <br />
+                      {currentStudent && currentStudent.email} <br />
                       <abbr>Phone :</abbr>{" "}
-                      {currentVol && currentVol.phnno}
+                      {currentStudent && currentStudent.phnno}
                     </address>
                   </div>
                   <div className='col-xs-6 text-right'>
                     <span className='txt-dark head-font inline-block capitalize-font mb-5'></span>
                     <address className='mb-15'>
-                      <span className='address-head mb-5'>Total Drives Attended : {currentVol && currentVol.dutiesAssigned}</span>
-                      <span className='address-head mb-5'>Total Workshops Attended : {currentVol && currentVol.workshopAssigned}</span>
-                      <span className='address-head mb-5'>Total Drives Short Listed : {currentVol && currentVol.dutiesAccepted}</span>
+                      <span className='address-head mb-5'>Total Drives Attended : {currentStudent && currentStudent.driveAttended.length}</span>
+                      <span className='address-head mb-5'>Total Drives Shortlisted : {currentStudent && currentStudent.driveShortlisted.length}</span>
                     </address>
                   </div>
                 </div>
@@ -93,12 +94,12 @@ const StudentProfile = ({ match,getVolunteer,currentVol }) => {
                   <div className='table-responsive'>
                     <table className='table  top-countries'>
                       <tbody>
-                        {currentVol &&
-                          currentVol.companies.map((comp) => {
+                        {currentStudent &&
+                          currentStudent.driveAttended.map((drive) => {
                             return (
                               <tr>
-                                <td>{comp.name}</td>
-                                <td>{comp.date}</td>
+                                <td>{drive.name}</td>
+                                <td>{drive.date}</td>
                               </tr>
                             );
                           })}
@@ -125,12 +126,12 @@ const StudentProfile = ({ match,getVolunteer,currentVol }) => {
                   <div className='table-responsive'>
                     <table className='table  top-countries'>
                       <tbody>
-                        {currentVol &&
-                          currentVol.companies.map((comp) => {
+                        {currentStudent &&
+                          currentStudent.driveAttended.map((drive) => {
                             return (
                               <tr>
-                                <td>{comp.name}</td>
-                                <td>{comp.date}</td>
+                                <td>{drive.name}</td>
+                                <td>{drive.date}</td>
                               </tr>
                             );
                           })}
@@ -150,6 +151,6 @@ const StudentProfile = ({ match,getVolunteer,currentVol }) => {
 };
 
 const mapStateToProps = (state) => ({
-  currentVol: state.volunteerReducer.currentVol
+  currentStudent : state.studentRuducer.currentStudent
 });
-export default connect(mapStateToProps,{getVolunteer})(StudentProfile);
+export default connect(mapStateToProps,{getStudent})(StudentProfile);

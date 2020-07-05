@@ -11,6 +11,17 @@ router.get('/', async (req, res) => {
   }
 });
 
+
+
+router.get('/:id', async (req, res) => {
+  try {
+    result = await Student.findById(req.params.id);
+    return res.json(result);
+  } catch (err) {
+    res.status(501).json({ msg: 'Server error' });
+  }
+});
+
 router.post('/', async (req, res) => {
   const {
     name,
@@ -52,7 +63,7 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
   const r = req.body;
-  //console.log(r._id);
+  console.log(r._id);
   console.log(req.params.id);
   // if (req.user.role != "Sadmin") {
   //   return res.status(401).json({ msg: "You are not Authorized user" });

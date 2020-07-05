@@ -33,6 +33,7 @@ import MarkPresent from './component/drive/MarkPresent';
 import DoneDriveVol from './component/drive/DoneDriveVol';
 import AttendedDriveStudents from './component/drive/AttendedDriveStudents';
 import ShortlistedDriveStudent from './component/drive/ShortlistedDriveStudent';
+import StudentProfile from './component/student/StudentProfile';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -125,6 +126,11 @@ function App() {
                   exact
                   path='/volunteer-profile/:id'
                   component={VolunteerProfile}
+                />
+                 <Route
+                  exact
+                  path='/student-profile/:id'
+                  component={StudentProfile}
                 />
                 <Route component={Error404} />
               </Switch>
