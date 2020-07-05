@@ -16,7 +16,7 @@ export const getStudents = () => async (dispatch) => {
   // }
 
   try {
-    const res = await axios.get('http://localhost:5000/api/Student');
+    const res = await axios.get('/api/Student');
     dispatch({
       type: GET_STUDENTS,
       payload: res.data,
@@ -34,7 +34,7 @@ export const getStudent = (id) => async (dispatch) => {
   // }
 
   try {
-    const res = await axios.get(`http://localhost:5000/api/student/${id}`);
+    const res = await axios.get(`/api/student/${id}`);
     dispatch({
       type: GET_STUDENT,
       payload: res.data,
@@ -61,7 +61,7 @@ export const updateStudent = (body) => async (dispatch) => {
   };
   try {
     const res = await axios.put(
-      `http://localhost:5000/api/Student/${body._id}`,
+      `/api/Student/${body._id}`,
       body,
       config
     );
@@ -86,7 +86,7 @@ export const addStudent = (body) => async (dispatch) => {
   };
   try {
     const res = await axios.post(
-      'http://localhost:5000/api/Student',
+      '/api/Student',
       body,
       config
     );

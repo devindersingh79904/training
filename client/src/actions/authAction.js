@@ -29,7 +29,7 @@ export const loadUser = () => async (dispatch) => {
   }
 
   try {
-    const res = await axios.get('http://localhost:5000/api/adminAuth');
+    const res = await axios.get('/api/adminAuth');
 
     dispatch({
       type: USER_LOADED,
@@ -51,7 +51,7 @@ export const registerUser = (body) => async (dispatch) => {
   var res;
   try {
     res = await axios.post(
-      'http://localhost:5000/api/adminRegister',
+      '/api/adminRegister',
       body,
       config
     );
@@ -80,7 +80,7 @@ export const loginUser = (body) => async (dispatch) => {
   };
   var res;
   try {
-    res = await axios.post('http://localhost:5000/api/adminAuth', body, config);
+    res = await axios.post('/api/adminAuth', body, config);
     dispatch({
       type: LOGIN_SUCCESS,
       payload: res.data,

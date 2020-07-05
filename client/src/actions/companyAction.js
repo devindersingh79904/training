@@ -4,7 +4,7 @@ import { GET_COMPANYS, COMPANY_ERROR, ADD_COMPANY } from './types';
 
 export const getCompany = () => async (dispatch) => {
  try {
-    const res = await axios.get('http://localhost:5000/api/company');
+    const res = await axios.get('/api/company');
     dispatch({
       type: GET_COMPANYS,
       payload: res.data,
@@ -24,7 +24,7 @@ export const addCompany = (body) => async (dispatch) => {
   };
   try {
     const res = await axios.post(
-      'http://localhost:5000/api/company',
+      '/api/company',
       body,
       config
     );
