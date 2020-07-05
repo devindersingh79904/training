@@ -1,6 +1,7 @@
 import React, { Fragment, useLayoutEffect, useState } from 'react';
 import { getDrives, shortlistedDriveStd } from '../../actions/driveAction';
 import { connect } from 'react-redux';
+import { setAlert } from '../../actions/alertAction';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -8,19 +9,21 @@ const ShortlistedDriveStudent = ({
   shortlistedDriveStd,
   getDrives,
   drives,
+  setAlert,
 }) => {
   const [formData, setFormData] = useState({
-    selectedStudents: [],
     studentsAttended: [],
+    selectedStudents: [],
+    salary: '',
     drive: null,
     id: '',
-    salary: '',
   });
+
   useLayoutEffect(() => {
     getDrives();
   }, []);
 
-  const { drive, id, selectedStudents, studentsAttended } = formData;
+  const { salary, drive, id, studentsAttended, selectedStudents } = formData;
 
   drives.sort(function (a, b) {
     if (a.name.toUpperCase() < b.name.toUpperCase()) {
@@ -32,8 +35,11 @@ const ShortlistedDriveStudent = ({
     return 0;
   });
 
+  const onChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
   const onCompanyChange = (e) => {
-    var sel = drives.filter((comp) => comp._id == e.target.value);
+    var sel = drives.filter((comp) => comp._id === e.target.value);
     console.log(sel[0]);
     setFormData({
       ...formData,
@@ -44,20 +50,20 @@ const ShortlistedDriveStudent = ({
     });
   };
 
-  const onCheckChange = (e, vol) => {
+  const onCheckChange = (e, std) => {
     console.log(e.target.checked);
-    console.log(vol);
-    const { _id } = vol;
+    console.log(std);
+    const { _id, name } = std;
     if (e.target.checked) {
       setFormData({
         ...formData,
-        selectedStudents: [...formData.selectedStudents, { _id }],
+        selectedStudents: [...formData.selectedStudents, { _id, name }],
       });
     } else {
       setFormData({
         ...formData,
         selectedStudents: formData.selectedStudents.filter(
-          (std) => std._id != vol._id
+          (student) => student._id != std._id
         ),
       });
     }
@@ -65,13 +71,22 @@ const ShortlistedDriveStudent = ({
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(id);
-    console.log(selectedStudents);
-    // attendedDriveStd(id, { selectedStudents });
+    if (salary === '') {
+      setAlert('Package cant be empty', 'danger');
+    } else if (selectedStudents.lrngth === 0) {
+      setAlert('Select atleast one Student', 'danger');
+    } else {
+      console.log(id);
+      console.log(formData);
+      shortlistedDriveStd(id, { salary, selectedStudents });
+      window.location.reload(false);
+      // doneDriveVol(id, { doneVolunteers });
+    }
   };
 
   function containsObject(obj) {
     var i;
+    // console.log(drive);
     var selectedStudents = [];
     if (drive) {
       selectedStudents = drive.selectedStudents;
@@ -93,7 +108,7 @@ const ShortlistedDriveStudent = ({
         <form>
           <div className='row heading-bg bg-blue'>
             <div className='col-lg-3 col-md-4 col-sm-4 col-xs-12'>
-              <h5 className='txt-light'>ShortListed Student for Drive</h5>
+              <h5 className='txt-light'>Change status of student</h5>
             </div>
             <div className='col-lg-9 col-sm-8 col-md-8 col-xs-12'>
               <ol className='breadcrumb'>
@@ -102,7 +117,7 @@ const ShortlistedDriveStudent = ({
                 </li>
                 <li>
                   <Link to='#'>
-                    <span>ShortListed Student</span>
+                    <span>Shortlisted</span>
                   </Link>
                 </li>
               </ol>
@@ -114,7 +129,7 @@ const ShortlistedDriveStudent = ({
                 <div className='panel-heading'>
                   <div className='pull-left'>
                     <h6 className='panel-title txt-dark'>
-                      ShortListed Students
+                      Shortlisted student
                     </h6>
                   </div>
                   <div className='clearfix'></div>
@@ -132,11 +147,21 @@ const ShortlistedDriveStudent = ({
                         drives.map((drive) => {
                           return (
                             <option key={drive._id} value={drive._id}>
-                              {drive.name + '  ' + drive.date}
+                              {drive.name + ' ' + drive.date}
                             </option>
                           );
                         })}
                     </select>
+
+                    <p className='text-muted'>Student package in Lakh's</p>
+                    <input
+                      type='text'
+                      className='form-control rounded-input'
+                      placeholder='Package in Lakh'
+                      name='salary'
+                      value={salary}
+                      onChange={(e) => onChange(e)}
+                    />
                     <button onClick={(e) => onSubmit(e)}>Submit</button>
                     <div className='table-wrap mt-40'>
                       <div className='table-responsive'>
@@ -146,29 +171,29 @@ const ShortlistedDriveStudent = ({
                               <th>Rollno</th>
                               <th>Full Name</th>
                               <th>Class</th>
-                              <th>Attend</th>
+                              <th>Present</th>
                             </tr>
                           </thead>
                           <tbody>
                             {studentsAttended &&
-                              studentsAttended > 0 &&
-                              studentsAttended.map((student) => {
-                                console.log('sss');
-                                if (containsObject(student)) {
+                              studentsAttended.length > 0 &&
+                              studentsAttended.map((std) => {
+                                // const allData = getAllData(volunteer._id);
+                                if (containsObject(std)) {
                                   return (
-                                    <tr key={student._id}>
-                                      <td>{student.rollno}</td>
-                                      <td>{student.name}</td>
-                                      <td>{student.clas}</td>
+                                    <tr key={std._id}>
+                                      <td>{std.rollno}</td>
+                                      <td>{std.name}</td>
+                                      <td>{std.clas}</td>
                                       <td>
                                         <input
                                           type='checkbox'
-                                          name='studentsAttended'
-                                          value={student}
+                                          name='selectedStudents'
+                                          value={std}
                                           checked
                                           disabled
                                           onChange={(e) =>
-                                            onCheckChange(e, student)
+                                            onCheckChange(e, std)
                                           }
                                         />
                                       </td>
@@ -176,17 +201,17 @@ const ShortlistedDriveStudent = ({
                                   );
                                 } else {
                                   return (
-                                    <tr key={student._id}>
-                                      <td>{student.rollno}</td>
-                                      <td>{student.name}</td>
-                                      <td>{student.clas}</td>
+                                    <tr key={std._id}>
+                                      <td>{std.rollno}</td>
+                                      <td>{std.name}</td>
+                                      <td>{std.clas}</td>
                                       <td>
                                         <input
                                           type='checkbox'
-                                          name='studentsAttended'
-                                          value={student}
+                                          name='selectedStudents'
+                                          value={std}
                                           onChange={(e) =>
-                                            onCheckChange(e, student)
+                                            onCheckChange(e, std)
                                           }
                                         />
                                       </td>
@@ -215,6 +240,7 @@ ShortlistedDriveStudent.propTypes = {
   getDrives: PropTypes.func.isRequired,
   shortlistedDriveStd: PropTypes.func.isRequired,
   drives: PropTypes.array.isRequired,
+  setAlert: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -223,4 +249,5 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   getDrives,
   shortlistedDriveStd,
+  setAlert,
 })(ShortlistedDriveStudent);
