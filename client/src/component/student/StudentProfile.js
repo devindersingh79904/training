@@ -10,6 +10,26 @@ const StudentProfile = ({ match,getStudent,currentStudent }) => {
       getStudent(match.params.id);
     }
   },[])
+
+
+  const getAllStudentData = (volid) => {
+    var i;
+    var driveAttended = [];
+    if (currentStudent) {
+      driveAttended = currentStudent.driveAttended;
+      if (driveAttended) {
+        for (i = 0; i < driveAttended.length; i++) {
+          if (driveAttended[i]._id === volid) {
+            return driveAttended[i];
+          }
+        }
+      }
+    }
+  };
+
+
+
+
   return (
     <Fragment>
       <div className='row heading-bg  bg-blue'>
@@ -125,9 +145,11 @@ const StudentProfile = ({ match,getStudent,currentStudent }) => {
                       <tbody>
                         {currentStudent &&
                           currentStudent.driveShortlisted.map((drive) => {
+                            const x = getAllStudentData(drive._id)
                             return (
                               <tr>
-                                <td>{drive.name}</td>
+                                <td>{x.name}</td>
+                                <td>{x.date}</td>
                                 <td>{drive.package}</td>
                               </tr>
                             );
