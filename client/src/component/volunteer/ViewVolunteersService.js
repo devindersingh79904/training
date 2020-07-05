@@ -132,7 +132,6 @@ const ViewVolunteersService = ({ volunteers, setCurrentVol }) => {
                         {volunteers !== null &&
                           volunteers.length > 0 &&
                           volunteers.map((volunteer) => {
-                            console.log(volunteer);
                             return (
                               <tr
                                 key={volunteer._id}
