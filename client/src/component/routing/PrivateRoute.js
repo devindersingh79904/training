@@ -9,8 +9,6 @@ const PrivateRoute = ({
   auth: { isAuthenticated, loading },
   ...rest
 }) => {
-  console.log(isAuthenticated);
-  console.log(loading);
   return (
     <Route
       {...rest}

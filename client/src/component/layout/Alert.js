@@ -12,12 +12,8 @@ const Alert = ({ alerts }) => {
   };
 
   function setAlertType(alert) {
-    console.log('I am in alert custom function' + alert);
-    console.log(alert);
     switch (alert.alertType) {
       case 'danger':
-        console.log('I am in danger custom function' + alert);
-
         return (
           <div
             key={alert.id}
@@ -74,14 +70,7 @@ const Alert = ({ alerts }) => {
               <p>Not valid!</p>
             </div>
             <div className='sa-button-container'>
-              {/* <button className="cancel" tabIndex="2" style={{display: 'inline-block', boxShadow: 'none'}}>Cancel</button>
-    <div className="sa-confirm-button-container">
-      <button className="confirm" tabIndex="1" style={{display: 'inline-block', backgroundColor: 'rgb(252, 176, 59)', boxShadow: 'rgba(252, 176, 59, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset'}}>Yes, delete it!</button><div className="la-ball-fall">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    </div> */}
+              
             </div>
           </div>
         );
@@ -136,7 +125,6 @@ const Alert = ({ alerts }) => {
               <p>Not valid!</p>
             </div>
             <div className='sa-button-container'>
-              {/* <button className="cancel" tabIndex="2" style={{display:"none"}}>Cancel</button> */}
             </div>
           </div>
         );

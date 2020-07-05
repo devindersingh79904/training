@@ -2,19 +2,15 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const UpdateAddentaceForm = ({ id }) => {
-  console.log(id);
   const onAssinedIncClick = (e) => {
     e.preventDefault();
 
-    console.log('a');
   };
 
   const onAcceptIncClick = (e) => {
-    console.log('acc');
   };
 
   const onWorkDoneIncClick = (e) => {
-    console.log('workdone');
   };
 
   return (
@@ -182,7 +178,6 @@ const UpdateAddentaceForm = ({ id }) => {
 };
 
 UpdateAddentaceForm.propTypes = {
-  // msg: PropTypes.string.isRequired,
 };
 
 export default UpdateAddentaceForm;

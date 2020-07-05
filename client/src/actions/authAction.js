@@ -31,7 +31,6 @@ export const loadUser = () => async (dispatch) => {
   try {
     const res = await axios.get('http://localhost:5000/api/adminAuth');
 
-    // console.log(res.data);
     dispatch({
       type: USER_LOADED,
       payload: res.data,
@@ -49,20 +48,13 @@ export const registerUser = (body) => async (dispatch) => {
       'Content-Type': 'application/json',
     },
   };
-
-  // const body = JSON.stringify({ name, email, passowrd, role });
-
-  // console.log(body);
   var res;
   try {
-    // const result = await axios.post('/api/authRegister', body, config);
-
     res = await axios.post(
       'http://localhost:5000/api/adminRegister',
       body,
       config
     );
-    console.log(res);
 
     dispatch({
       type: REGISTER_SUCCESS,
@@ -70,12 +62,8 @@ export const registerUser = (body) => async (dispatch) => {
     });
     dispatch(loadUser());
   } catch (err) {
-    // console.log(err.response.data.msg);
-    // console.log(res);
-    // console.log(err);
-    // console.log(err.message);
+   
     var errors = err.response.data;
-    // console.log(errors);
     dispatch(setAlert(errors.msg, 'danger'));
 
     dispatch({
@@ -85,7 +73,6 @@ export const registerUser = (body) => async (dispatch) => {
 };
 
 export const loginUser = (body) => async (dispatch) => {
-  console.log(body);
   const config = {
     header: {
       'Content-Type': 'application/json',
@@ -94,7 +81,6 @@ export const loginUser = (body) => async (dispatch) => {
   var res;
   try {
     res = await axios.post('http://localhost:5000/api/adminAuth', body, config);
-    console.log(res.data);
     dispatch({
       type: LOGIN_SUCCESS,
       payload: res.data,
@@ -102,7 +88,6 @@ export const loginUser = (body) => async (dispatch) => {
     dispatch(loadUser());
   } catch (err) {
     var errors = err.response.data;
-    // console.log(errors);
     dispatch(setAlert(errors.msg, 'danger'));
 
     dispatch({

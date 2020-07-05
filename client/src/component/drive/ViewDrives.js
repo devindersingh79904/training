@@ -8,10 +8,7 @@ import ViewDrivesService from "./ViewDrivesService";
 const ViewVolunteers = ({ drives, getDrives, setCurrentDrive }) => {
   useLayoutEffect(() => {
     getDrives();
-    // eslint-disable-next-line
   }, []);
-  //   const  = props;
-  console.log("fgfgfd");
   return (
     <Fragment>
       {drives !== null && drives.length > 0 ? (

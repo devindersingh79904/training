@@ -34,19 +34,8 @@ const AssignDriveVol = ({
     return 0;
   });
 
-  // drives.sort(function (a, b) {
-  //   if (a.name.toUpperCase() < b.name.toUpperCase()) {
-  //     return -1;
-  //   }
-  //   if (a.name.toUpperCase() > b.name.toUpperCase()) {
-  //     return 1;
-  //   }
-  //   return 0;
-  // });
-
   const onCompanyChange = (e) => {
     var sel = drives.filter((comp) => comp._id == e.target.value);
-    console.log(sel[0]);
     setFormData({
       ...formData,
       id: sel[0]._id,
@@ -56,8 +45,6 @@ const AssignDriveVol = ({
   };
 
   const onCheckChange = (e, vol) => {
-    console.log(e.target.checked);
-    console.log(vol);
     const { _id, name, rollno, clas } = vol;
     if (e.target.checked) {
       setFormData({
@@ -78,20 +65,15 @@ const AssignDriveVol = ({
   };
 
   const onSubmit = (e) => {
-    // e.preventDefault();
-    console.log(id);
-    console.log(assignVolunteers);
     assignDriveVol(id,{assignVolunteers});
   };
 
   function containsObject(obj, list) {
     var i;
-    // console.log(drive);
     var volunteersAssigned = [];
     if (drive) {
       volunteersAssigned = drive.volunteersAssigned;
       if (volunteersAssigned) {
-        // console.log(volunteersAssigned);
         for (i = 0; i < volunteersAssigned.length; i++) {
           if (volunteersAssigned[i]._id === obj._id) {
             return true;

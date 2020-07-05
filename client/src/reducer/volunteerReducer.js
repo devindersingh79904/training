@@ -27,13 +27,11 @@ export default (state = initialstate, action) => {
       };
     case GET_VOLUNTEER:
     case SET_CURRENT_VOLUNTEER:
-      console.log('i am in ruducer');
       return {
         ...state,
         currentVol: payload,
       };
     case VOLUNTEERS_ERROR:
-      console.log('error while adding drive');
 
     default:
       return state;

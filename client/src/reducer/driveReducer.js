@@ -39,15 +39,11 @@ export default (state = initialstate, action) => {
         ...state
       }
     case DRIVE_ACCEPT_VOL:
-      console.log(payload);
       return{
         ...state,
         drives : state.drives.filter(drive=>{
           if(drive._id === payload.id){
-            console.log(drive)
             drive.volunteersAccepted = [drive.volunteersAccepted,payload.acceptVolunteers]
-            console.log(drive)
-
             return drive; 
           }
           else{

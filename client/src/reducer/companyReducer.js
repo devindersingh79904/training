@@ -18,7 +18,6 @@ export default (state = initialstate, action) => {
         companys: [payload, ...state.companys],
       };
     case COMPANY_ERROR:
-      console.log('Company Error');
 
     default:
       return state;

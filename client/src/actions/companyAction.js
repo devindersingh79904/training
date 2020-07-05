@@ -3,11 +3,7 @@ import { setAlert } from './alertAction';
 import { GET_COMPANYS, COMPANY_ERROR, ADD_COMPANY } from './types';
 
 export const getCompany = () => async (dispatch) => {
-  // if (localStorage.getItem('token')) {
-  //   setAuthToken(localStorage.token);
-  // }
-
-  try {
+ try {
     const res = await axios.get('http://localhost:5000/api/company');
     dispatch({
       type: GET_COMPANYS,
@@ -32,7 +28,6 @@ export const addCompany = (body) => async (dispatch) => {
       body,
       config
     );
-    console.log(res);
     dispatch({
       type: ADD_COMPANY,
       payload: res.data,

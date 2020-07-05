@@ -7,7 +7,6 @@ import ViewStudentService from './ViewStudentService';
 const ViewStudents = ({ students, getStudents, setCurrentStudent }) => {
   useLayoutEffect(() => {
     getStudents();
-    // eslint-disable-next-line
   }, []);
   return (
     <Fragment>

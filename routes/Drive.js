@@ -41,9 +41,7 @@ router.post('/', async (req, res) => {
     selectedStudents,
   } = req.body;
 
-  // console.log(name, email);
   try {
-    //console.log("Duties : " + dutiesAssigned);
     var companyName = await Drive.findOne({ date, type });
     // if (companyName) {
     //   return res.status(401).json({ msg: "Company already exists" });

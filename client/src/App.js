@@ -42,15 +42,11 @@ function App() {
   useEffect(() => {
     store.dispatch(setLoading());
     store.dispatch(loadUser());
-
-    // eslint-disable-next-line
   }, []);
   var storeData;
   store.subscribe(() => {
     storeData = store.getState();
   });
-
-  console.log(storeData);
   return (
     <Provider store={store}>
       <Router>
@@ -59,7 +55,6 @@ function App() {
           <div className='page-wrapper'>
             <div className='container-fluid'>
               <Alert />
-              {/* <Spinner /> */}
               <Switch>
                 <Route exact path='/' component={Home} />
                 <PrivateRoute exact path='/about' component={About} />
@@ -77,7 +72,6 @@ function App() {
 
                 <Route exact path='/mark-accepted' component={AcceptDriveVol} />
                 <Route exact path='/mark-present' component={DoneDriveVol} />
-                {/* <Route exact path='/add-attendence' component={AddAttendence} /> */}
 
                 <Route
                   exact
@@ -86,17 +80,6 @@ function App() {
                     <ViewVolunteers title={`Props through component`} />
                   )}
                 />
-                {/* <Route
-                  exact
-                  path='/view-volunteers'
-                  component={ViewVolunteers}
-                /> */}
-                {/* <Route
-                  path='/dashboard'
-                  render={(props) => (
-                    <ViewVolunteers {...props} isAuthed={true} />
-                  )}
-                /> */}
                 <Route exact path='/view-drives' component={ViewDrives} />
                 <Route exact path='/view-students' component={ViewStudents} />
                 <Route exact path='/view-companys' component={ViewCompanys} />

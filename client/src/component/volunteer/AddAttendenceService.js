@@ -16,8 +16,6 @@ const AddAttendenceService = ({ volunteers, setCurrentVol }) => {
 
   const { id } = volid;
   const onClick = (e, vol) => {
-    console.log('i am onclick');
-    console.log(vol);
     setVolid({ id: vol._id });
     setCurrentVol(vol);
   };
@@ -102,41 +100,7 @@ const AddAttendenceService = ({ volunteers, setCurrentVol }) => {
                           </tr>
                         );
                       })}
-                      {/* <tr>
-                        {/* <td>1001</td>
-                        <td>zzz</td>
-                        <td>MCA</td>
-                        <td>Morning</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td> 
-                        <td
-                          className='footable-editing'
-                          style={{ display: 'none' }}
-                        >
-                          <div className='btn-group btn-group-xs' role='group'>
-                            <button
-                              type='button'
-                              className='btn btn-default footable-edit'
-                            >
-                              <span
-                                className='fooicon fooicon-pencil'
-                                aria-hidden='true'
-                              ></span>
-                            </button>{' '}
-                            <button
-                              type='button'
-                              className='btn btn-default footable-delete'
-                            >
-                              <span
-                                className='fooicon fooicon-trash'
-                                aria-hidden='true'
-                              ></span>
-                            </button>
-                          </div>
-                        </td>
-                      </tr> */}
+                      
                     </tbody>
                   </table>
                   <UpdateAddentaceForm id={id} />

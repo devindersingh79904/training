@@ -44,7 +44,6 @@ const AddVolunteer = ({ setAlert, addVolunteer }) => {
         email,
         phnno,
       };
-      //   console.log(date);
       addVolunteer(data);
       setFormData({
         rollno: 0,

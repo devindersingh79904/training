@@ -6,7 +6,6 @@ import AddAttendenceService from './AddAttendenceService';
 
 const AddAttendence = ({ volunteers, getVolunteers, setCurrentVol }) => {
   useEffect(() => {
-    console.log('i am getting all volunteers');
     getVolunteers();
   }, []);
 

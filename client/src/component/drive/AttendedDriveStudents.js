@@ -46,7 +46,6 @@ const AttendedDriveStudents = ({
 
   const onCompanyChange = (e) => {
     var sel = drives.filter((comp) => comp._id == e.target.value);
-    console.log(sel[0]);
     setFormData({
       ...formData,
       id: sel[0]._id,
@@ -56,8 +55,6 @@ const AttendedDriveStudents = ({
   };
 
   const onCheckChange = (e, vol) => {
-    console.log(e.target.checked);
-    console.log(vol);
     const { _id, name, rollno, clas, batch } = vol;
     if (e.target.checked) {
       setFormData({
@@ -78,9 +75,6 @@ const AttendedDriveStudents = ({
   };
 
   const onSubmit = (e) => {
-    // e.preventDefault();
-    console.log(id);
-    console.log(studentsAttended);
     attendedDriveStd(id, { studentsAttended });
   };
 
@@ -90,7 +84,6 @@ const AttendedDriveStudents = ({
     if (drive) {
       studentsAttended = drive.studentsAttended;
       if (studentsAttended) {
-        // console.log(volunteersAssigned);
         for (i = 0; i < studentsAttended.length; i++) {
           if (studentsAttended[i]._id === obj._id) {
             return true;

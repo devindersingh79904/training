@@ -10,9 +10,6 @@ const StudentProfile = ({ match,getStudent,currentStudent }) => {
       getStudent(match.params.id);
     }
   },[])
-  console.log("-----------");
-  console.log(currentStudent);
-  console.log(currentStudent);
   return (
     <Fragment>
       <div className='row heading-bg  bg-blue'>
@@ -127,11 +124,11 @@ const StudentProfile = ({ match,getStudent,currentStudent }) => {
                     <table className='table  top-countries'>
                       <tbody>
                         {currentStudent &&
-                          currentStudent.driveAttended.map((drive) => {
+                          currentStudent.driveShortlisted.map((drive) => {
                             return (
                               <tr>
                                 <td>{drive.name}</td>
-                                <td>{drive.date}</td>
+                                <td>{drive.package}</td>
                               </tr>
                             );
                           })}

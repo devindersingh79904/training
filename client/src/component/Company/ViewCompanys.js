@@ -7,10 +7,7 @@ import ViewCompanyService from './ViewCompanyService';
 const ViewCompanys = ({ companys, getCompany }) => {
   useLayoutEffect(() => {
     getCompany();
-    // eslint-disable-next-line
   }, []);
-
-  console.log(companys);
   return (
     <Fragment>
       {companys !== null && companys.length > 0 && (

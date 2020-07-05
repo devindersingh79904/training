@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 const EditStudent = ({ students, getStudents, setCurrentStudent }) => {
   useLayoutEffect(() => {
     getStudents();
-    // eslint-disable-next-line
   }, []);
   return (
     <Fragment>

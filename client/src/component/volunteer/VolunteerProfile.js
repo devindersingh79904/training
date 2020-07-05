@@ -10,17 +10,14 @@ const VolunteerProfile = ({ match,getVolunteer,currentVol }) => {
       getVolunteer(match.params.id);
     }
   },[])
-  console.log(currentVol);
 
 
   function isAccepted(id){
     var i;
-    // console.log(drive);
     var dutiesAcceptedArray = [];
     if (currentVol) {
       dutiesAcceptedArray = currentVol.dutiesAcceptedArray;
       if (dutiesAcceptedArray) {
-        // console.log(volunteersAssigned);
         for (i = 0; i < dutiesAcceptedArray.length; i++) {
           if (dutiesAcceptedArray[i]._id === id) {
             return "True";
@@ -33,12 +30,10 @@ const VolunteerProfile = ({ match,getVolunteer,currentVol }) => {
 
   function isPresent(id){
     var i;
-    // console.log(drive);
     var presentArray = [];
     if (currentVol) {
       presentArray = currentVol.presentArray;
       if (presentArray) {
-        // console.log(volunteersAssigned);
         for (i = 0; i < presentArray.length; i++) {
           if (presentArray[i]._id === id) {
             return "True";

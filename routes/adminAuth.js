@@ -17,7 +17,6 @@ router.get('/', auth, async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  console.log(req.body);
   const { email, password } = req.body;
 
   try {
@@ -27,7 +26,6 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ msg: 'Invalid Credentials' });
     }
 
-    console.log(newuser);
 
     var isMatch = await bcrypt.compare(password, newuser.password);
 

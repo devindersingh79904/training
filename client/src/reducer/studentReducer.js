@@ -28,7 +28,6 @@ export default (state = initialstate, action) => {
         students: [payload, ...state.students],
       };
     case UPDATE_STUDENT:
-      console.log(payload);
       return {
         ...state,
         students: state.students.map((std) =>
@@ -37,13 +36,11 @@ export default (state = initialstate, action) => {
       };
     case GET_STUDENT:
     case SET_CURRENT_STUDENT:
-    console.log(payload)  
     return {
         ...state,
         currentStudent: payload,
       };
     case STUDENTS_ERROR:
-      console.log("error while adding drive");
     default:
       return state;
   }

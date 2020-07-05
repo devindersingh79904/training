@@ -33,7 +33,6 @@ const Register = ({ setAlert, registerUser, setLoading, isAuthenticated }) => {
         password,
         role,
       };
-      console.log('i am going to call');
       setLoading();
       registerUser(user);
       setFormData({

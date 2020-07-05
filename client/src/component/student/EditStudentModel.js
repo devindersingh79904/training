@@ -15,9 +15,7 @@ const EditStudentModel = ({ std, id, updateStudent }) => {
     rollno: 0,
     _id: "",
   });
-  //   const { rollno, name, clas, batch, phnno, email } = formData;
   useEffect(() => {
-    console.log("hiiiiiiiiii");
     if (std) {
       setFormData(std);
     }
@@ -28,7 +26,6 @@ const EditStudentModel = ({ std, id, updateStudent }) => {
   };
 
   const onSubmit = (e) => {
-    // e.preventDefault();
     updateStudent(formData);
   };
 

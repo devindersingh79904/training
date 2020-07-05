@@ -14,7 +14,6 @@ const EditVolunteerModel = ({ id, vol, updateVolunteer }) => {
     rollno: 0,
     _id: '',
   });
-  //   const { rollno, name, clas, batch, phnno, email } = formData;
   useEffect(() => {
     if (vol) {
       setFormData(vol);
@@ -26,7 +25,6 @@ const EditVolunteerModel = ({ id, vol, updateVolunteer }) => {
   };
 
   const onSubmit = (e) => {
-    // e.preventDefault();
     updateVolunteer(formData);
   };
 
@@ -40,7 +38,6 @@ const EditVolunteerModel = ({ id, vol, updateVolunteer }) => {
     clas,
   } = formData;
 
-  console.log(formData);
   return (
     <div
       className='modal fade'
@@ -208,7 +205,6 @@ const EditVolunteerModel = ({ id, vol, updateVolunteer }) => {
 
 EditVolunteerModel.propTypes = {
         id: PropTypes.string.isRequired,
-  // vol: PropTypes.object.isRequired,
 };
 
 export default connect(null, { updateVolunteer})(EditVolunteerModel);

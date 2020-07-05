@@ -29,7 +29,6 @@ const AcceptDriveVol = ({ getDrives, acceptDriveVol, drives }) => {
 
   const onCompanyChange = (e) => {
     var sel = drives.filter((comp) => comp._id === e.target.value);
-    console.log(sel[0]);
     setFormData({
       ...formData,
       id: sel[0]._id,
@@ -40,8 +39,6 @@ const AcceptDriveVol = ({ getDrives, acceptDriveVol, drives }) => {
   };
 
   const onCheckChange = (e, vol) => {
-    console.log(e.target.checked);
-    console.log(vol);
     const { _id, name } = vol;
     if (e.target.checked) {
       setFormData({
@@ -59,20 +56,15 @@ const AcceptDriveVol = ({ getDrives, acceptDriveVol, drives }) => {
   };
 
   const onSubmit = (e) => {
-  //  e.preventDefault();
-    console.log(id);
-    console.log(formData);
     acceptDriveVol(id,{acceptVolunteers})
   };
 
   function containsObject(obj) {
     var i;
-    // console.log(drive);
     var volunteersAccepted = [];
     if (drive) {
       volunteersAccepted = drive.volunteersAccepted;
       if (volunteersAccepted) {
-        // console.log(volunteersAssigned);
         for (i = 0; i < volunteersAccepted.length; i++) {
           if (volunteersAccepted[i]._id === obj._id) {
             return true;

@@ -110,7 +110,6 @@ const ViewCompanyService = ({ companys }) => {
                       <tbody>
                         {companys.length > 0 &&
                           companys.map((company) => {
-                            console.log(company);
                             return (
                               <tr key={company._id}>
                                 <td>{company.name}</td>

@@ -61,8 +61,6 @@ const ViewDrivesService = ({ drives, setCurrentDrive }) => {
   }, []);
   const { id } = driveid;
   const onClick = (e, drive) => {
-    console.log('i am onclick');
-    console.log(drive);
     setdriveid({ id: drive._id });
     setCurrentDrive(drive);
   };
@@ -111,7 +109,6 @@ const ViewDrivesService = ({ drives, setCurrentDrive }) => {
                           <th>Type</th>
                           <th>Date</th>
                           <th>Description</th>
-                          {/* <th>Volunteers On Duty</th> */}
                         </tr>
                       </thead>
                       <tfoot>
@@ -127,7 +124,6 @@ const ViewDrivesService = ({ drives, setCurrentDrive }) => {
                         {drives !== null &&
                           drives.length > 0 &&
                           drives.map((drive) => {
-                            console.log(drive);
                             return (
                               <tr key={drive._id}>
                                 <td onClick={(e) => onClick(e, drive)}>

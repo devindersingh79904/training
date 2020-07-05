@@ -17,7 +17,6 @@ export const getStudents = () => async (dispatch) => {
 
   try {
     const res = await axios.get('http://localhost:5000/api/Student');
-    console.log();
     dispatch({
       type: GET_STUDENTS,
       payload: res.data,
@@ -36,7 +35,6 @@ export const getStudent = (id) => async (dispatch) => {
 
   try {
     const res = await axios.get(`http://localhost:5000/api/student/${id}`);
-    console.log(res.data)
     dispatch({
       type: GET_STUDENT,
       payload: res.data,

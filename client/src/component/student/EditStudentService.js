@@ -20,8 +20,6 @@ const EditStudentService = ({ students, setCurrentStudent }) => {
   const { id } = stdid;
 
   const onClick = (e, std) => {
-    console.log("i am onclick");
-    console.log(std);
     setStdid({ id: std._id });
     setCurrentStudent(std);
     setFormData({ std });
@@ -91,7 +89,6 @@ const EditStudentService = ({ students, setCurrentStudent }) => {
                       {students !== null &&
                         students.length > 0 &&
                         students.map((student) => {
-                          //   console.log(student);
                           return (
                             <tr
                               key={student._id}

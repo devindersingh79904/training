@@ -61,20 +61,15 @@ const DoneDriveVol = ({ getDrives, doneDriveVol, drives }) => {
       };
 
       const onSubmit = (e) => {
-        //  e.preventDefault();
-          console.log(id);
-          console.log(formData);
           doneDriveVol(id,{doneVolunteers})
         };
       
         function containsObject(obj) {
             var i;
-            // console.log(drive);
             var volunteersPresent = [];
             if (drive) {
               volunteersPresent = drive.volunteersPresent;
               if (volunteersPresent) {
-                // console.log(volunteersAssigned);
                 for (i = 0; i < volunteersPresent.length; i++) {
                   if (volunteersPresent[i]._id === obj._id) {
                     return true;
@@ -87,12 +82,10 @@ const DoneDriveVol = ({ getDrives, doneDriveVol, drives }) => {
 
           const getAllData = (volid) =>{
             var i;
-            // console.log(drive);
             var volunteersAssigned = [];
             if (drive) {
               volunteersAssigned = drive.volunteersAssigned;
               if (volunteersAssigned) {
-                // console.log(volunteersAssigned);
                 for (i = 0; i < volunteersAssigned.length; i++) {
                   if (volunteersAssigned[i]._id === volid) {
                     return volunteersAssigned[i];

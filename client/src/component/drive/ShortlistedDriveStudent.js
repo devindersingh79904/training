@@ -40,7 +40,6 @@ const ShortlistedDriveStudent = ({
   };
   const onCompanyChange = (e) => {
     var sel = drives.filter((comp) => comp._id === e.target.value);
-    console.log(sel[0]);
     setFormData({
       ...formData,
       id: sel[0]._id,
@@ -51,8 +50,6 @@ const ShortlistedDriveStudent = ({
   };
 
   const onCheckChange = (e, std) => {
-    console.log(e.target.checked);
-    console.log(std);
     const { _id, name } = std;
     if (e.target.checked) {
       setFormData({
@@ -76,22 +73,17 @@ const ShortlistedDriveStudent = ({
     } else if (selectedStudents.lrngth === 0) {
       setAlert('Select atleast one Student', 'danger');
     } else {
-      console.log(id);
-      console.log(formData);
       shortlistedDriveStd(id, { salary, selectedStudents });
       window.location.reload(false);
-      // doneDriveVol(id, { doneVolunteers });
     }
   };
 
   function containsObject(obj) {
     var i;
-    // console.log(drive);
     var selectedStudents = [];
     if (drive) {
       selectedStudents = drive.selectedStudents;
       if (selectedStudents) {
-        // console.log(volunteersAssigned);
         for (i = 0; i < selectedStudents.length; i++) {
           if (selectedStudents[i]._id === obj._id) {
             return true;
@@ -178,7 +170,6 @@ const ShortlistedDriveStudent = ({
                             {studentsAttended &&
                               studentsAttended.length > 0 &&
                               studentsAttended.map((std) => {
-                                // const allData = getAllData(volunteer._id);
                                 if (containsObject(std)) {
                                   return (
                                     <tr key={std._id}>

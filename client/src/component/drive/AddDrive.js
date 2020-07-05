@@ -4,7 +4,6 @@ import { addDrive } from '../../actions/driveAction';
 import { setAlert } from '../../actions/alertAction';
 import { getVolunteers } from '../../actions/volunteerAction';
 import { getCompany } from '../../actions/companyAction';
-import ShowVolunteerInDrive from './ShowVolunteerInDrive';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
@@ -68,40 +67,11 @@ const AddDrive = ({
   };
 
   const onCompanyChange = (e) => {
-    console.log('i am on');
     var sel = companys.filter((comp) => comp.name == e.target.value);
     var email = sel[0].email;
     setFormData({ ...formData, [e.target.name]: e.target.value, email: email });
   };
-  const onCheckChange = (e, vol) => {
-    console.log(e.target.checked);
-    console.log(vol);
-    const { _id, name, rollno ,clas} = vol;
-    if (e.target.checked) {
-      setFormData({
-        ...formData,
-        [e.target.name]: [
-          ...formData.volunteersAssigned,
-          { _id, name, rollno,clas },
-        ],
-      });
-    } else {
-      console.log('in else');
-      console.log();
-      setFormData({
-        ...formData,
-        [e.target.name]: volunteersAssigned.filter(
-          (volunteer) => volunteer._id != vol._id
-        ),
-      });
-      // volList.forEach((volunteer, index, volList) => {
-      //   if (volunteer._id === vol._id) {
-      //     console.log('in else di if ch');
-      //     volList.splice(index, 1);
-      //   }
-      // });
-    }
-  };
+  
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -120,8 +90,6 @@ const AddDrive = ({
         type,
         description,
         date
-        // ,
-        // volunteersAssigned,
       };
       addDrive(data);
       setFormData({
@@ -130,8 +98,6 @@ const AddDrive = ({
         type: '',
         description: '',
         date: ''
-        // ,
-        // volunteersAssigned: [],
       });
     }
   };
@@ -288,23 +254,6 @@ const AddDrive = ({
                         onChange={(e) => onChange(e)}
                       />
                     </div>
-
-                    {/* <div className='form-group'>
-                      <label className='control-label mb-10 text-left'>
-                        Volunteer's On duty
-                      </label>
-                      <div className='form-group'>
-                        {volunteers.map((vol) => {
-                          return (
-                            <ShowVolunteerInDrive
-                              key={vol._id}
-                              volunteer={vol}
-                              onCheckChange={onCheckChange}
-                            />
-                          );
-                        })}
-                      </div>
-                    </div> */}
                     <input
                       type='submit'
                       className='btn btn-block btn-success'

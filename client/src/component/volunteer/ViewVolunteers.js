@@ -7,7 +7,6 @@ import ViewVolunteersService from './ViewVolunteersService';
 const ViewVolunteers = ({ volunteers, getVolunteers, setCurrentVol }) => {
   useLayoutEffect(() => {
     getVolunteers();
-    // eslint-disable-next-line
   }, []);
 
   return (

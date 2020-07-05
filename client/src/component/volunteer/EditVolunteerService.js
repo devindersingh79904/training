@@ -19,8 +19,6 @@ const EditVolunteerService = ({ volunteers, setCurrentVol }) => {
   }, []);
   const { id } = volid;
   const onClick = (e, vol) => {
-    console.log('i am onclick');
-    console.log(vol);
     setVolid({ id: vol._id });
     setCurrentVol(vol);
     setFormData({ vol });
@@ -90,7 +88,6 @@ const EditVolunteerService = ({ volunteers, setCurrentVol }) => {
                       {volunteers !== null &&
                         volunteers.length > 0 &&
                         volunteers.map((volunteer) => {
-                          //   console.log(volunteer);
                           return (
                             <tr
                               key={volunteer._id}

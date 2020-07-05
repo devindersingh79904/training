@@ -62,10 +62,7 @@ const ViewVolunteersService = ({ volunteers, setCurrentVol }) => {
 
   const { id } = volid;
   const onClick = (e, vol) => {
-    console.log('i am onclick');
-    console.log(vol);
     setVolid({ id: vol._id });
-    console.log(setCurrentVol);
     setCurrentVol(vol);
   };
   return (

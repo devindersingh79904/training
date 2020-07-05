@@ -14,14 +14,8 @@ import {
 } from './types';
 
 export const getDrives = () => async (dispatch) => {
-  // if (localStorage.getItem('token')) {
-  //   setAuthToken(localStorage.token);
-  // }
-
-  try {
+ try {
     const res = await axios.get('http://localhost:5000/api/Drive');
-
-    // console.log(res.data);
     dispatch({
       type: GET_DRIVES,
       payload: res.data,
@@ -34,7 +28,6 @@ export const getDrives = () => async (dispatch) => {
 };
 
 export const addDrive = (body) => async (dispatch) => {
-  console.log(body);
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -46,7 +39,6 @@ export const addDrive = (body) => async (dispatch) => {
       body,
       config
     );
-    console.log(res);
     dispatch({
       type: ADD_DRIVE,
       payload: res.data,
@@ -62,7 +54,6 @@ export const addDrive = (body) => async (dispatch) => {
 };
 
 export const setCurrentDrive = (body) => (dispatch) => {
-  console.log(body);
   dispatch({
     type: SET_CURRENT_DRIVE,
     payload: body,
@@ -70,15 +61,9 @@ export const setCurrentDrive = (body) => (dispatch) => {
 };
 
 export const getDrive = (id) => async (dispatch) => {
-  // if (localStorage.getItem('token')) {
-  //   setAuthToken(localStorage.token);
-  // }
-
-  try {
+ try {
     const res = await axios.get(`http://localhost:5000/api/Drive/${id}`);
-
-    // console.log(res.data);
-    dispatch({
+     dispatch({
       type: GET_DRIVE,
       payload: res.data,
     });
@@ -101,7 +86,6 @@ export const assignDriveVol = (id, body) => async (dispatch) => {
       body,
       config
     );
-    console.log(res);
     dispatch({
       type: DRIVE_ASSIGN_VOL,
       payload: res.data,
@@ -128,7 +112,6 @@ export const acceptDriveVol = (id, body) => async (dispatch) => {
       body,
       config
     );
-    console.log(res);
     dispatch({
       type: DRIVE_ACCEPT_VOL,
       payload: { id, acceptVolunteers },
@@ -154,7 +137,6 @@ export const doneDriveVol = (id, body) => async (dispatch) => {
       body,
       config
     );
-    console.log(res);
     dispatch({
       type: DRIVE_DONE_VOL,
       payload: res.data,
@@ -180,7 +162,6 @@ export const attendedDriveStd = (id, body) => async (dispatch) => {
       body,
       config
     );
-    console.log(res);
     dispatch({
       type: DRIVE_ATTENDED_STD,
       payload: res.data,
@@ -206,7 +187,6 @@ export const shortlistedDriveStd = (id, body) => async (dispatch) => {
       body,
       config
     );
-    console.log(res);
     dispatch({
       type: DRIVE_ATTENDED_STD,
       payload: res.data,

@@ -139,7 +139,7 @@ const DriveProfile = ({ match, getDrive, currentDrive }) => {
                             <th className='text-center'>Name</th>
                           </thead>
                           <tbody>
-                            {currentDrive &&
+                            {currentDrive && currentDrive.volunteersPresent.length>0 &&
                               currentDrive.volunteersPresent.map((vol) => {
                                 const volunteer = getAllVolunteerData(vol._id);
                                 return (

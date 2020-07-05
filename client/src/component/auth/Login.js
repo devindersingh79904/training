@@ -6,8 +6,6 @@ import { loginUser, setLoading } from '../../actions/authAction';
 import PropTypes from 'prop-types';
 
 const Login = ({ setAlert, setLoading, loginUser, isAuthenticated }) => {
-  // setAlert('login Page open', 'danger');
-
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -15,7 +13,6 @@ const Login = ({ setAlert, setLoading, loginUser, isAuthenticated }) => {
 
   const { email, password } = formData;
 
-  // console.log(user);
   if (isAuthenticated) {
     return <Redirect to='/' />;
   }
