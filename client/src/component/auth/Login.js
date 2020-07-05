@@ -29,25 +29,25 @@ const Login = ({ setAlert, setLoading, loginUser, isAuthenticated }) => {
     });
   };
   return (
-    <div class='auth-form  ml-auto mr-auto no-float'>
-      <div class='panel panel-default card-view mb-0 mt-5'>
-        <div class='panel-wrapper collapse in'>
-          <div class='panel-body'>
-            <div class='row'>
-              <div class='col-sm-12 col-xs-12'>
-                <div class='form-wrap'>
+    <div className='auth-form  ml-auto mr-auto no-float'>
+      <div className='panel panel-default card-view mb-0 mt-5'>
+        <div className='panel-wrapper collapse in'>
+          <div className='panel-body'>
+            <div className='row'>
+              <div className='col-sm-12 col-xs-12'>
+                <div className='form-wrap'>
                   <form onSubmit={(e) => onSubmit(e)}>
-                    <div class='form-group'>
+                    <div className='form-group'>
                       <label
-                        class='control-label mb-10'
-                        for='exampleInputEmail_2'
+                        className='control-label mb-10'
+                        htmlFor='exampleInputEmail_2'
                       >
                         Email address
                       </label>
-                      <div class='input-group'>
+                      <div className='input-group'>
                         <input
                           type='email'
-                          class='form-control'
+                          className='form-control'
                           required=''
                           id='exampleInputEmail_2'
                           placeholder='Enter email'
@@ -55,22 +55,22 @@ const Login = ({ setAlert, setLoading, loginUser, isAuthenticated }) => {
                           value={email}
                           onChange={(e) => onChange(e)}
                         />
-                        <div class='input-group-addon'>
-                          <i class='icon-envelope-open'></i>
+                        <div className='input-group-addon'>
+                          <i className='icon-envelope-open'></i>
                         </div>
                       </div>
                     </div>
-                    <div class='form-group'>
+                    <div className='form-group'>
                       <label
-                        class='control-label mb-10'
-                        for='exampleInputpwd_2'
+                        className='control-label mb-10'
+                        htmlFor='exampleInputpwd_2'
                       >
                         Password
                       </label>
-                      <div class='input-group'>
+                      <div className='input-group'>
                         <input
                           type='password'
-                          class='form-control'
+                          className='form-control'
                           required=''
                           id='exampleInputpwd_2'
                           placeholder='Enter pwd'
@@ -78,31 +78,31 @@ const Login = ({ setAlert, setLoading, loginUser, isAuthenticated }) => {
                           value={password}
                           onChange={(e) => onChange(e)}
                         />
-                        <div class='input-group-addon'>
-                          <i class='icon-lock'></i>
+                        <div className='input-group-addon'>
+                          <i className='icon-lock'></i>
                         </div>
                       </div>
                     </div>
 
-                    <div class='form-group'>
-                      <div class='checkbox checkbox-success pr-10 pull-left'>
+                    <div className='form-group'>
+                      <div className='checkbox checkbox-success pr-10 pull-left'>
                         <input id='checkbox_2' required='' type='checkbox' />
-                        <label for='checkbox_2'> keep me logged in </label>
+                        <label htmlFor='checkbox_2'> keep me logged in </label>
                       </div>
                       
                       <Link className='capitalize-font txt-danger block pt-5 pull-right' to='#'>
                         forgot password
                       </Link>
                         
-                      <div class='clearfix'></div>
+                      <div className='clearfix'></div>
                     </div>
-                    <div class='form-group'>
-                      <button type='submit' class='btn btn-success btn-block'>
+                    <div className='form-group'>
+                      <button type='submit' className='btn btn-success btn-block'>
                         sign in
                       </button>
                     </div>
-                    <div class='form-group mb-0'>
-                      <span class='inline-block pr-5'>
+                    <div className='form-group mb-0'>
+                      <span className='inline-block pr-5'>
                         Don't have an account?
                       </span>
                       <Link to='/login'>Sign UP</Link>
