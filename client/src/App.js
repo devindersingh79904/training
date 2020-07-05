@@ -56,61 +56,61 @@ function App() {
             <div className='container-fluid'>
               <Alert />
               <Switch>
-                <Route exact path='/' component={Home} />
-                <PrivateRoute exact path='/about' component={About} />
+                <PrivateRoute exact path='/' component={Home} />
+                <Route exact path='/about' component={About} />
                 <Route exact path='/register' component={Register} />
                 <Route exact path='/login' component={Login} />
-                <Route exact path='/add-volunteer' component={AddVolunteer} />
-                <Route exact path='/add-student' component={AddStudent} />
-                <Route exact path='/add-drive' component={AddDrive} />
-                <Route exact path='/add-company' component={AddCompany} />
-                <Route
+                <PrivateRoute exact path='/add-volunteer' component={AddVolunteer} />
+                <PrivateRoute exact path='/add-student' component={AddStudent} />
+                <PrivateRoute exact path='/add-drive' component={AddDrive} />
+                <PrivateRoute exact path='/add-company' component={AddCompany} />
+                <PrivateRoute
                   exact
                   path='/assign-drive-vol'
                   component={AssignDriveVol}
                 />
 
-                <Route exact path='/mark-accepted' component={AcceptDriveVol} />
-                <Route exact path='/mark-present' component={DoneDriveVol} />
+                <PrivateRoute exact path='/mark-accepted' component={AcceptDriveVol} />
+                <PrivateRoute exact path='/mark-present' component={DoneDriveVol} />
 
-                <Route
+                <PrivateRoute
                   exact
                   path='/view-volunteers'
                   component={() => (
-                    <ViewVolunteers title={`Props through component`} />
+                    <ViewVolunteers/>
                   )}
                 />
-                <Route exact path='/view-drives' component={ViewDrives} />
-                <Route exact path='/view-students' component={ViewStudents} />
-                <Route exact path='/view-companys' component={ViewCompanys} />
-                <Route exact path='/edit-drives' component={EditDrives} />
-                <Route exact path='/edit-students' component={EditStudent} />
-                <Route
+                <PrivateRoute exact path='/view-drives' component={ViewDrives} />
+                <PrivateRoute exact path='/view-students' component={ViewStudents} />
+                <PrivateRoute exact path='/view-companys' component={ViewCompanys} />
+                <PrivateRoute exact path='/edit-drives' component={EditDrives} />
+                <PrivateRoute exact path='/edit-students' component={EditStudent} />
+                <PrivateRoute
                   exact
                   path='/attend-drive-students'
                   component={AttendedDriveStudents}
                 />
-                <Route
+                <PrivateRoute
                   exact
                   path='/shorlisted-drive-students'
                   component={ShortlistedDriveStudent}
                 />
-                <Route
+                <PrivateRoute
                   exact
                   path='/edit-volunteers'
                   component={EditVolunteers}
                 />
-                <Route
+                <PrivateRoute
                   exact
                   path='/drive-profile/:id'
                   component={DriveProfile}
                 />
-                <Route
+                <PrivateRoute
                   exact
                   path='/volunteer-profile/:id'
                   component={VolunteerProfile}
                 />
-                 <Route
+                 <PrivateRoute
                   exact
                   path='/student-profile/:id'
                   component={StudentProfile}

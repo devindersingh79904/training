@@ -71,39 +71,89 @@ const EditStudentModel = ({ std, id, updateStudent }) => {
                 />
               </div>
             </div>
-            <div className='form-group required'>
-              <label htmlFor='course' className='col-sm-3 control-label'>
-                Course
-              </label>
-              <div className='col-sm-9'>
-                <input
-                  type='text'
-                  className='form-control'
-                  id='course'
-                  placeholder='Course'
-                  name='clas'
-                  value={clas}
-                  onChange={(e) => onChange(e)}
-                  required
-                />
-              </div>
-            </div>
+           
+
             <div className='form-group'>
-              <label htmlFor='batch' className='col-sm-3 control-label'>
+              <label
+                className='col-sm-3 control-label'
+                htmlFor='class'
+              >
                 Batch
-              </label>
+                        </label>
               <div className='col-sm-9'>
-                <input
-                  type='text'
-                  className='form-control'
+                <select
                   id='batch'
+                  className='form-control rounded-input'
                   name='batch'
                   value={batch}
                   onChange={(e) => onChange(e)}
-                  placeholder='Batch'
-                />
+                >
+                  <option value=''>Select</option>
+
+                  <option value='Morning'>Morning</option>
+                  <option value='Evening'>Evening</option>
+
+                </select>
               </div>
-            </div>
+              </div>
+
+
+
+              <div className='form-group'>
+                <label
+                  className='col-sm-3 control-label'
+                  htmlFor='class'
+                >
+                  Class
+                        </label>
+                <div className='col-sm-9'>
+                  <select
+                    id='class'
+                    className='form-control rounded-input'
+                    name='clas'
+                    value={clas}
+                    onChange={(e) => onChange(e)}
+                  >
+                    <option value=''>Select</option>
+
+                    <option value='MCA'>MCA</option>
+                    <option value='MSC'>MSC</option>
+
+                  </select>
+                </div>
+              </div>
+
+              <div className='form-group'>
+                <label
+                  className='col-sm-3 control-label'
+                  htmlFor='session'
+                >
+                  Session
+                        </label>
+                <div className='col-sm-9'>
+                  <select
+                    id='session'
+                    className='form-control rounded-input'
+                    name='session'
+                    value={session}
+                    onChange={(e) => onChange(e)}
+                  >
+                    <option value=''>Select</option>
+
+                    <option value='2018-21'>2018-21</option>
+                    <option value='2019-22'>2019-22</option>
+
+                  </select>
+                </div>
+              </div>
+
+
+
+
+
+
+
+
             <div className='form-group'>
               <label htmlFor='phnno' className='col-sm-3 control-label'>
                 Phone Number
@@ -136,22 +186,7 @@ const EditStudentModel = ({ std, id, updateStudent }) => {
                 />
               </div>
             </div>
-            <div className='form-group text-center'>
-              <label htmlFor='session' className='col-sm-3 control-label'>
-                Session
-              </label>
-              <div className='col-sm-9'>
-                <input
-                  type='text'
-                  className='text-center text-danger form-control-xs'
-                  id='session'
-                  name='session'
-                  value={session}
-                  onChange={(e) => onChange(e)}
-                  placeholder='session'
-                />
-              </div>
-            </div>
+            
           </div>
           <div className='modal-footer'>
             <button type='submit' className='btn btn-primary'>

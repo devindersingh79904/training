@@ -216,6 +216,14 @@ const DriveProfile = ({ match, getDrive, currentDrive }) => {
                     <div className='table-wrap'>
                       <div className='table-responsive'>
                         <table className='table  top-countries'>
+                          <thead>
+                            <th className='text-center'>
+                               Name
+                            </th>
+                            <th className='text-center'>
+                              Package
+                            </th>
+                          </thead>
                           <tbody>
                             {currentDrive &&
                               currentDrive.selectedStudents.length > 0 &&
@@ -224,7 +232,7 @@ const DriveProfile = ({ match, getDrive, currentDrive }) => {
                                 return (
                                   <tr key={std._id}>
                                     <td>{student.name}</td>
-                                    <td>{std.package}</td>
+                                    <td>{std.package} L</td>
                                   </tr>
                                 );
                               })}

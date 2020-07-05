@@ -125,12 +125,29 @@ const VolunteerProfile = ({ match,getVolunteer,currentVol }) => {
                 <div className='table-wrap'>
                   <div className='table-responsive'>
                     <table className='table  top-countries'>
+                      <thead>
+                        <th className='text-center'>
+                          Date
+                        </th>
+                        <th className='text-center'>
+                          Name
+                        </th>
+                        <th className='text-center'>
+                          Type
+                        </th>
+                        <th className='text-center'>
+                          Accepted
+                        </th>
+                        <th className='text-center'>
+                          Present
+                        </th>
+                      </thead>
                       <tbody>
                         {currentVol.dutiesAssignedArray.length > 0 &&
                           currentVol.dutiesAssignedArray.map((comp) => {
                             return (
                               <tr>
-                                <td>{comp.date}</td>
+                                <td>{comp.date.substring(0, 10)}</td>
                                 <td>{comp.name}</td>
                                 <td>{comp.type}</td>
                                 <td>{isAccepted(comp._id)}</td>

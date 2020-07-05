@@ -139,7 +139,7 @@ const ShortlistedDriveStudent = ({
                         drives.map((drive) => {
                           return (
                             <option key={drive._id} value={drive._id}>
-                              {drive.name + ' ' + drive.date}
+                              {drive.name + ' ' + drive.date.substring(0, 10)}
                             </option>
                           );
                         })}

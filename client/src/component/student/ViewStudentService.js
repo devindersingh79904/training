@@ -65,6 +65,18 @@ const ViewStudentService = ({ students, setCurrentStudent }) => {
     setStdid({ id: student._id });
     setCurrentStudent(student);
   };
+
+
+  const isPlaced = (shortlistedCount) =>{
+    if(shortlistedCount>0)
+    {
+      return "Yes"
+    }
+    else{
+      return "No"
+    }
+  }
+
   return (
     <Fragment>
       <div className='row heading-bg bg-green'>
@@ -111,16 +123,19 @@ const ViewStudentService = ({ students, setCurrentStudent }) => {
                           <th>Session</th>
                           <th>Email</th>
                           <th>Phone Number</th>
+                          <th>Placed</th>
                         </tr>
                       </thead>
                       <tfoot>
                         <tr>
-                          <th>Roll Number</th>
+                        <th>Roll Number</th>
                           <th>Full Name</th>
                           <th>Course</th>
-                          <th>Session</th>
                           <th>Batch</th>
+                          <th>Session</th>
                           <th>Email</th>
+                          <th>Phone Number</th>
+                          <th>Placed</th>
                         </tr>
                       </tfoot>
                       <tbody>
@@ -145,6 +160,7 @@ const ViewStudentService = ({ students, setCurrentStudent }) => {
                                 <td>{student.session}</td>
                                 <td>{student.email}</td>
                                 <td>{student.phnno}</td>
+                                <td>{isPlaced(student.driveShortlisted.length)}</td>
                               </tr>
                             );
                           })}

@@ -137,57 +137,80 @@ const AddStudent = ({ setAlert, addStudent }) => {
                         onChange={(e) => onChange(e)}
                       />
                     </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     <div className='form-group'>
-                      <label
-                        className='control-label mb-10 text-left'
-                        htmlFor='className'
-                      >
-                        className
-                      </label>
-                      <input
-                        type='text'
-                        id='className'
-                        className='form-control rounded-input'
-                        placeholder='className'
-                        name='clas'
-                        value={clas}
-                        onChange={(e) => onChange(e)}
-                      />
-                    </div>
-                    <div className='form-group'>
-                      <label
-                        className='control-label mb-10 text-left'
-                        htmlFor='batch'
-                      >
-                        Batch
-                      </label>
-                      <input
-                        type='text'
-                        id='batch'
-                        className='form-control rounded-input'
-                        placeholder='Batch'
-                        name='batch'
-                        value={batch}
-                        onChange={(e) => onChange(e)}
-                      />
-                    </div>
-                    <div className='form-group'>
+                        <label
+                          className='control-label mb-10 text-left'
+                          htmlFor='class'
+                        >
+                          Class
+                        </label>
+                        <select
+                          id='class'
+                          className='form-control rounded-input'
+                          name='clas'
+                          value={clas}
+                          onChange={(e) => onChange(e)}
+                        >
+                          <option value=''>Select</option>
+                          
+                              <option value='MCA'>MCA</option>
+                              <option value='MSC'>MSC</option>
+                          
+                        </select>
+                      </div>
+
+                      <div className='form-group'>
+                        <label
+                          className='control-label mb-10 text-left'
+                          htmlFor='class'
+                        >
+                          Batch
+                        </label>
+                        <select
+                          id='batch'
+                          className='form-control rounded-input'
+                          name='batch'
+                          value={batch}
+                          onChange={(e) => onChange(e)}
+                        >
+                          <option value=''>Select</option>
+                          
+                              <option value='Morning'>Morning</option>
+                              <option value='Evening'>Evening</option>
+                          
+                        </select>
+                      </div>
+
+
+                      <div className='form-group'>
                       <label
                         className='control-label mb-10 text-left'
                         htmlFor='session'
                       >
                         Session
                       </label>
-                      <input
-                        type='text'
-                        id='session'
-                        className='form-control rounded-input'
-                        placeholder='session'
-                        name='session'
-                        value={session}
-                        onChange={(e) => onChange(e)}
-                      />
-                    </div>
+                        <select
+                          id='session'
+                          className='form-control rounded-input'
+                          name='session'
+                          value={session}
+                          onChange={(e) => onChange(e)}
+                        >
+                          <option value=''>Select</option>
+                          
+                              <option value='2018-21'>2018-21</option>
+                              <option value='2019-22'>2019-22</option>
+                          
+                        </select>
+                      </div>
+
                     <div className='form-group'>
                       <label className='control-label mb-10 text-left'>
                         Phone Number

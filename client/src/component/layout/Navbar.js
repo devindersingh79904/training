@@ -57,21 +57,12 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
         <li>
           <Link to='#'>
           <i className='fa fa-fw fa-user'></i> {user && user.name}
-          </Link>
-          <Link to='#'>
-          <i className='fa fa-fw fa-user'></i> {user && user.name}
 
-          </Link>
-        </li>
-        <li>
-          <Link to='/about' className='connection-item'>
-            <span className='block'>About</span>
           </Link>
         </li>
         <li>
           <Link to='#'>
           <i className='fa fa-fw fa-gear'></i> Settings
-
           </Link>
         </li>
         <li className='divider'></li>

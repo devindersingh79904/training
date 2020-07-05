@@ -110,13 +110,21 @@ const StudentProfile = ({ match,getStudent,currentStudent }) => {
                 <div className='table-wrap'>
                   <div className='table-responsive'>
                     <table className='table  top-countries'>
+                      <thead>
+                        <th className='text-center'>
+                          Drive
+                        </th>
+                        <th className='text-center'>
+                          Date
+                        </th>
+                      </thead>
                       <tbody>
                         {currentStudent &&
                           currentStudent.driveAttended.map((drive) => {
                             return (
                               <tr>
-                                <td>{drive.name}</td>
-                                <td>{drive.date}</td>
+                                <td className='text-center'>{drive.name}</td>
+                                <td className='text-center'>{drive.date.substring(0, 10)}</td>
                               </tr>
                             );
                           })}
@@ -142,15 +150,20 @@ const StudentProfile = ({ match,getStudent,currentStudent }) => {
                 <div className='table-wrap'>
                   <div className='table-responsive'>
                     <table className='table  top-countries'>
+                      <thead>
+                        <th className='text-center'>Drive</th>
+                        <th className='text-center'>Date</th>
+                        <th className='text-center'>Package</th>
+                      </thead>
                       <tbody>
                         {currentStudent &&
                           currentStudent.driveShortlisted.map((drive) => {
                             const x = getAllStudentData(drive._id)
                             return (
                               <tr>
-                                <td>{x.name}</td>
-                                <td>{x.date}</td>
-                                <td>{drive.package}</td>
+                                <td className='text-center'>{x.name}</td>
+                                <td className='text-center'>{x.date.substring(0, 10)}</td>
+                                <td className='text-center'>{drive.package} L</td>
                               </tr>
                             );
                           })}

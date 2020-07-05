@@ -126,7 +126,7 @@ const AssignDriveVol = ({
                       <option value=''>Select Drive Name</option>
                       {drives &&
                         drives.map((drive) => {
-                        return <option key={drive._id} value={drive._id}>{drive.name}+" "+{drive.date}</option>;
+                        return <option key={drive._id} value={drive._id}>{drive.name+" "+drive.date.substring(0, 10)}</option>;
                         })}
                     </select>
                     <button onClick={(e) => onSubmit(e)}>Submit</button>
