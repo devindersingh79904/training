@@ -22,7 +22,7 @@ export const setLoading = () => (dispatch) => {
 
 export const getDrives = () => async (dispatch) => {
   try {
-    const res = await axios.get('/api/Drive');
+    const res = await axios.get('http://localhost:5000/api/Drive');
     dispatch({
       type: GET_DRIVES,
       payload: res.data,
@@ -42,7 +42,7 @@ export const addDrive = (body,history) => async (dispatch) => {
   };
   try {
     const res = await axios.post(
-      '/api/Drive',
+      'http://localhost:5000/api/Drive',
       body,
       config
     );
@@ -70,7 +70,7 @@ export const setCurrentDrive = (body) => (dispatch) => {
 
 export const getDrive = (id) => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/Drive/${id}`);
+    const res = await axios.get(`http://localhost:5000/api/Drive/${id}`);
     dispatch({
       type: GET_DRIVE,
       payload: res.data,
@@ -90,7 +90,7 @@ export const assignDriveVol = (id, body) => async (dispatch) => {
   };
   try {
     const res = await axios.put(
-      `/api/Drive/assignDriveVol/${id}`,
+      `http://localhost:5000/api/Drive/assignDriveVol/${id}`,
       body,
       config
     );
@@ -116,7 +116,7 @@ export const acceptDriveVol = (id, body) => async (dispatch) => {
   const { acceptVolunteers } = body;
   try {
     const res = await axios.put(
-      `/api/Drive/acceptDriveVol/${id}`,
+      `http://localhost:5000/api/Drive/acceptDriveVol/${id}`,
       body,
       config
     );
@@ -141,7 +141,7 @@ export const doneDriveVol = (id, body) => async (dispatch) => {
   };
   try {
     const res = await axios.put(
-      `/api/Drive/presentDriveVol/${id}`,
+      `http://localhost:5000/api/Drive/presentDriveVol/${id}`,
       body,
       config
     );
@@ -166,7 +166,7 @@ export const attendedDriveStd = (id, body) => async (dispatch) => {
   };
   try {
     const res = await axios.put(
-      `/api/Drive/attendDriveStd/${id}`,
+      `http://localhost:5000/api/Drive/attendDriveStd/${id}`,
       body,
       config
     );
@@ -191,7 +191,7 @@ export const shortlistedDriveStd = (id, body) => async (dispatch) => {
   };
   try {
     const res = await axios.put(
-      `/api/Drive/selectDriveStd/${id}`,
+      `http://localhost:5000/api/Drive/selectDriveStd/${id}`,
       body,
       config
     );

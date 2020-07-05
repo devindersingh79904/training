@@ -15,7 +15,7 @@ export const getVolunteers = () => async (dispatch) => {
   //   setAuthToken(localStorage.token);
   // }
   try {
-    const res = await axios.get('/api/Volunteer');
+    const res = await axios.get('http://localhost:5000/api/Volunteer');
     dispatch({
       type: GET_VOLUNTEERS,
       payload: res.data,
@@ -29,7 +29,7 @@ export const getVolunteers = () => async (dispatch) => {
 
 export const getVolunteer = (id) => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/Volunteer/${id}`);
+    const res = await axios.get(`http://localhost:5000/api/Volunteer/${id}`);
     dispatch({
       type: GET_VOLUNTEER,
       payload: res.data,
@@ -56,7 +56,7 @@ export const updateVolunteer = (body) => async (dispatch) => {
   };
   try {
     const res = await axios.put(
-      `/api/Volunteer/update/${body._id}`,
+      `http://localhost:5000/api/Volunteer/update/${body._id}`,
       body,
       config
     );
@@ -82,7 +82,7 @@ export const addVolunteer = (body) => async (dispatch) => {
   };
   try {
     const res = await axios.post(
-      '/api/Volunteer',
+      'http://localhost:5000/api/Volunteer',
       body,
       config
     );
