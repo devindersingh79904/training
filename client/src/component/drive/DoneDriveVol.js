@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const DoneDriveVol = ({ getDrives, doneDriveVol, drives }) => {
+const DoneDriveVol = ({ history,getDrives, doneDriveVol, drives }) => {
     const [formData, setFormData] = useState({
         assignVolunteers: [],
         acceptVolunteers: [],
@@ -61,7 +61,8 @@ const DoneDriveVol = ({ getDrives, doneDriveVol, drives }) => {
       };
 
       const onSubmit = (e) => {
-          doneDriveVol(id,{doneVolunteers})
+          e.preventDefault();
+          doneDriveVol(id,{doneVolunteers},history)
         };
       
         function containsObject(obj) {

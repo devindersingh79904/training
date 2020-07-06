@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const AssignDriveVol = ({
+  history,
   getVolunteers,
   getDrives,
   assignDriveVol,
@@ -65,7 +66,8 @@ const AssignDriveVol = ({
   };
 
   const onSubmit = (e) => {
-    assignDriveVol(id,{assignVolunteers});
+    e.preventDefault();
+    assignDriveVol(id,{assignVolunteers},history);
   };
 
   function containsObject(obj, list) {

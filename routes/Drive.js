@@ -7,6 +7,7 @@ const router = express.Router();
 const auth = require('../middleware/auth');
 
 router.get('/', async (req, res) => {
+
   try {
     result = await Drive.find();
     return res.json(result);
@@ -16,6 +17,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
+
   try {
     result = await Drive.findById(req.params.id);
     return res.json(result);
@@ -24,10 +26,10 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
-  // if (req.user.role != "Sadmin") {
-  //   return res.status(401).json({ msg: "You are not Authorized user" });
-  // }
+router.post('/',auth, async (req, res) => {
+  if (req.user.role != "Sadmin") {
+    return res.status(401).json({ msg: "You are not Authorized user" });
+  }
   const {
     name,
     email,
@@ -43,9 +45,7 @@ router.post('/', async (req, res) => {
 
   try {
     var companyName = await Drive.findOne({ date, type });
-    // if (companyName) {
-    //   return res.status(401).json({ msg: "Company already exists" });
-    // }
+   
     var newCompany = new Drive({
       name,
       email,
@@ -67,11 +67,11 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/assignDriveVol/:id', async (req, res) => {
-  console.log(req.body);
-  // if (req.user.role != "Sadmin") {
-  //   return res.status(401).json({ msg: "You are not Authorized user" });
-  // }
+router.put('/assignDriveVol/:id',auth, async (req, res) => {
+  
+  if (req.user.role != "Sadmin") {
+    return res.status(401).json({ msg: "You are not Authorized user" });
+  }
   try {
     var drive = await Drive.findById(req.params.id);
     if (!drive) {
@@ -110,12 +110,11 @@ router.put('/assignDriveVol/:id', async (req, res) => {
   }
 });
 
-router.put('/acceptDriveVol/:id', async (req, res) => {
-  console.log('I am in accept drive');
-  console.log('id ' + req.params.id);
-  // if (req.user.role != "Sadmin") {
-  //   return res.status(401).json({ msg: "You are not Authorized user" });
-  // }
+router.put('/acceptDriveVol/:id',auth, async (req, res) => {
+  if (req.user.role != "Sadmin") {
+    return res.status(401).json({ msg: "You are not Authorized user" });
+  }
+ 
   try {
     var drive = await Drive.findById(req.params.id);
     console.log(req.params.id);
@@ -158,11 +157,10 @@ router.put('/acceptDriveVol/:id', async (req, res) => {
   }
 });
 
-router.put('/presentDriveVol/:id', async (req, res) => {
-  console.log(req.body);
-  // if (req.user.role != "Sadmin") {
-  //   return res.status(401).json({ msg: "You are not Authorized user" });
-  // }
+router.put('/presentDriveVol/:id',auth, async (req, res) => {
+  if (req.user.role != "Sadmin") {
+    return res.status(401).json({ msg: "You are not Authorized user" });
+  }
   try {
     var drive = await Drive.findById(req.params.id);
     if (!drive) {
@@ -202,12 +200,11 @@ router.put('/presentDriveVol/:id', async (req, res) => {
     res.status(500).json({ msg: 'Server error' });
   }
 });
-//karda save???hnn
-router.put('/attendDriveStd/:id', async (req, res) => {
-  console.log(req.body);
-  // if (req.user.role != "Sadmin") {
-  //   return res.status(401).json({ msg: "You are not Authorized user" });
-  // }
+
+router.put('/attendDriveStd/:id',auth, async (req, res) => {
+  if (req.user.role != "Sadmin") {
+    return res.status(401).json({ msg: "You are not Authorized user" });
+  }
   try {
     var drive = await Drive.findById(req.params.id);
     if (!drive) {
@@ -249,12 +246,10 @@ router.put('/attendDriveStd/:id', async (req, res) => {
   }
 });
 
-router.put('/selectDriveStd/:id', async (req, res) => {
-  console.log(req.body);
-  // if (req.user.role != "Sadmin") {
-  //   return res.status(401).json({ msg: "You are not Authorized user" });
-  // }
-
+router.put('/selectDriveStd/:id',auth, async (req, res) => {
+  if (req.user.role != "Sadmin") {
+    return res.status(401).json({ msg: "You are not Authorized user" });
+  }
   try {
     var drive = await Drive.findById(req.params.id);
     if (!drive) {

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const ShortlistedDriveStudent = ({
+  history,
   shortlistedDriveStd,
   getDrives,
   drives,
@@ -73,7 +74,7 @@ const ShortlistedDriveStudent = ({
     } else if (selectedStudents.lrngth === 0) {
       setAlert('Select atleast one Student', 'danger');
     } else {
-      shortlistedDriveStd(id, { salary, selectedStudents });
+      shortlistedDriveStd(id, { salary, selectedStudents },history);
       window.location.reload(false);
     }
   };

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const AcceptDriveVol = ({ getDrives, acceptDriveVol, drives }) => {
+const AcceptDriveVol = ({history, getDrives, acceptDriveVol, drives }) => {
   const [formData, setFormData] = useState({
     assignVolunteers: [],
     acceptVolunteers: [],
@@ -56,7 +56,8 @@ const AcceptDriveVol = ({ getDrives, acceptDriveVol, drives }) => {
   };
 
   const onSubmit = (e) => {
-    acceptDriveVol(id,{acceptVolunteers})
+    e.preventDefault()
+    acceptDriveVol(id,{acceptVolunteers},history)
   };
 
   function containsObject(obj) {

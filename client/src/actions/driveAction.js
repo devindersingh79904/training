@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { setAlert } from './alertAction';
+import setAuthToken from '../utils/setAuthToken';
 import {
   GET_DRIVES,
   ADD_DRIVE,
@@ -51,7 +52,7 @@ export const addDrive = (body,history) => async (dispatch) => {
       payload: res.data,
     });
     dispatch(setAlert('added Successfully', 'success'));
-    history.push('/');
+    history.push('/add-drive');
   } catch (err) {
     var errors = err.response.data;
     dispatch(setAlert(errors.msg, 'danger'));
@@ -82,7 +83,7 @@ export const getDrive = (id) => async (dispatch) => {
   }
 };
 
-export const assignDriveVol = (id, body) => async (dispatch) => {
+export const assignDriveVol = (id, body,history) => async (dispatch) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -98,6 +99,7 @@ export const assignDriveVol = (id, body) => async (dispatch) => {
       type: DRIVE_ASSIGN_VOL,
       payload: res.data,
     });
+    history.push('/assign-drive-vol');
   } catch (err) {
     var errors = err.response.data;
     dispatch(setAlert(errors.msg, 'danger'));
@@ -107,7 +109,7 @@ export const assignDriveVol = (id, body) => async (dispatch) => {
   }
 };
 
-export const acceptDriveVol = (id, body) => async (dispatch) => {
+export const acceptDriveVol = (id, body,history) => async (dispatch) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -124,6 +126,7 @@ export const acceptDriveVol = (id, body) => async (dispatch) => {
       type: DRIVE_ACCEPT_VOL,
       payload: { id, acceptVolunteers },
     });
+    history.push('/mark-accepted');
   } catch (err) {
     var errors = err.response.data;
     dispatch(setAlert(errors.msg, 'danger'));
@@ -133,7 +136,7 @@ export const acceptDriveVol = (id, body) => async (dispatch) => {
   }
 };
 
-export const doneDriveVol = (id, body) => async (dispatch) => {
+export const doneDriveVol = (id, body,history) => async (dispatch) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -149,6 +152,7 @@ export const doneDriveVol = (id, body) => async (dispatch) => {
       type: DRIVE_DONE_VOL,
       payload: res.data,
     });
+    history.push('/mark-present')
   } catch (err) {
     var errors = err.response.data;
     dispatch(setAlert(errors.msg, 'danger'));
@@ -158,7 +162,7 @@ export const doneDriveVol = (id, body) => async (dispatch) => {
   }
 };
 
-export const attendedDriveStd = (id, body) => async (dispatch) => {
+export const attendedDriveStd = (id, body,history) => async (dispatch) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -174,6 +178,7 @@ export const attendedDriveStd = (id, body) => async (dispatch) => {
       type: DRIVE_ATTENDED_STD,
       payload: res.data,
     });
+    history.push('/attend-drive-students')
   } catch (err) {
     var errors = err.response.data;
     dispatch(setAlert(errors.msg, 'danger'));
@@ -183,7 +188,7 @@ export const attendedDriveStd = (id, body) => async (dispatch) => {
   }
 };
 
-export const shortlistedDriveStd = (id, body) => async (dispatch) => {
+export const shortlistedDriveStd = (id, body,history) => async (dispatch) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -199,6 +204,7 @@ export const shortlistedDriveStd = (id, body) => async (dispatch) => {
       type: DRIVE_SHORTLISTED_STD,
       payload: res.data,
     });
+    history.push('/shorlisted-drive-students')
   } catch (err) {
     var errors = err.response.data;
     dispatch(setAlert(errors.msg, 'danger'));

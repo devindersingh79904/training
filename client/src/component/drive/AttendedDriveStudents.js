@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const AttendedDriveStudents = ({
+  history,
   getStudents,
   getDrives,
   attendedDriveStd,
@@ -75,7 +76,8 @@ const AttendedDriveStudents = ({
   };
 
   const onSubmit = (e) => {
-    attendedDriveStd(id, { studentsAttended });
+    e.preventDefault();
+    attendedDriveStd(id, { studentsAttended },history);
   };
 
   function containsObject(obj) {

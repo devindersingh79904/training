@@ -22,15 +22,14 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
-  // if (req.user.role != "Sadmin") {
-  //   return res.status(401).json({ msg: "You are not Authorized user" });
-  // }
+router.post("/", auth, async (req, res) => {
+  if (req.user.role != "Sadmin") {
+    return res.status(401).json({ msg: "You are not Authorized user" });
+  }
 
   const { rollno, name, clas, batch, email, phnno, companies } = req.body;
   console.log(rollno, name, clas, batch, email, phnno);
   try {
-    //console.log("Duties : " + dutiesAssigned);
     var user = await Volunteer.findOne({ email });
     if (user) {
       return res.status(401).json({ msg: "User Already register" });
@@ -60,10 +59,10 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
-  // if (req.user.role != "Sadmin") {
-  //   return res.status(401).json({ msg: "You are not Authorized user" });
-  // }
+router.delete("/:id", auth, async (req, res) => {
+  if (req.user.role != "Sadmin") {
+    return res.status(401).json({ msg: "You are not Authorized user" });
+  }
   const _id = req.params.id;
   console.log("params : ", _id);
 
@@ -94,7 +93,7 @@ router.delete("/:id", async (req, res) => {
 });
 
 //Assignment Route
-router.put("/dasign/:id", async (req, res) => {
+router.put("/dasign/:id", auth,async (req, res) => {
   if (req.user.role != "Sadmin") {
     return res.status(401).json({ msg: "You are not Authorized user" });
   }
@@ -118,7 +117,7 @@ router.put("/dasign/:id", async (req, res) => {
 });
 
 //Accepted Route
-router.put("/daccept/:id", async (req, res) => {
+router.put("/daccept/:id",auth, async (req, res) => {
   if (req.user.role != "Sadmin") {
     return res.status(401).json({ msg: "You are not Authorized user" });
   }
@@ -141,7 +140,7 @@ router.put("/daccept/:id", async (req, res) => {
 });
 
 //Work Assigned Route
-router.put("/workassigned/:id", async (req, res) => {
+router.put("/workassigned/:id",auth, async (req, res) => {
   if (req.user.role != "Sadmin") {
     return res.status(401).json({ msg: "You are not Authorized user" });
   }
@@ -164,7 +163,7 @@ router.put("/workassigned/:id", async (req, res) => {
 });
 
 //Work Done Route
-router.put("/workdone/:id", async (req, res) => {
+router.put("/workdone/:id",auth, async (req, res) => {
   if (req.user.role != "Sadmin") {
     return res.status(401).json({ msg: "You are not Authorized user" });
   }
@@ -187,12 +186,12 @@ router.put("/workdone/:id", async (req, res) => {
 });
 
 //Updation Route
-router.put("/update/:id", async (req, res) => {
+router.put("/update/:id",auth, async (req, res) => {
   const r = req.body;
   console.log(r);
-  // if (req.user.role != "Sadmin") {
-  //   return res.status(401).json({ msg: "You are not Authorized user" });
-  // }
+  if (req.user.role != "Sadmin") {
+    return res.status(401).json({ msg: "You are not Authorized user" });
+  }
   try {
     var volunteer = await Volunteer.findById(r._id);
     if (!volunteer) {

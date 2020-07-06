@@ -7,8 +7,8 @@ const bcryptjs = require('bcryptjs');
 const router = express.Router();
 
 router.post('/', async (req, res) => {
-  const { name, email, password, role } = req.body;
-
+  const { name, email, password } = req.body;
+  const role = "admin"
   try {
     var getUser = null;
     getUser = await Admin.findOne({ email });

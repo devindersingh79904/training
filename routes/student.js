@@ -1,7 +1,7 @@
 const express = require('express');
 const Student = require('../models/Student');
 const router = express.Router();
-
+const auth = require('../middleware/auth')
 router.get('/', async (req, res) => {
   try {
     result = await Student.find();
@@ -22,7 +22,10 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/',auth, async (req, res) => {
+  if (req.user.role != "Sadmin") {
+    return res.status(401).json({ msg: "You are not Authorized user" });
+  }
   const {
     name,
     email,
@@ -61,13 +64,13 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id',auth, async (req, res) => {
   const r = req.body;
   console.log(r._id);
   console.log(req.params.id);
-  // if (req.user.role != "Sadmin") {
-  //   return res.status(401).json({ msg: "You are not Authorized user" });
-  // }
+  if (req.user.role != "Sadmin") {
+    return res.status(401).json({ msg: "You are not Authorized user" });
+  }
   try {
     var student = await Student.findById(req.params.id);
     if (!student) {
@@ -84,10 +87,10 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-router.delete('/:id', async (req, res) => {
-  // if (req.user.role != "Sadmin") {
-  //   return res.status(401).json({ msg: "You are not Authorized user" });
-  // }
+router.delete('/:id',auth, async (req, res) => {
+  if (req.user.role != "Sadmin") {
+    return res.status(401).json({ msg: "You are not Authorized user" });
+  }
 
   const _id = req.params.id;
   console.log('params : ', _id);
@@ -109,4 +112,3 @@ router.delete('/:id', async (req, res) => {
 
 module.exports = router;
 
-//karta jo jo paste karna c ??

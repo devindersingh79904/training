@@ -145,6 +145,7 @@ const AddDrive = ({
                       <input
                         id='isCompany'
                         type='checkbox'
+                        checked={isCompany}
                         value={isCompany}
                         name='isCompany'
                         onChange={(e) => onIsCompChange(e)}

@@ -4,6 +4,7 @@ const auth = require('../middleware/auth');
 const router = express.Router();
 
 router.get('/', auth, async (req, res) => {
+  
   try {
     result = await Company.find({});
     return res.json(result);
@@ -14,6 +15,9 @@ router.get('/', auth, async (req, res) => {
 });
 
 router.post('/', auth, async (req, res) => {
+  if (req.user.role != "Sadmin") {
+    return res.status(401).json({ msg: "You are not Authorized user" });
+  }
   const { name, email } = req.body;
   try {
     var companyName = await Company.findOne({ name });
