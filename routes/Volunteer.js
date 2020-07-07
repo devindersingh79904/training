@@ -42,11 +42,13 @@ router.post("/", auth, async (req, res) => {
       batch,
       email,
       phnno,
-      dutiesAssigned: 0,
-      dutiesAccepted: 0,
-      present: 0,
-      workshopAssigned: 0,
-      workshopDone: 0,
+      // dutiesAssigned: 0,
+      // dutiesAccepted: 0,
+      // present: 0,
+      // workshopAssigned: 0,
+      // workshopDone: 0,
+      dutiesAssignedArray,
+      
       companies,
     });
 

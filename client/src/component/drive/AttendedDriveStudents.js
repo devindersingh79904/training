@@ -76,7 +76,7 @@ const AttendedDriveStudents = ({
   };
 
   const onSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     attendedDriveStd(id, { studentsAttended },history);
   };
 

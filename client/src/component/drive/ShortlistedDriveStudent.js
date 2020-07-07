@@ -68,7 +68,7 @@ const ShortlistedDriveStudent = ({
   };
 
   const onSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     if (salary === '') {
       setAlert('Package cant be empty', 'danger');
     } else if (selectedStudents.lrngth === 0) {
