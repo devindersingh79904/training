@@ -56,7 +56,7 @@ const AcceptDriveVol = ({history, getDrives, acceptDriveVol, drives }) => {
   };
 
   const onSubmit = (e) => {
-    e.preventDefault()
+    // e.preventDefault()
     acceptDriveVol(id,{acceptVolunteers},history)
   };
 

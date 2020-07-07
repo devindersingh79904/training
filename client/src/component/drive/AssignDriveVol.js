@@ -66,7 +66,7 @@ const AssignDriveVol = ({
   };
 
   const onSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     assignDriveVol(id,{assignVolunteers},history);
   };
 

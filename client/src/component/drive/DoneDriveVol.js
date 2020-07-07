@@ -61,7 +61,7 @@ const DoneDriveVol = ({ history,getDrives, doneDriveVol, drives }) => {
       };
 
       const onSubmit = (e) => {
-          e.preventDefault();
+          // e.preventDefault();
           doneDriveVol(id,{doneVolunteers},history)
         };
       

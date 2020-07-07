@@ -89,9 +89,10 @@ const EditStudentModel = ({ std, id, updateStudent }) => {
                   onChange={(e) => onChange(e)}
                 >
                   <option value=''>Select</option>
-
-                  <option value='Morning'>Morning</option>
-                  <option value='Evening'>Evening</option>
+                              <option value='DCSA PU E'>DCSA PU E</option>
+                              <option value='DCSA PU M'>DCSA PU M</option>
+                              <option value='DCSA HSPR'>DCSA HSPR</option>
+                              <option value='DCSA HSPR'>DCSA MKT</option>
 
                 </select>
               </div>
